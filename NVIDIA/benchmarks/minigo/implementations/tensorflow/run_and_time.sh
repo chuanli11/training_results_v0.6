@@ -52,6 +52,10 @@ echo "running benchmark"
 # run training
 python ml_perf/reference_implementation.py \
   --base_dir=$BASE_DIR \
+  --num_gpus_selfplay=$DGXNGPU \
+  --num_gpus_train=$DGXNGPU \
+  --num_socket=$DGXNSOCKET \
+  --cores_per_socket=$DGXSOCKETCORES \
   --flagfile=ml_perf/flags/9/rl_loop.flags
 
 # end timing
@@ -62,6 +66,10 @@ echo "ENDING TIMING RUN AT $end_fmt"
 # run eval
 python ml_perf/eval_models.py \
   --base_dir=$BASE_DIR \
+  --num_gpus_selfplay=$DGXNGPU \
+  --num_gpus_train=$DGXNGPU \
+  --num_socket=$DGXNSOCKET \
+  --cores_per_socket=$DGXSOCKETCORES \
   --flags_dir=ml_perf/flags/9/ ; ret_code=$?
 
 set +x

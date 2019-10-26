@@ -1,3 +1,23 @@
+# Lambda Notes
+
+### Prepare Data
+
+There is no data to be prepare
+
+
+### Build Docker Image
+
+```
+docker build --pull -t mlperf-nvidia:minigo .
+```
+
+### Run benchmark
+
+```
+# Lambda Dual Basic
+LOGDIR=/home/ubuntu/benchmarks/mlperf/minigo CONT=mlperf-nvidia:minigo PULL=0 DGXSYSTEM=LambdaDualBasic ./run.sub
+```
+
 # 1. Problem
 
 This task benchmarks reinforcement learning for the 9x9 version of the boardgame go.

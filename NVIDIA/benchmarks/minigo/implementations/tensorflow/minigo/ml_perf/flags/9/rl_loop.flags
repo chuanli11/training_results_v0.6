@@ -8,11 +8,11 @@
 --window_size=10
 --engine=trt:1024
 --eval_engine=tf
---num_gpus_selfplay=8
+#--num_gpus_selfplay=8
 --use_mgpu_horovod=True
---num_gpus_train=8
---num_socket=2
---cores_per_socket=20
+#--num_gpus_train=8
+#--num_socket=2
+#--cores_per_socket=20
 
 # Batch is now hard coded parallel_games * virtual_losses
 --trt_batch=1024

@@ -32,7 +32,9 @@ docker build --pull -t mlperf-nvidia:translation .
 ### Run Benchmark
 
 ```
-NEXP=3 DATADIR=/home/ubuntu/data/mlperf/translation/examples/translation/wmt14_en_de/utf8 LOGDIR=/home/ubuntu/benchmarks/mlperf/translation PULL=0 DGXSYSTEM=LambdaDualBasic ./run.sub
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/translation/examples/translation/wmt14_en_de/utf8 LOGDIR=/home/ubuntu/benchmarks/mlperf/translation_LambdaDualBasic PULL=0 DGXSYSTEM=LambdaDualBasic ./run.sub
+
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/translation/examples/translation/wmt14_en_de/utf8 LOGDIR=/home/ubuntu/benchmarks/mlperf/translation_DGX1 PULL=0 DGXSYSTEM=DGX1 ./run.sub
 ```
 
 

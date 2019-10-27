@@ -16,5 +16,7 @@ docker build --pull -t mlperf-nvidia:rnn_translator .
 ### Run Benchmark
 
 ```
-NEXP=3 DATADIR=/home/ubuntu/data/mlperf/rnn_translator LOGDIR=/home/ubuntu/benchmarks/mlperf/gmnt PULL=0 DGXSYSTEM=LambdaDualBasic ./run.sub
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/rnn_translator LOGDIR=/home/ubuntu/benchmarks/mlperf/gmnt_LambdaDualBasic PULL=0 DGXSYSTEM=LambdaDualBasic ./run.sub
+
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/rnn_translator LOGDIR=/home/ubuntu/benchmarks/mlperf/gmnt_DGX1 PULL=0 DGXSYSTEM=DGX1 ./run.sub
 ```

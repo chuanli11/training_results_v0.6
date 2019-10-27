@@ -22,5 +22,7 @@ docker build --pull -t mlperf-nvidia:object_detection .
 ### Run Benchmark
 
 ```
-NEXP=3 DATADIR=/home/ubuntu/data/mlperf/object_detection LOGDIR=/home/ubuntu/benchmarks/mlperf/object_detection PULL=0 DGXSYSTEM=LambdaDualBasic ./run.sub
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/object_detection LOGDIR=/home/ubuntu/benchmarks/mlperf/object_detection_LambdaDualBasic PULL=0 DGXSYSTEM=LambdaDualBasic ./run.sub
+
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/object_detection LOGDIR=/home/ubuntu/benchmarks/mlperf/object_detection_DGX1 PULL=0 DGXSYSTEM=DGX1 ./run.sub
 ```

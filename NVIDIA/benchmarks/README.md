@@ -63,5 +63,6 @@ sudo dpkg -i nvidia-peer-memory-dkms_1.0-8_all.deb
 sudo dpkg -i nvidia-peer-memory_1.0-8_all.deb
 lsmod | grep peer
 
+sudo apt-get install python3-dev
 ``` 
 

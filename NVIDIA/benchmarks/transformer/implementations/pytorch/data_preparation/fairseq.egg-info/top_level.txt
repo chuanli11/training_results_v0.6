@@ -1,0 +1,5 @@
+fairseq
+fused_dropout_add_cuda
+fused_relu_dropout_cuda
+padded_softmax
+strided_batched_gemm

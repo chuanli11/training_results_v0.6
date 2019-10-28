@@ -60,8 +60,10 @@ python -m bind_launch --nsockets_per_node ${DGXNSOCKET} \
   --epochs "${NUMEPOCHS}" \
   --warmup-factor 0 \
   --no-save \
+  # --threshold=0.05 \
   --threshold=0.23 \
   --data ${DATASET_DIR} \
+  # --evaluation 20000 40000 60000 80000 100000 120000 160000 180000 200000 220000 240000 260000 280000 \
   --evaluation 120000 160000 180000 200000 220000 240000 260000 280000 \
   ${EXTRA_PARAMS[@]} ; ret_code=$?
 

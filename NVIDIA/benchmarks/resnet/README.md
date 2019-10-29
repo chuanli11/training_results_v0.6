@@ -57,7 +57,7 @@ docker build --pull -t  mlperf-nvidia:image_classification .
 ### Run Benchmark
 
 ```
-NEXP=3 DATADIR=/home/ubuntu/data/mlperf/imagenet-mxnet LOGDIR=/home/ubuntu/benchmarks/mlperf/resnet-mxnet DGXSYSTEM=LambdaDualBasic ./run.sub
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/imagenet-mxnet LOGDIR=/home/ubuntu/benchmarks/mlperf/resnet_LambdaDualBasic DGXSYSTEM=LambdaDualBasic ./run.sub
 
-NEXP=3 DATADIR=/home/ubuntu/data/mlperf/imagenet-mxnet LOGDIR=/home/ubuntu/benchmarks/mlperf/resnet-mxnet DGXSYSTEM=DGX1 ./run.sub
+NEXP=3 DATADIR=/home/ubuntu/data/mlperf/imagenet-mxnet LOGDIR=/home/ubuntu/benchmarks/mlperf/resnet_DGX1 DGXSYSTEM=DGX1 ./run.sub
 ```

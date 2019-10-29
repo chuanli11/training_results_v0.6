@@ -77,7 +77,7 @@ __Training Throughput (The higher the better)__
 
 |   | ssd (samples/sec) | maskrcnn (iterations/s) | resnet (samples/sec) | gnmt (Tok/s) | translation (batches/sec) | minigo (epochs/min) |
 |---|---|---|---|---|---|---|
-| DGX1 Reference  | 4420.04  | 132.2  | 11224  |  727808 | 33.82  | 0.46  |
+| DGX1 Reference  | 4420.04  | 132.2  | 11224  |  727808 | 33.82  | 0.61  |
 | Lambda HyperPlane  | 4280.86  | 133.20  | 10861.43  | 696587.86  | 33.77  |  0.50 |
 
 

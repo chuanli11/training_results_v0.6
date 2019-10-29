@@ -9,8 +9,8 @@ SYSTEM='DGX1'
 PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
 
 # tasks = ['gnmt', 'maskrcnn', 'minigo', 'resnet', 'single_stage_detector', 'transformer']
-tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt']
-throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s']
+tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation']
+throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec']
 
 def tail(filename, n):
     proc = subprocess.Popen(['tail', '-n', str(n), filename], stdout=subprocess.PIPE)
@@ -66,7 +66,7 @@ def single_stage_detector_TPS(filename):
             total_throughput += float(match.group().split(' ')[-1])
             count += 1
 
-    return total_throughput / float(count)
+    return total_throughput / (float(count) * 60)
 
 
 def maskrcnn_T2S(filename):
@@ -121,7 +121,7 @@ def maskrcnn_TPS(filename):
             total_throughput += float(match.group().split(' ')[3].split('=')[1])
             count += 1
 
-    return total_throughput / float(count)
+    return total_throughput / (float(count) * 60)
 
 
 def resnet_T2S(filename):
@@ -175,7 +175,7 @@ def resnet_TPS(filename):
             total_throughput += float(match.group().split(' ')[-2])
             count += 1
 
-    return total_throughput / float(count)
+    return total_throughput / (float(count) * 60)
 
 
 def gnmt_T2S(filename):
@@ -230,7 +230,41 @@ def gnmt_TPS(filename):
             total_throughput += float(match.group().split(' ')[-2])
             count += 1
 
-    return total_throughput / float(count)
+    return total_throughput / (float(count) * 60)
+
+
+def translation_T2S(filename):
+    pattern = re.compile("^.*done training.*$")
+    count = 0.0
+    total_throughput = 0.0
+    for i, line in enumerate(open(filename)):
+        for match in re.finditer(pattern, line):
+            total_throughput += float(match.group().split(' ')[-2])
+            count += 1
+
+    return total_throughput / (float(count) * 60)
+
+
+def translation_TPS(filename):  
+    pattern_time = re.compile("^.*epoch time.*$")
+    pattern_batch = re.compile("^.*generated.*$")
+
+    total_time = 0.0
+    total_batch = 0.0
+
+    for i, line in enumerate(open(filename)):
+        for match in re.finditer(pattern_time, line):
+            total_time += float(match.group().split(' ')[-1])
+
+    for i, line in enumerate(open(filename)):
+        for match in re.finditer(pattern_batch, line):
+            batch = float(match.group().split(' ')[-4])
+            if batch > 1000:
+                total_batch += batch
+
+    total_throughput = total_batch / total_time
+
+    return total_throughput
 
 
 for task, t_name in zip(tasks, throughput_names):  
@@ -252,6 +286,6 @@ for task, t_name in zip(tasks, throughput_names):
     array_tpsec = np.asarray(list_tpsec)
 
     print(task + ':')
-    print('time 2 solution: ' + str(np.average(array_t2solution)/60) + ' minutes.')
+    print('time 2 solution: ' + str(np.average(array_t2solution)) + ' minutes.')
     print(t_name + ': ' + str(np.average(array_tpsec)))
     print('------------------------------------------------')

@@ -6,9 +6,8 @@ import numpy as np
 
 
 SYSTEM='DGX1'
-PATH_RESULTS = '/home/chuan/benchmarks/mlperf'
+PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
 
-# tasks = ['gnmt', 'maskrcnn', 'minigo', 'resnet', 'single_stage_detector', 'transformer']
 tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
 throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
 

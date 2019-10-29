@@ -13,7 +13,7 @@ This is a repository to preproduce Lambda Labs' MLPerf results.
 - nv_peer_mem
 
 
-### Procedure
+### Setup
 
 
 ```
@@ -66,4 +66,27 @@ lsmod | grep peer
 sudo apt-get install python3-dev
 sudo apt install unzip
 ``` 
+
+Check individual model folders for information to run the benchmarks.
+
+### Results
+
+
+__Training Throughput (The higher the better)__
+
+
+|   | ssd (samples/sec) | maskrcnn (iterations/s) | resnet (samples/sec) | gnmt (Tok/s) | translation (batches/sec) | minigo (epochs/min) |
+|---|---|---|---|---|---|---|
+| DGX1 Reference  | 4420.04  | 132.2  | 11224  |  727808 | 33.82  | 0.46  |
+| Lambda HyperPlane  | 4280.86  | 133.20  | 10861.43  | 696587.86  | 33.77  |  0.50 |
+
+
+__Minutes to Solution (The lower the better)__
+
+|   | ssd  | maskrcnn  | resnet  | gnmt  | translation  | minigo  |
+|---|---|---|---|---|---|---|
+| DGX1 Reference  | 22.03  | 207.48  | 115.22  |  20.55 | 20.34  | 27.39  |
+| Lambda HyperPlane  | 23.33  | 206.82  | 117.21  | 23.50  | 19.85  |  29.76 |
+
+* Training Throughtput is a fairer metric as the training may take different numbers of epochs to reach the solution due to random initialization and data shuffling.
 

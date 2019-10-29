@@ -54,7 +54,7 @@ def single_stage_detector_T2S(filename):
         int(time_end[0]), int(time_end[1]), int(time_end[2]))
     num_second = (end-start).total_seconds()
 
-    return num_second
+    return num_second / 60.0
 
 
 def single_stage_detector_TPS(filename):
@@ -66,7 +66,7 @@ def single_stage_detector_TPS(filename):
             total_throughput += float(match.group().split(' ')[-1])
             count += 1
 
-    return total_throughput / (float(count) * 60)
+    return total_throughput / float(count)
 
 
 def maskrcnn_T2S(filename):
@@ -109,7 +109,7 @@ def maskrcnn_T2S(filename):
 
     num_second = (end-start).total_seconds()
 
-    return num_second
+    return num_second / 60.0
 
 
 def maskrcnn_TPS(filename):
@@ -121,7 +121,7 @@ def maskrcnn_TPS(filename):
             total_throughput += float(match.group().split(' ')[3].split('=')[1])
             count += 1
 
-    return total_throughput / (float(count) * 60)
+    return total_throughput / float(count)
 
 
 def resnet_T2S(filename):
@@ -164,7 +164,7 @@ def resnet_T2S(filename):
 
     num_second = (end-start).total_seconds()
 
-    return num_second
+    return num_second / 60.0
 
 def resnet_TPS(filename):
     pattern = re.compile("^.*samples/sec.*$")
@@ -175,7 +175,7 @@ def resnet_TPS(filename):
             total_throughput += float(match.group().split(' ')[-2])
             count += 1
 
-    return total_throughput / (float(count) * 60)
+    return total_throughput / float(count)
 
 
 def gnmt_T2S(filename):
@@ -218,7 +218,7 @@ def gnmt_T2S(filename):
 
     num_second = (end-start).total_seconds()
 
-    return num_second
+    return num_second / 60.0
 
 
 def gnmt_TPS(filename):    
@@ -230,7 +230,7 @@ def gnmt_TPS(filename):
             total_throughput += float(match.group().split(' ')[-2])
             count += 1
 
-    return total_throughput / (float(count) * 60)
+    return total_throughput / float(count)
 
 
 def translation_T2S(filename):

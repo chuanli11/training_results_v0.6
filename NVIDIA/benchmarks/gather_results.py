@@ -6,11 +6,11 @@ import numpy as np
 
 
 SYSTEM='DGX1'
-PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
+PATH_RESULTS = '/home/chuan/benchmarks/mlperf'
 
 # tasks = ['gnmt', 'maskrcnn', 'minigo', 'resnet', 'single_stage_detector', 'transformer']
-tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation']
-throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec']
+tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
+throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
 
 def tail(filename, n):
     proc = subprocess.Popen(['tail', '-n', str(n), filename], stdout=subprocess.PIPE)
@@ -236,13 +236,13 @@ def gnmt_TPS(filename):
 def translation_T2S(filename):
     pattern = re.compile("^.*done training.*$")
     count = 0.0
-    total_throughput = 0.0
+    num_second = 0.0
     for i, line in enumerate(open(filename)):
         for match in re.finditer(pattern, line):
-            total_throughput += float(match.group().split(' ')[-2])
+            num_second += float(match.group().split(' ')[-2])
             count += 1
 
-    return total_throughput / (float(count) * 60)
+    return num_second / (float(count) * 60)
 
 
 def translation_TPS(filename):  
@@ -265,6 +265,28 @@ def translation_TPS(filename):
     total_throughput = total_batch / total_time
 
     return total_throughput
+
+
+def minigo_T2S(filename):
+    pattern = re.compile("^.*beat target after.*$")
+    num_second = 0.0
+    for i, line in enumerate(open(filename)):
+        for match in re.finditer(pattern, line):
+            num_second = float(match.group().split(' ')[-1][:-2])
+
+    return num_second / 60.0
+
+def minigo_TPS(filename):
+    pattern = re.compile("^.*Iteration time.*$")
+    total_throughput = 0.0
+    count = 0.0
+    total_time = 0.0
+    for i, line in enumerate(open(filename)):
+        for match in re.finditer(pattern, line):
+            total_throughput += 1 / float(match.group().split(' ')[-2])
+            count += 1
+
+    return total_throughput * 60.0 / float(count)
 
 
 for task, t_name in zip(tasks, throughput_names):  

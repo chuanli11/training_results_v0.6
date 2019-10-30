@@ -3,7 +3,6 @@
 # -----------------------------------------
 # resnet
 # -----------------------------------------
-
 FILE_TRAIN="/home/ubuntu/ILSVRC2012_img_train.tar"
 FILE_VAL="/home/ubuntu/ILSVRC2012_img_val.tar"
 
@@ -56,6 +55,7 @@ python /home/ubuntu/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py
 
 python /home/ubuntu/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --pass-through --num-thread 20 val /home/ubuntu/data/mlperf/imagenet-mxnet/val-jpeg
 
+
 mv /home/ubuntu/train.idx /home/ubuntu/data/mlperf/imagenet-mxnet
 mv /home/ubuntu/train.rec /home/ubuntu/data/mlperf/imagenet-mxnet
 mv /home/ubuntu/train.lst /home/ubuntu/data/mlperf/imagenet-mxnet
@@ -64,24 +64,28 @@ mv /home/ubuntu/val.idx /home/ubuntu/data/mlperf/imagenet-mxnet
 mv /home/ubuntu/val.rec /home/ubuntu/data/mlperf/imagenet-mxnet
 mv /home/ubuntu/val.lst /home/ubuntu/data/mlperf/imagenet-mxnet
 
+deactivate
+
 popd
 
 # -----------------------------------------
 # ssd and maskrcnn
 # -----------------------------------------
-
 ./ssd/implementations/pytorch/download_dataset.sh
+
+# -----------------------------------------
+# maskrcnn
+# -----------------------------------------
+./maskrcnn/implementations/pytorch/download_weights.sh
 
 # -----------------------------------------
 # gnmt
 # -----------------------------------------
-
 ./gnmt/implementations/download_dataset.sh "/home/ubuntu/data/mlperf/rnn_translator"
 
 # -----------------------------------------
 # transformer
 # -----------------------------------------
-
 pushd .
 cd transformer/implementations/pytorch/data_preparation
 

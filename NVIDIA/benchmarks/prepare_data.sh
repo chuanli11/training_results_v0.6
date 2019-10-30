@@ -81,7 +81,10 @@ popd
 # -----------------------------------------
 # gnmt
 # -----------------------------------------
-./gnmt/implementations/download_dataset.sh "/home/ubuntu/data/mlperf/rnn_translator"
+pushd .
+cd gnmt/implementations
+./download_dataset.sh "/home/ubuntu/data/mlperf/rnn_translator"
+popd
 
 # -----------------------------------------
 # transformer

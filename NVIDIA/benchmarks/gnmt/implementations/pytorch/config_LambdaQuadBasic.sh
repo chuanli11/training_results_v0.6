@@ -23,7 +23,7 @@ EXTRA_OPTS=${EXTRA_OPTS-"\
    "}
 
 ## System config params
-DGXNGPU=2
+DGXNGPU=4
 DGXSOCKETCORES=10
 DGXHT=2 	# HT is on is 2, HT off is 1
 DGXIBDEVICES=''

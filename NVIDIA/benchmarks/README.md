@@ -22,7 +22,7 @@ sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove
 
 # Clone repo
 cd
-git clone https://github.com/chuanli11/training_results_v0.6.git
+git clone https://github.com/lambdal/training_results_v0.6.git
 cd training_results_v0.6
 
 # Install nvidia-docker
@@ -40,7 +40,15 @@ wget http://www.mellanox.com/downloads/ofed/MLNX_OFED-4.4-1.0.0.0/MLNX_OFED_LINU
 tar -xvf MLNX_OFED_LINUX-4.4-1.0.0.0-ubuntu18.04-x86_64.tgz
 cd MLNX_OFED_LINUX-4.4-1.0.0.0-ubuntu18.04-x86_64
 sudo ./mlnxofedinstall --force --add-kernel-support
+
+# If there was an eror
+cd /tmp/MLNX_OFED_LINUX-x.x-x.x..x-x.x.x-x-generic/MLNX_OFED_LINUX-x.x-x.x.x.x-ubuntu18.04-ext
+sudo ./mlnxofedinstall --force
+
 sudo /etc/init.d/openibd restart
+
+
+
 
 # Install nv_peer_memory
 cd

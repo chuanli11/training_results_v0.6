@@ -28,6 +28,9 @@ cd training_results_v0.6
 # Install nvidia-docker
 ./install.sh
 
+sudo apt-get install python3-dev
+sudo apt install unzip
+
 # Add user docker to sudo group
 USER=ubuntu
 sudo groupadd docker
@@ -46,8 +49,6 @@ cd /tmp/MLNX_OFED_LINUX-x.x-x.x..x-x.x.x-x-generic/MLNX_OFED_LINUX-x.x-x.x.x.x-u
 sudo ./mlnxofedinstall --force
 
 sudo /etc/init.d/openibd restart
-
-
 
 
 # Install nv_peer_memory
@@ -71,8 +72,6 @@ sudo dpkg -i nvidia-peer-memory-dkms_1.0-8_all.deb
 sudo dpkg -i nvidia-peer-memory_1.0-8_all.deb
 lsmod | grep peer
 
-sudo apt-get install python3-dev
-sudo apt install unzip
 ``` 
 
 Check individual model folders for information to run the benchmarks.

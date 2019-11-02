@@ -19,6 +19,8 @@ This is a repository to preproduce Lambda Labs' MLPerf results.
 ```
 # Update Lambda Stack
 sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove
+sudo apt-get install python3-dev
+sudo apt install unzip
 
 # Clone repo
 cd
@@ -27,9 +29,6 @@ cd training_results_v0.6
 
 # Install nvidia-docker
 ./install.sh
-
-sudo apt-get install python3-dev
-sudo apt install unzip
 
 # Add user docker to sudo group
 USER=ubuntu

@@ -76,7 +76,7 @@ popd
 # -----------------------------------------
 # maskrcnn
 # -----------------------------------------
-./maskrcnn/implementations/pytorch/download_weights.sh
+./maskrcnn/implementations/download_weights.sh
 
 # -----------------------------------------
 # gnmt

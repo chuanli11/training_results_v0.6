@@ -2,7 +2,7 @@
 
 ## DL params
 OPTIMIZER="sgdwfastlars"
-BATCHSIZE="208"
+BATCHSIZE="128"
 KVSTORE="horovod"
 LR="5"
 WARMUP_EPOCHS="5"
@@ -40,6 +40,6 @@ WALLTIME=03:00:00
 
 ## System config params
 DGXNGPU=8
-DGXSOCKETCORES=20
+DGXSOCKETCORES=12
 DGXHT=2         # HT is on is 2, HT off is 1
 DGXIBDEVICES=''

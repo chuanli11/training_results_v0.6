@@ -2,7 +2,7 @@
 
 ## DL params
 OPTIMIZER="sgdwfastlars"
-BATCHSIZE="208"
+BATCHSIZE="128"
 KVSTORE="horovod"
 LR="5"
 WARMUP_EPOCHS="5"
@@ -39,7 +39,7 @@ DGXSYSTEM=$(basename $(readlink -f ${BASH_SOURCE[0]}) | sed 's/^config_//' | sed
 WALLTIME=03:00:00
 
 ## System config params
-DGXNGPU=2
+DGXNGPU=4
 DGXSOCKETCORES=10
 DGXHT=2         # HT is on is 2, HT off is 1
 DGXIBDEVICES=''

@@ -39,7 +39,7 @@ DGXSYSTEM=$(basename $(readlink -f ${BASH_SOURCE[0]}) | sed 's/^config_//' | sed
 WALLTIME=03:00:00
 
 ## System config params
-DGXNGPU=4
-DGXSOCKETCORES=10
+DGXNGPU=8
+DGXSOCKETCORES=20
 DGXHT=2         # HT is on is 2, HT off is 1
 DGXIBDEVICES=''

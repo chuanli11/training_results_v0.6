@@ -9,8 +9,8 @@ EXTRA_CONFIG=(
                "SOLVER.WARMUP_ITERS"  "625"
                "SOLVER.WARMUP_METHOD" "mlperf_linear"
                "SOLVER.STEPS"         "(24000, 32000)"
-               "SOLVER.IMS_PER_BATCH"  "8"
-               "TEST.IMS_PER_BATCH" "4"
+               "SOLVER.IMS_PER_BATCH"  "16"
+               "TEST.IMS_PER_BATCH" "8"
                "MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN" "6000"
                "NHWC" "True"   
              )

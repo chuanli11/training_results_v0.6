@@ -73,7 +73,29 @@ lsmod | grep peer
 
 ``` 
 
-Check individual model folders for information to run the benchmarks.
+### Prepare Data
+
+Copy `ILSVRC2012_img_train.tar` and `ILSVRC2012_img_val.tar` to `~/`
+
+```
+./prepare_data.sh
+```
+
+### Usage
+
+Use this command to run all benchmarks
+
+```
+./run_mlperf.sh SYSTEM NUM_RUN 
+
+# For examples:
+./run_mlperf.sh LambdaHyperplaneBasic 3
+./run_mlperf.sh LambdaBlade2080Ti 3
+./run_mlperf.sh LambdaQuad2080Ti 3
+./run_mlperf.sh LambdaDual2080Ti 3
+```
+
+Check individual benchmark folders for more details.
 
 ### Results
 

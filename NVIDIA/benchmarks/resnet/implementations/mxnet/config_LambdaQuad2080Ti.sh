@@ -2,7 +2,7 @@
 
 ## DL params
 OPTIMIZER="sgdwfastlars"
-BATCHSIZE="128"
+BATCHSIZE="104"
 KVSTORE="horovod"
 LR="5"
 WARMUP_EPOCHS="5"

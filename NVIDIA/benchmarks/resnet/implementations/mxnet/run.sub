@@ -231,6 +231,6 @@ done
 $SRUNl timeout -k 20 10 docker rm -f $CONTNAME >/dev/null
 $SRUNl rm -rf /dev/shm/mpi/${SLURM_JOB_ID}/
 
-# Finish
-[[ $rvs -ne 0 ]] && echo "ERR: User script failed." && exit $rvs
-exit 0
+## Finish
+#[[ $rvs -ne 0 ]] && echo "ERR: User script failed." && exit $rvs
+#exit 0

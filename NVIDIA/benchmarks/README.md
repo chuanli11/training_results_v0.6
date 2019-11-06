@@ -107,7 +107,7 @@ __Training Throughput (The higher the better)__
 |---|---|---|---|---|---|---|
 | DGX1 Reference  | 4420.04  | 132.2  | 11224  |  727808 | 33.82  | 0.61  |
 | Lambda HyperPlane Basic | 4280.86  | 133.20  | 10861.43  | 696587.86  | 33.77  |  0.50 |
-| Lambda Blade 2080Ti | 2575.92  | 72.86  | 6301.29  | 326569.0  | 66.45  |  0.30 |
+| Lambda Blade 2080Ti | 2575.92  | 72.86  | 6301.29  | 326569.0  | 26.68  |  0.30 |
 
 
 __Minutes to Solution (The lower the better)__

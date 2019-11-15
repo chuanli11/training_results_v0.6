@@ -1,0 +1,1453 @@
+Beginning trial 1 of 1
+Gathering sys log on lambda-quad
+:::MLL 1573854257.884 submission_benchmark: {"value": "maskrcnn", "metadata": {"file": "mlperf_logger.py", "lineno": 213}}
+:::MLL 1573854257.885 submission_org: {"value": "NVIDIA", "metadata": {"file": "mlperf_logger.py", "lineno": 218}}
+WARNING: Log validation: Key "submission_division" is not in known maskrcnn keys.
+:::MLL 1573854257.886 submission_division: {"value": "closed", "metadata": {"file": "mlperf_logger.py", "lineno": 222}}
+:::MLL 1573854257.887 submission_status: {"value": "onprem", "metadata": {"file": "mlperf_logger.py", "lineno": 226}}
+:::MLL 1573854257.887 submission_platform: {"value": "1xSystem Product Name", "metadata": {"file": "mlperf_logger.py", "lineno": 230}}
+:::MLL 1573854257.888 submission_entry: {"value": "{'hardware': 'System Product Name', 'framework': 'PyTorch NVIDIA Release 19.05', 'power': 'N/A', 'notes': 'N/A', 'interconnect': ' ', 'os': 'Ubuntu 18.04.3 LTS / ', 'libraries': \"{'container_base': 'Ubuntu-16.04', 'openmpi_version': '3.1.3', 'mofed_version': '4.7-1.0.0', 'cuda_version': '10.1.163', 'cuda_driver_version': '418.67', 'nccl_version': '2.4.6', 'cudnn_version': '7.6.0.64', 'cublas_version': '10.2.0.163', 'trt_version': '5.1.5.0', 'dali_version': '0.9.1'}\", 'compilers': 'gcc (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609', 'nodes': \"{'num_nodes': '1', 'cpu': '1x Intel(R) Core(TM) i9-9820X CPU @ 3.30GHz', 'num_cores': '10', 'num_vcpus': '20', 'accelerator': 'GeForce RTX 2080 Ti', 'num_accelerators': '4', 'sys_mem_size': '125 GB', 'sys_storage_type': '<unknown bus> SSD', 'sys_storage_size': '2x 54.5M + 1x 1.8T + 2x 14.8M + 2x 140.7M + 1x 156M + 2x 3.7M + 1x 2.3M + 1x 34.6M + 1x 14.5M + 1x 956K + 1x 44.2M + 1x 4.2M + 2x 89.1M + 1x 156.7M', 'cpu_accel_interconnect': 'UPI', 'network_card': '', 'num_network_cards': '0', 'notes': ''}\"}", "metadata": {"file": "mlperf_logger.py", "lineno": 234}}
+:::MLL 1573854257.889 submission_poc_name: {"value": "Paulius Micikevicius", "metadata": {"file": "mlperf_logger.py", "lineno": 238}}
+:::MLL 1573854257.890 submission_poc_email: {"value": "pauliusm@nvidia.com", "metadata": {"file": "mlperf_logger.py", "lineno": 242}}
+Clearing caches
+:::MLL 1573854258.995 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+Launching on node lambda-quad
++ pids+=($!)
++ set +x
+++ eval echo
++++ echo
++ docker exec -e DGXSYSTEM=LambdaDual2080Ti -e 'MULTI_NODE= --master_port=4924' -e SLURM_JOB_ID=191115134341592831998 -e SLURM_NTASKS_PER_NODE= -e SLURM_NNODES=1 cont_191115134341592831998 ./run_and_time.sh
+Run vars: id 191115134341592831998 gpus 2 mparams  --master_port=4924
+STARTING TIMING RUN AT 2019-11-15 09:44:19 PM
+running benchmark
++ echo 'running benchmark'
++ DATASET_DIR=/data
++ '[' '!' -f /coco ']'
++ ln -sf /data/coco2017 /coco
+++ ls /data
+coco2017 torchvision
++ echo coco2017 torchvision
++ python -m bind_launch --nsockets_per_node 1 --ncores_per_socket 10 --nproc_per_node 2 --master_port=4924 tools/train_mlperf.py --config-file configs/e2e_mask_rcnn_R_50_FPN_1x.yaml DTYPE float16 PATHS_CATALOG maskrcnn_benchmark/config/paths_catalog_dbcluster.py MODEL.WEIGHT /coco/models/R-50.pkl DISABLE_REDUCED_LOGGING True SOLVER.BASE_LR 0.03 SOLVER.MAX_ITER 80000 SOLVER.WARMUP_FACTOR 0.000096 SOLVER.WARMUP_ITERS 625 SOLVER.WARMUP_METHOD mlperf_linear SOLVER.STEPS '(24000, 32000)' SOLVER.IMS_PER_BATCH 8 TEST.IMS_PER_BATCH 4 MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN 6000 NHWC True
+:::MLL 1573854261.069 init_start: {"value": null, "metadata": {"file": "tools/train_mlperf.py", "lineno": 262}}
+:::MLL 1573854261.070 init_start: {"value": null, "metadata": {"file": "tools/train_mlperf.py", "lineno": 262}}
+2019-11-15 21:44:26,071 maskrcnn_benchmark INFO: Using 2 GPUs
+2019-11-15 21:44:26,071 maskrcnn_benchmark INFO: Namespace(config_file='configs/e2e_mask_rcnn_R_50_FPN_1x.yaml', distributed=True, local_rank=0, opts=['DTYPE', 'float16', 'PATHS_CATALOG', 'maskrcnn_benchmark/config/paths_catalog_dbcluster.py', 'MODEL.WEIGHT', '/coco/models/R-50.pkl', 'DISABLE_REDUCED_LOGGING', 'True', 'SOLVER.BASE_LR', '0.03', 'SOLVER.MAX_ITER', '80000', 'SOLVER.WARMUP_FACTOR', '0.000096', 'SOLVER.WARMUP_ITERS', '625', 'SOLVER.WARMUP_METHOD', 'mlperf_linear', 'SOLVER.STEPS', '(24000, 32000)', 'SOLVER.IMS_PER_BATCH', '8', 'TEST.IMS_PER_BATCH', '4', 'MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN', '6000', 'NHWC', 'True'], seed=1226885376)
+2019-11-15 21:44:26,072 maskrcnn_benchmark INFO: Worker 0: Setting seed 2100704166
+2019-11-15 21:44:26,072 maskrcnn_benchmark INFO: Collecting env info (might take some time)
+2019-11-15 21:44:28,274 maskrcnn_benchmark INFO: 
+PyTorch version: 1.1.0a0+828a6a3
+Is debug build: No
+CUDA used to build PyTorch: 10.1.163
+
+OS: Ubuntu 16.04.6 LTS
+GCC version: (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609
+CMake version: version 3.5.1
+
+Python version: 3.6
+Is CUDA available: Yes
+CUDA runtime version: 10.1.163
+GPU models and configuration: 
+GPU 0: GeForce RTX 2080 Ti
+GPU 1: GeForce RTX 2080 Ti
+GPU 2: GeForce RTX 2080 Ti
+GPU 3: GeForce RTX 2080 Ti
+
+Nvidia driver version: 418.88
+cuDNN version: /usr/lib/x86_64-linux-gnu/libcudnn.so.7.6.0
+
+Versions of relevant libraries:
+[pip] msgpack-numpy==0.4.3.2
+[pip] numpy==1.16.3
+[pip] torch==1.1.0a0+828a6a3
+[pip] torchtext==0.4.0
+[pip] torchvision==0.2.1
+[conda] magma-cuda100             2.1.0                         5    local
+[conda] mkl                       2019.1                      144  
+[conda] mkl-include               2019.1                      144  
+[conda] torch                     1.1.0a0+828a6a3          pypi_0    pypi
+[conda] torchtext                 0.4.0                    pypi_0    pypi
+[conda] torchvision               0.2.1                    pypi_0    pypi
+        Pillow (5.3.0.post1)
+2019-11-15 21:44:28,274 maskrcnn_benchmark INFO: Loaded configuration file configs/e2e_mask_rcnn_R_50_FPN_1x.yaml
+2019-11-15 21:44:28,274 maskrcnn_benchmark INFO: 
+MODEL:
+  META_ARCHITECTURE: "GeneralizedRCNN"
+  WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
+  BACKBONE:
+    CONV_BODY: "R-50-FPN"
+    OUT_CHANNELS: 256
+  RPN:
+    USE_FPN: True
+    ANCHOR_STRIDE: (4, 8, 16, 32, 64)
+    PRE_NMS_TOP_N_TRAIN: 2000
+    PRE_NMS_TOP_N_TEST: 1000
+    POST_NMS_TOP_N_TEST: 1000
+    FPN_POST_NMS_TOP_N_TEST: 1000
+  ROI_HEADS:
+    USE_FPN: True
+  ROI_BOX_HEAD:
+    POOLER_RESOLUTION: 7
+    POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+    POOLER_SAMPLING_RATIO: 2
+    FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
+    PREDICTOR: "FPNPredictor"
+  ROI_MASK_HEAD:
+    POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+    FEATURE_EXTRACTOR: "MaskRCNNFPNFeatureExtractor"
+    PREDICTOR: "MaskRCNNC4Predictor"
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 2
+    RESOLUTION: 28
+    SHARE_BOX_FEATURE_EXTRACTOR: False
+  MASK_ON: True
+DATASETS:
+  TRAIN: ("coco_2017_train",)
+  TEST: ("coco_2017_val",)
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+SOLVER:
+  BASE_LR: 0.02
+  WEIGHT_DECAY: 0.0001
+  STEPS: (60000, 80000)
+  MAX_ITER: 90000
+
+2019-11-15 21:44:28,276 maskrcnn_benchmark INFO: Running with config:
+AMP_VERBOSE: False
+DATALOADER:
+  ASPECT_RATIO_GROUPING: True
+  NUM_WORKERS: 4
+  SIZE_DIVISIBILITY: 32
+DATASETS:
+  TEST: ('coco_2017_val',)
+  TRAIN: ('coco_2017_train',)
+DISABLE_REDUCED_LOGGING: True
+DTYPE: float16
+INPUT:
+  MAX_SIZE_TEST: 1333
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MIN_SIZE_TRAIN: (800,)
+  PIXEL_MEAN: [102.9801, 115.9465, 122.7717]
+  PIXEL_STD: [1.0, 1.0, 1.0]
+  TO_BGR255: True
+MLPERF:
+  MIN_BBOX_MAP: 0.377
+  MIN_SEGM_MAP: 0.339
+MODEL:
+  BACKBONE:
+    CONV_BODY: R-50-FPN
+    FREEZE_CONV_BODY_AT: 2
+    OUT_CHANNELS: 256
+    USE_GN: False
+  CLS_AGNOSTIC_BBOX_REG: False
+  DEVICE: cuda
+  FPN:
+    USE_GN: False
+    USE_RELU: False
+  GROUP_NORM:
+    DIM_PER_GP: -1
+    EPSILON: 1e-05
+    NUM_GROUPS: 32
+  KEYPOINT_ON: False
+  MASK_ON: True
+  META_ARCHITECTURE: GeneralizedRCNN
+  RESNETS:
+    NUM_GROUPS: 1
+    RES2_OUT_CHANNELS: 256
+    RES5_DILATION: 1
+    STEM_FUNC: StemWithFixedBatchNorm
+    STEM_OUT_CHANNELS: 64
+    STRIDE_IN_1X1: True
+    TRANS_FUNC: BottleneckWithFixedBatchNorm
+    WIDTH_PER_GROUP: 64
+  RETINANET:
+    ANCHOR_SIZES: (32, 64, 128, 256, 512)
+    ANCHOR_STRIDES: (8, 16, 32, 64, 128)
+    ASPECT_RATIOS: (0.5, 1.0, 2.0)
+    BBOX_REG_BETA: 0.11
+    BBOX_REG_WEIGHT: 4.0
+    BG_IOU_THRESHOLD: 0.4
+    FG_IOU_THRESHOLD: 0.5
+    INFERENCE_TH: 0.05
+    LOSS_ALPHA: 0.25
+    LOSS_GAMMA: 2.0
+    NMS_TH: 0.4
+    NUM_CLASSES: 81
+    NUM_CONVS: 4
+    OCTAVE: 2.0
+    PRE_NMS_TOP_N: 1000
+    PRIOR_PROB: 0.01
+    SCALES_PER_OCTAVE: 3
+    STRADDLE_THRESH: 0
+    USE_C5: True
+  RETINANET_ON: False
+  ROI_BOX_HEAD:
+    CONV_HEAD_DIM: 256
+    DILATION: 1
+    FEATURE_EXTRACTOR: FPN2MLPFeatureExtractor
+    MLP_HEAD_DIM: 1024
+    NUM_CLASSES: 81
+    NUM_STACKED_CONVS: 4
+    POOLER_RESOLUTION: 7
+    POOLER_SAMPLING_RATIO: 2
+    POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+    PREDICTOR: FPNPredictor
+    USE_GN: False
+  ROI_HEADS:
+    BATCH_SIZE_PER_IMAGE: 512
+    BBOX_REG_WEIGHTS: (10.0, 10.0, 5.0, 5.0)
+    BG_IOU_THRESHOLD: 0.5
+    DETECTIONS_PER_IMG: 100
+    FG_IOU_THRESHOLD: 0.5
+    NMS: 0.5
+    POSITIVE_FRACTION: 0.25
+    SCORE_THRESH: 0.05
+    USE_FPN: True
+  ROI_KEYPOINT_HEAD:
+    CONV_LAYERS: (512, 512, 512, 512, 512, 512, 512, 512)
+    FEATURE_EXTRACTOR: KeypointRCNNFeatureExtractor
+    MLP_HEAD_DIM: 1024
+    NUM_CLASSES: 17
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_SCALES: (0.0625,)
+    PREDICTOR: KeypointRCNNPredictor
+    RESOLUTION: 14
+    SHARE_BOX_FEATURE_EXTRACTOR: True
+  ROI_MASK_HEAD:
+    CONV_LAYERS: (256, 256, 256, 256)
+    DILATION: 1
+    FEATURE_EXTRACTOR: MaskRCNNFPNFeatureExtractor
+    MLP_HEAD_DIM: 1024
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 2
+    POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+    POSTPROCESS_MASKS: False
+    POSTPROCESS_MASKS_THRESHOLD: 0.5
+    PREDICTOR: MaskRCNNC4Predictor
+    RESOLUTION: 28
+    SHARE_BOX_FEATURE_EXTRACTOR: False
+    USE_GN: False
+  RPN:
+    ANCHOR_SIZES: (32, 64, 128, 256, 512)
+    ANCHOR_STRIDE: (4, 8, 16, 32, 64)
+    ASPECT_RATIOS: (0.5, 1.0, 2.0)
+    BATCH_SIZE_PER_IMAGE: 256
+    BG_IOU_THRESHOLD: 0.3
+    FG_IOU_THRESHOLD: 0.7
+    FPN_POST_NMS_TOP_N_TEST: 1000
+    FPN_POST_NMS_TOP_N_TRAIN: 6000
+    MIN_SIZE: 0
+    NMS_THRESH: 0.7
+    POSITIVE_FRACTION: 0.5
+    POST_NMS_TOP_N_TEST: 1000
+    POST_NMS_TOP_N_TRAIN: 2000
+    PRE_NMS_TOP_N_TEST: 1000
+    PRE_NMS_TOP_N_TRAIN: 2000
+    RPN_HEAD: SingleConvRPNHead
+    STRADDLE_THRESH: 0
+    USE_FPN: True
+  RPN_ONLY: False
+  WEIGHT: /coco/models/R-50.pkl
+NHWC: True
+OUTPUT_DIR: .
+PATHS_CATALOG: maskrcnn_benchmark/config/paths_catalog_dbcluster.py
+PER_EPOCH_EVAL: True
+SAVE_CHECKPOINTS: False
+SOLVER:
+  BASE_LR: 0.03
+  BIAS_LR_FACTOR: 2
+  CHECKPOINT_PERIOD: 2500
+  GAMMA: 0.1
+  IMS_PER_BATCH: 8
+  MAX_ITER: 80000
+  MOMENTUM: 0.9
+  STEPS: (24000, 32000)
+  WARMUP_FACTOR: 9.6e-05
+  WARMUP_ITERS: 625
+  WARMUP_METHOD: mlperf_linear
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+TEST:
+  DETECTIONS_PER_IMG: 100
+  EXPECTED_RESULTS: []
+  EXPECTED_RESULTS_SIGMA_TOL: 4
+  IMS_PER_BATCH: 4
+:::MLL 1573854268.281 global_batch_size: {"value": 8, "metadata": {"file": "tools/train_mlperf.py", "lineno": 147}}
+:::MLL 1573854268.282 num_image_candidates: {"value": 6000, "metadata": {"file": "tools/train_mlperf.py", "lineno": 148}}
+:::MLL 1573854269.023 opt_base_learning_rate: {"value": 0.03, "metadata": {"file": "tools/train_mlperf.py", "lineno": 157}}
+:::MLL 1573854269.023 opt_learning_rate_warmup_steps: {"value": 625, "metadata": {"file": "tools/train_mlperf.py", "lineno": 158}}
+:::MLL 1573854269.023 opt_learning_rate_warmup_factor: {"value": 9.6e-05, "metadata": {"file": "tools/train_mlperf.py", "lineno": 159}}
+Selected optimization level O1:  Insert automatic casts around Pytorch functions and Tensor methods.
+
+Defaults for this optimization level are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+Processing user overrides (additional kwargs that are not None)...
+After processing overrides, optimization options are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+2019-11-15 21:44:29,034 maskrcnn_benchmark.utils.checkpoint INFO: Loading checkpoint from /coco/models/R-50.pkl
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: Remapping C2 weights
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: conv1_b              mapped name: conv1.bias
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: conv1_w              mapped name: conv1.weight
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: fc1000_b             mapped name: fc1000.bias
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: fc1000_w             mapped name: fc1000.weight
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch1_b     mapped name: layer1.0.downsample.0.bias
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch1_bn_b  mapped name: layer1.0.downsample.1.bias
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch1_bn_s  mapped name: layer1.0.downsample.1.weight
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch1_w     mapped name: layer1.0.downsample.0.weight
+2019-11-15 21:44:29,141 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2a_b    mapped name: layer1.0.conv1.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2a_bn_b mapped name: layer1.0.bn1.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2a_bn_s mapped name: layer1.0.bn1.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2a_w    mapped name: layer1.0.conv1.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2b_b    mapped name: layer1.0.conv2.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2b_bn_b mapped name: layer1.0.bn2.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2b_bn_s mapped name: layer1.0.bn2.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2b_w    mapped name: layer1.0.conv2.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2c_b    mapped name: layer1.0.conv3.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2c_bn_b mapped name: layer1.0.bn3.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2c_bn_s mapped name: layer1.0.bn3.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_0_branch2c_w    mapped name: layer1.0.conv3.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2a_b    mapped name: layer1.1.conv1.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2a_bn_b mapped name: layer1.1.bn1.bias
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2a_bn_s mapped name: layer1.1.bn1.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2a_w    mapped name: layer1.1.conv1.weight
+2019-11-15 21:44:29,142 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2b_b    mapped name: layer1.1.conv2.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2b_bn_b mapped name: layer1.1.bn2.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2b_bn_s mapped name: layer1.1.bn2.weight
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2b_w    mapped name: layer1.1.conv2.weight
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2c_b    mapped name: layer1.1.conv3.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2c_bn_b mapped name: layer1.1.bn3.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2c_bn_s mapped name: layer1.1.bn3.weight
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_1_branch2c_w    mapped name: layer1.1.conv3.weight
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2a_b    mapped name: layer1.2.conv1.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2a_bn_b mapped name: layer1.2.bn1.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2a_bn_s mapped name: layer1.2.bn1.weight
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2a_w    mapped name: layer1.2.conv1.weight
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2b_b    mapped name: layer1.2.conv2.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2b_bn_b mapped name: layer1.2.bn2.bias
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2b_bn_s mapped name: layer1.2.bn2.weight
+2019-11-15 21:44:29,143 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2b_w    mapped name: layer1.2.conv2.weight
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2c_b    mapped name: layer1.2.conv3.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2c_bn_b mapped name: layer1.2.bn3.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2c_bn_s mapped name: layer1.2.bn3.weight
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res2_2_branch2c_w    mapped name: layer1.2.conv3.weight
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch1_b     mapped name: layer2.0.downsample.0.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch1_bn_b  mapped name: layer2.0.downsample.1.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch1_bn_s  mapped name: layer2.0.downsample.1.weight
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch1_w     mapped name: layer2.0.downsample.0.weight
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2a_b    mapped name: layer2.0.conv1.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2a_bn_b mapped name: layer2.0.bn1.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2a_bn_s mapped name: layer2.0.bn1.weight
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2a_w    mapped name: layer2.0.conv1.weight
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2b_b    mapped name: layer2.0.conv2.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2b_bn_b mapped name: layer2.0.bn2.bias
+2019-11-15 21:44:29,144 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2b_bn_s mapped name: layer2.0.bn2.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2b_w    mapped name: layer2.0.conv2.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2c_b    mapped name: layer2.0.conv3.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2c_bn_b mapped name: layer2.0.bn3.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2c_bn_s mapped name: layer2.0.bn3.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_0_branch2c_w    mapped name: layer2.0.conv3.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2a_b    mapped name: layer2.1.conv1.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2a_bn_b mapped name: layer2.1.bn1.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2a_bn_s mapped name: layer2.1.bn1.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2a_w    mapped name: layer2.1.conv1.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2b_b    mapped name: layer2.1.conv2.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2b_bn_b mapped name: layer2.1.bn2.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2b_bn_s mapped name: layer2.1.bn2.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2b_w    mapped name: layer2.1.conv2.weight
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2c_b    mapped name: layer2.1.conv3.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2c_bn_b mapped name: layer2.1.bn3.bias
+2019-11-15 21:44:29,145 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2c_bn_s mapped name: layer2.1.bn3.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_1_branch2c_w    mapped name: layer2.1.conv3.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2a_b    mapped name: layer2.2.conv1.bias
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2a_bn_b mapped name: layer2.2.bn1.bias
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2a_bn_s mapped name: layer2.2.bn1.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2a_w    mapped name: layer2.2.conv1.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2b_b    mapped name: layer2.2.conv2.bias
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2b_bn_b mapped name: layer2.2.bn2.bias
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2b_bn_s mapped name: layer2.2.bn2.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2b_w    mapped name: layer2.2.conv2.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2c_b    mapped name: layer2.2.conv3.bias
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2c_bn_b mapped name: layer2.2.bn3.bias
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2c_bn_s mapped name: layer2.2.bn3.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_2_branch2c_w    mapped name: layer2.2.conv3.weight
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2a_b    mapped name: layer2.3.conv1.bias
+2019-11-15 21:44:29,146 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2a_bn_b mapped name: layer2.3.bn1.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2a_bn_s mapped name: layer2.3.bn1.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2a_w    mapped name: layer2.3.conv1.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2b_b    mapped name: layer2.3.conv2.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2b_bn_b mapped name: layer2.3.bn2.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2b_bn_s mapped name: layer2.3.bn2.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2b_w    mapped name: layer2.3.conv2.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2c_b    mapped name: layer2.3.conv3.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2c_bn_b mapped name: layer2.3.bn3.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2c_bn_s mapped name: layer2.3.bn3.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res3_3_branch2c_w    mapped name: layer2.3.conv3.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch1_b     mapped name: layer3.0.downsample.0.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch1_bn_b  mapped name: layer3.0.downsample.1.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch1_bn_s  mapped name: layer3.0.downsample.1.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch1_w     mapped name: layer3.0.downsample.0.weight
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2a_b    mapped name: layer3.0.conv1.bias
+2019-11-15 21:44:29,147 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2a_bn_b mapped name: layer3.0.bn1.bias
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2a_bn_s mapped name: layer3.0.bn1.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2a_w    mapped name: layer3.0.conv1.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2b_b    mapped name: layer3.0.conv2.bias
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2b_bn_b mapped name: layer3.0.bn2.bias
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2b_bn_s mapped name: layer3.0.bn2.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2b_w    mapped name: layer3.0.conv2.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2c_b    mapped name: layer3.0.conv3.bias
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2c_bn_b mapped name: layer3.0.bn3.bias
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2c_bn_s mapped name: layer3.0.bn3.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_0_branch2c_w    mapped name: layer3.0.conv3.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2a_b    mapped name: layer3.1.conv1.bias
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2a_bn_b mapped name: layer3.1.bn1.bias
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2a_bn_s mapped name: layer3.1.bn1.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2a_w    mapped name: layer3.1.conv1.weight
+2019-11-15 21:44:29,148 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2b_b    mapped name: layer3.1.conv2.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2b_bn_b mapped name: layer3.1.bn2.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2b_bn_s mapped name: layer3.1.bn2.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2b_w    mapped name: layer3.1.conv2.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2c_b    mapped name: layer3.1.conv3.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2c_bn_b mapped name: layer3.1.bn3.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2c_bn_s mapped name: layer3.1.bn3.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_1_branch2c_w    mapped name: layer3.1.conv3.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2a_b    mapped name: layer3.2.conv1.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2a_bn_b mapped name: layer3.2.bn1.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2a_bn_s mapped name: layer3.2.bn1.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2a_w    mapped name: layer3.2.conv1.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2b_b    mapped name: layer3.2.conv2.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2b_bn_b mapped name: layer3.2.bn2.bias
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2b_bn_s mapped name: layer3.2.bn2.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2b_w    mapped name: layer3.2.conv2.weight
+2019-11-15 21:44:29,149 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2c_b    mapped name: layer3.2.conv3.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2c_bn_b mapped name: layer3.2.bn3.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2c_bn_s mapped name: layer3.2.bn3.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_2_branch2c_w    mapped name: layer3.2.conv3.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2a_b    mapped name: layer3.3.conv1.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2a_bn_b mapped name: layer3.3.bn1.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2a_bn_s mapped name: layer3.3.bn1.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2a_w    mapped name: layer3.3.conv1.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2b_b    mapped name: layer3.3.conv2.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2b_bn_b mapped name: layer3.3.bn2.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2b_bn_s mapped name: layer3.3.bn2.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2b_w    mapped name: layer3.3.conv2.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2c_b    mapped name: layer3.3.conv3.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2c_bn_b mapped name: layer3.3.bn3.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2c_bn_s mapped name: layer3.3.bn3.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_3_branch2c_w    mapped name: layer3.3.conv3.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2a_b    mapped name: layer3.4.conv1.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2a_bn_b mapped name: layer3.4.bn1.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2a_bn_s mapped name: layer3.4.bn1.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2a_w    mapped name: layer3.4.conv1.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2b_b    mapped name: layer3.4.conv2.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2b_bn_b mapped name: layer3.4.bn2.bias
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2b_bn_s mapped name: layer3.4.bn2.weight
+2019-11-15 21:44:29,150 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2b_w    mapped name: layer3.4.conv2.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2c_b    mapped name: layer3.4.conv3.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2c_bn_b mapped name: layer3.4.bn3.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2c_bn_s mapped name: layer3.4.bn3.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_4_branch2c_w    mapped name: layer3.4.conv3.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2a_b    mapped name: layer3.5.conv1.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2a_bn_b mapped name: layer3.5.bn1.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2a_bn_s mapped name: layer3.5.bn1.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2a_w    mapped name: layer3.5.conv1.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2b_b    mapped name: layer3.5.conv2.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2b_bn_b mapped name: layer3.5.bn2.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2b_bn_s mapped name: layer3.5.bn2.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2b_w    mapped name: layer3.5.conv2.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2c_b    mapped name: layer3.5.conv3.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2c_bn_b mapped name: layer3.5.bn3.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2c_bn_s mapped name: layer3.5.bn3.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res4_5_branch2c_w    mapped name: layer3.5.conv3.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch1_b     mapped name: layer4.0.downsample.0.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch1_bn_b  mapped name: layer4.0.downsample.1.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch1_bn_s  mapped name: layer4.0.downsample.1.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch1_w     mapped name: layer4.0.downsample.0.weight
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2a_b    mapped name: layer4.0.conv1.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2a_bn_b mapped name: layer4.0.bn1.bias
+2019-11-15 21:44:29,151 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2a_bn_s mapped name: layer4.0.bn1.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2a_w    mapped name: layer4.0.conv1.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2b_b    mapped name: layer4.0.conv2.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2b_bn_b mapped name: layer4.0.bn2.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2b_bn_s mapped name: layer4.0.bn2.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2b_w    mapped name: layer4.0.conv2.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2c_b    mapped name: layer4.0.conv3.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2c_bn_b mapped name: layer4.0.bn3.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2c_bn_s mapped name: layer4.0.bn3.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_0_branch2c_w    mapped name: layer4.0.conv3.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2a_b    mapped name: layer4.1.conv1.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2a_bn_b mapped name: layer4.1.bn1.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2a_bn_s mapped name: layer4.1.bn1.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2a_w    mapped name: layer4.1.conv1.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2b_b    mapped name: layer4.1.conv2.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2b_bn_b mapped name: layer4.1.bn2.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2b_bn_s mapped name: layer4.1.bn2.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2b_w    mapped name: layer4.1.conv2.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2c_b    mapped name: layer4.1.conv3.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2c_bn_b mapped name: layer4.1.bn3.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2c_bn_s mapped name: layer4.1.bn3.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_1_branch2c_w    mapped name: layer4.1.conv3.weight
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2a_b    mapped name: layer4.2.conv1.bias
+2019-11-15 21:44:29,152 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2a_bn_b mapped name: layer4.2.bn1.bias
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2a_bn_s mapped name: layer4.2.bn1.weight
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2a_w    mapped name: layer4.2.conv1.weight
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2b_b    mapped name: layer4.2.conv2.bias
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2b_bn_b mapped name: layer4.2.bn2.bias
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2b_bn_s mapped name: layer4.2.bn2.weight
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2b_w    mapped name: layer4.2.conv2.weight
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2c_b    mapped name: layer4.2.conv3.bias
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2c_bn_b mapped name: layer4.2.bn3.bias
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2c_bn_s mapped name: layer4.2.bn3.weight
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res5_2_branch2c_w    mapped name: layer4.2.conv3.weight
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res_conv1_bn_b       mapped name: bn1.bias
+2019-11-15 21:44:29,153 maskrcnn_benchmark.utils.c2_model_loading INFO: C2 name: res_conv1_bn_s       mapped name: bn1.weight
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.bn1.bias                   loaded from layer1.0.bn1.bias            of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.bn1.weight                 loaded from layer1.0.bn1.weight          of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.bn2.bias                   loaded from layer1.0.bn2.bias            of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.bn2.weight                 loaded from layer1.0.bn2.weight          of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.bn3.bias                   loaded from layer1.0.bn3.bias            of shape (256,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.bn3.weight                 loaded from layer1.0.bn3.weight          of shape (256,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.conv1.weight               loaded from layer1.0.conv1.weight        of shape (64, 64, 1, 1)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.conv2.weight               loaded from layer1.0.conv2.weight        of shape (64, 64, 3, 3)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.conv3.weight               loaded from layer1.0.conv3.weight        of shape (256, 64, 1, 1)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.downsample.0.weight        loaded from layer1.0.downsample.0.weight of shape (256, 64, 1, 1)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.downsample.1.bias          loaded from layer1.0.downsample.1.bias   of shape (256,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.0.downsample.1.weight        loaded from layer1.0.downsample.1.weight of shape (256,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.bn1.bias                   loaded from layer1.1.bn1.bias            of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.bn1.weight                 loaded from layer1.1.bn1.weight          of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.bn2.bias                   loaded from layer1.1.bn2.bias            of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.bn2.weight                 loaded from layer1.1.bn2.weight          of shape (64,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.bn3.bias                   loaded from layer1.1.bn3.bias            of shape (256,)
+2019-11-15 21:44:29,163 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.bn3.weight                 loaded from layer1.1.bn3.weight          of shape (256,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.conv1.weight               loaded from layer1.1.conv1.weight        of shape (64, 256, 1, 1)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.conv2.weight               loaded from layer1.1.conv2.weight        of shape (64, 64, 3, 3)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.1.conv3.weight               loaded from layer1.1.conv3.weight        of shape (256, 64, 1, 1)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.bn1.bias                   loaded from layer1.2.bn1.bias            of shape (64,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.bn1.weight                 loaded from layer1.2.bn1.weight          of shape (64,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.bn2.bias                   loaded from layer1.2.bn2.bias            of shape (64,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.bn2.weight                 loaded from layer1.2.bn2.weight          of shape (64,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.bn3.bias                   loaded from layer1.2.bn3.bias            of shape (256,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.bn3.weight                 loaded from layer1.2.bn3.weight          of shape (256,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.conv1.weight               loaded from layer1.2.conv1.weight        of shape (64, 256, 1, 1)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.conv2.weight               loaded from layer1.2.conv2.weight        of shape (64, 64, 3, 3)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer1.2.conv3.weight               loaded from layer1.2.conv3.weight        of shape (256, 64, 1, 1)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.bn1.bias                   loaded from layer2.0.bn1.bias            of shape (128,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.bn1.weight                 loaded from layer2.0.bn1.weight          of shape (128,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.bn2.bias                   loaded from layer2.0.bn2.bias            of shape (128,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.bn2.weight                 loaded from layer2.0.bn2.weight          of shape (128,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.bn3.bias                   loaded from layer2.0.bn3.bias            of shape (512,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.bn3.weight                 loaded from layer2.0.bn3.weight          of shape (512,)
+2019-11-15 21:44:29,164 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.conv1.weight               loaded from layer2.0.conv1.weight        of shape (128, 256, 1, 1)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.conv2.weight               loaded from layer2.0.conv2.weight        of shape (128, 128, 3, 3)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.conv3.weight               loaded from layer2.0.conv3.weight        of shape (512, 128, 1, 1)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.downsample.0.weight        loaded from layer2.0.downsample.0.weight of shape (512, 256, 1, 1)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.downsample.1.bias          loaded from layer2.0.downsample.1.bias   of shape (512,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.0.downsample.1.weight        loaded from layer2.0.downsample.1.weight of shape (512,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.bn1.bias                   loaded from layer2.1.bn1.bias            of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.bn1.weight                 loaded from layer2.1.bn1.weight          of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.bn2.bias                   loaded from layer2.1.bn2.bias            of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.bn2.weight                 loaded from layer2.1.bn2.weight          of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.bn3.bias                   loaded from layer2.1.bn3.bias            of shape (512,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.bn3.weight                 loaded from layer2.1.bn3.weight          of shape (512,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.conv1.weight               loaded from layer2.1.conv1.weight        of shape (128, 512, 1, 1)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.conv2.weight               loaded from layer2.1.conv2.weight        of shape (128, 128, 3, 3)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.1.conv3.weight               loaded from layer2.1.conv3.weight        of shape (512, 128, 1, 1)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.bn1.bias                   loaded from layer2.2.bn1.bias            of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.bn1.weight                 loaded from layer2.2.bn1.weight          of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.bn2.bias                   loaded from layer2.2.bn2.bias            of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.bn2.weight                 loaded from layer2.2.bn2.weight          of shape (128,)
+2019-11-15 21:44:29,165 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.bn3.bias                   loaded from layer2.2.bn3.bias            of shape (512,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.bn3.weight                 loaded from layer2.2.bn3.weight          of shape (512,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.conv1.weight               loaded from layer2.2.conv1.weight        of shape (128, 512, 1, 1)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.conv2.weight               loaded from layer2.2.conv2.weight        of shape (128, 128, 3, 3)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.2.conv3.weight               loaded from layer2.2.conv3.weight        of shape (512, 128, 1, 1)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.bn1.bias                   loaded from layer2.3.bn1.bias            of shape (128,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.bn1.weight                 loaded from layer2.3.bn1.weight          of shape (128,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.bn2.bias                   loaded from layer2.3.bn2.bias            of shape (128,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.bn2.weight                 loaded from layer2.3.bn2.weight          of shape (128,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.bn3.bias                   loaded from layer2.3.bn3.bias            of shape (512,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.bn3.weight                 loaded from layer2.3.bn3.weight          of shape (512,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.conv1.weight               loaded from layer2.3.conv1.weight        of shape (128, 512, 1, 1)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.conv2.weight               loaded from layer2.3.conv2.weight        of shape (128, 128, 3, 3)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer2.3.conv3.weight               loaded from layer2.3.conv3.weight        of shape (512, 128, 1, 1)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.bn1.bias                   loaded from layer3.0.bn1.bias            of shape (256,)
+2019-11-15 21:44:29,166 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.bn1.weight                 loaded from layer3.0.bn1.weight          of shape (256,)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.bn2.bias                   loaded from layer3.0.bn2.bias            of shape (256,)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.bn2.weight                 loaded from layer3.0.bn2.weight          of shape (256,)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.bn3.bias                   loaded from layer3.0.bn3.bias            of shape (1024,)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.bn3.weight                 loaded from layer3.0.bn3.weight          of shape (1024,)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.conv1.weight               loaded from layer3.0.conv1.weight        of shape (256, 512, 1, 1)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.conv2.weight               loaded from layer3.0.conv2.weight        of shape (256, 256, 3, 3)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.conv3.weight               loaded from layer3.0.conv3.weight        of shape (1024, 256, 1, 1)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.downsample.0.weight        loaded from layer3.0.downsample.0.weight of shape (1024, 512, 1, 1)
+2019-11-15 21:44:29,167 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.downsample.1.bias          loaded from layer3.0.downsample.1.bias   of shape (1024,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.0.downsample.1.weight        loaded from layer3.0.downsample.1.weight of shape (1024,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.bn1.bias                   loaded from layer3.1.bn1.bias            of shape (256,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.bn1.weight                 loaded from layer3.1.bn1.weight          of shape (256,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.bn2.bias                   loaded from layer3.1.bn2.bias            of shape (256,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.bn2.weight                 loaded from layer3.1.bn2.weight          of shape (256,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.bn3.bias                   loaded from layer3.1.bn3.bias            of shape (1024,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.bn3.weight                 loaded from layer3.1.bn3.weight          of shape (1024,)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.conv1.weight               loaded from layer3.1.conv1.weight        of shape (256, 1024, 1, 1)
+2019-11-15 21:44:29,168 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.conv2.weight               loaded from layer3.1.conv2.weight        of shape (256, 256, 3, 3)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.1.conv3.weight               loaded from layer3.1.conv3.weight        of shape (1024, 256, 1, 1)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.bn1.bias                   loaded from layer3.2.bn1.bias            of shape (256,)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.bn1.weight                 loaded from layer3.2.bn1.weight          of shape (256,)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.bn2.bias                   loaded from layer3.2.bn2.bias            of shape (256,)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.bn2.weight                 loaded from layer3.2.bn2.weight          of shape (256,)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.bn3.bias                   loaded from layer3.2.bn3.bias            of shape (1024,)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.bn3.weight                 loaded from layer3.2.bn3.weight          of shape (1024,)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.conv1.weight               loaded from layer3.2.conv1.weight        of shape (256, 1024, 1, 1)
+2019-11-15 21:44:29,169 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.conv2.weight               loaded from layer3.2.conv2.weight        of shape (256, 256, 3, 3)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.2.conv3.weight               loaded from layer3.2.conv3.weight        of shape (1024, 256, 1, 1)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.bn1.bias                   loaded from layer3.3.bn1.bias            of shape (256,)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.bn1.weight                 loaded from layer3.3.bn1.weight          of shape (256,)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.bn2.bias                   loaded from layer3.3.bn2.bias            of shape (256,)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.bn2.weight                 loaded from layer3.3.bn2.weight          of shape (256,)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.bn3.bias                   loaded from layer3.3.bn3.bias            of shape (1024,)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.bn3.weight                 loaded from layer3.3.bn3.weight          of shape (1024,)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.conv1.weight               loaded from layer3.3.conv1.weight        of shape (256, 1024, 1, 1)
+2019-11-15 21:44:29,170 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.conv2.weight               loaded from layer3.3.conv2.weight        of shape (256, 256, 3, 3)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.3.conv3.weight               loaded from layer3.3.conv3.weight        of shape (1024, 256, 1, 1)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.bn1.bias                   loaded from layer3.4.bn1.bias            of shape (256,)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.bn1.weight                 loaded from layer3.4.bn1.weight          of shape (256,)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.bn2.bias                   loaded from layer3.4.bn2.bias            of shape (256,)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.bn2.weight                 loaded from layer3.4.bn2.weight          of shape (256,)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.bn3.bias                   loaded from layer3.4.bn3.bias            of shape (1024,)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.bn3.weight                 loaded from layer3.4.bn3.weight          of shape (1024,)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.conv1.weight               loaded from layer3.4.conv1.weight        of shape (256, 1024, 1, 1)
+2019-11-15 21:44:29,171 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.conv2.weight               loaded from layer3.4.conv2.weight        of shape (256, 256, 3, 3)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.4.conv3.weight               loaded from layer3.4.conv3.weight        of shape (1024, 256, 1, 1)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.bn1.bias                   loaded from layer3.5.bn1.bias            of shape (256,)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.bn1.weight                 loaded from layer3.5.bn1.weight          of shape (256,)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.bn2.bias                   loaded from layer3.5.bn2.bias            of shape (256,)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.bn2.weight                 loaded from layer3.5.bn2.weight          of shape (256,)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.bn3.bias                   loaded from layer3.5.bn3.bias            of shape (1024,)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.bn3.weight                 loaded from layer3.5.bn3.weight          of shape (1024,)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.conv1.weight               loaded from layer3.5.conv1.weight        of shape (256, 1024, 1, 1)
+2019-11-15 21:44:29,172 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.conv2.weight               loaded from layer3.5.conv2.weight        of shape (256, 256, 3, 3)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer3.5.conv3.weight               loaded from layer3.5.conv3.weight        of shape (1024, 256, 1, 1)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.bn1.bias                   loaded from layer4.0.bn1.bias            of shape (512,)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.bn1.weight                 loaded from layer4.0.bn1.weight          of shape (512,)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.bn2.bias                   loaded from layer4.0.bn2.bias            of shape (512,)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.bn2.weight                 loaded from layer4.0.bn2.weight          of shape (512,)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.bn3.bias                   loaded from layer4.0.bn3.bias            of shape (2048,)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.bn3.weight                 loaded from layer4.0.bn3.weight          of shape (2048,)
+2019-11-15 21:44:29,173 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.conv1.weight               loaded from layer4.0.conv1.weight        of shape (512, 1024, 1, 1)
+2019-11-15 21:44:29,175 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.conv2.weight               loaded from layer4.0.conv2.weight        of shape (512, 512, 3, 3)
+2019-11-15 21:44:29,175 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.conv3.weight               loaded from layer4.0.conv3.weight        of shape (2048, 512, 1, 1)
+2019-11-15 21:44:29,175 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.downsample.0.weight        loaded from layer4.0.downsample.0.weight of shape (2048, 1024, 1, 1)
+2019-11-15 21:44:29,175 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.downsample.1.bias          loaded from layer4.0.downsample.1.bias   of shape (2048,)
+2019-11-15 21:44:29,175 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.0.downsample.1.weight        loaded from layer4.0.downsample.1.weight of shape (2048,)
+2019-11-15 21:44:29,175 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.bn1.bias                   loaded from layer4.1.bn1.bias            of shape (512,)
+2019-11-15 21:44:29,176 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.bn1.weight                 loaded from layer4.1.bn1.weight          of shape (512,)
+2019-11-15 21:44:29,176 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.bn2.bias                   loaded from layer4.1.bn2.bias            of shape (512,)
+2019-11-15 21:44:29,176 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.bn2.weight                 loaded from layer4.1.bn2.weight          of shape (512,)
+2019-11-15 21:44:29,176 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.bn3.bias                   loaded from layer4.1.bn3.bias            of shape (2048,)
+2019-11-15 21:44:29,176 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.bn3.weight                 loaded from layer4.1.bn3.weight          of shape (2048,)
+2019-11-15 21:44:29,176 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.conv1.weight               loaded from layer4.1.conv1.weight        of shape (512, 2048, 1, 1)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.conv2.weight               loaded from layer4.1.conv2.weight        of shape (512, 512, 3, 3)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.1.conv3.weight               loaded from layer4.1.conv3.weight        of shape (2048, 512, 1, 1)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.bn1.bias                   loaded from layer4.2.bn1.bias            of shape (512,)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.bn1.weight                 loaded from layer4.2.bn1.weight          of shape (512,)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.bn2.bias                   loaded from layer4.2.bn2.bias            of shape (512,)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.bn2.weight                 loaded from layer4.2.bn2.weight          of shape (512,)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.bn3.bias                   loaded from layer4.2.bn3.bias            of shape (2048,)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.bn3.weight                 loaded from layer4.2.bn3.weight          of shape (2048,)
+2019-11-15 21:44:29,181 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.conv1.weight               loaded from layer4.2.conv1.weight        of shape (512, 2048, 1, 1)
+2019-11-15 21:44:29,186 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.conv2.weight               loaded from layer4.2.conv2.weight        of shape (512, 512, 3, 3)
+2019-11-15 21:44:29,186 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.layer4.2.conv3.weight               loaded from layer4.2.conv3.weight        of shape (2048, 512, 1, 1)
+2019-11-15 21:44:29,186 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.stem.bn1.bias                       loaded from bn1.bias                     of shape (64,)
+2019-11-15 21:44:29,186 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.stem.bn1.weight                     loaded from bn1.weight                   of shape (64,)
+2019-11-15 21:44:29,186 maskrcnn_benchmark.utils.model_serialization INFO: module.backbone.body.stem.conv1.weight                   loaded from conv1.weight                 of shape (64, 3, 7, 7)
+:::MLL 1573854269.214 init_stop: {"value": null, "metadata": {"file": "tools/train_mlperf.py", "lineno": 197}}
+:::MLL 1573854269.215 run_start: {"value": null, "metadata": {"file": "tools/train_mlperf.py", "lineno": 198}}
+2019-11-15 21:44:29,214 maskrcnn_benchmark.data.build WARNING: When using more than one image per GPU you may encounter an out-of-memory (OOM) error if your GPU does not have sufficient memory. If this happens, you can reduce SOLVER.IMS_PER_BATCH (for training) or TEST.IMS_PER_BATCH (for inference). For training, you must also adjust the learning rate and schedule length according to the linear scaling rule. See for example: https://github.com/facebookresearch/Detectron/blob/master/configs/getting_started/tutorial_1gpu_e2e_faster_rcnn_R-50-FPN.yaml#L14
+When using more than one image per GPU you may encounter an out-of-memory (OOM) error if your GPU does not have sufficient memory. If this happens, you can reduce SOLVER.IMS_PER_BATCH (for training) or TEST.IMS_PER_BATCH (for inference). For training, you must also adjust the learning rate and schedule length according to the linear scaling rule. See for example: https://github.com/facebookresearch/Detectron/blob/master/configs/getting_started/tutorial_1gpu_e2e_faster_rcnn_R-50-FPN.yaml#L14
+loading annotations into memory...
+loading annotations into memory...
+Done (t=5.89s)
+creating index...
+Done (t=5.89s)
+creating index...
+index created!
+index created!
+2019-11-15 21:44:37,524 maskrcnn_benchmark.trainer INFO: Start training
+:::MLL 1573854278.327 block_start: {"value": null, "metadata": {"first_epoch_num": 1, "epoch_count": 1, "file": "tools/train_mlperf.py", "lineno": 129}}
+:::MLL 1573854278.328 epoch_start: {"value": null, "metadata": {"epoch_num": 1, "file": "tools/train_mlperf.py", "lineno": 130}}
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32768.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32768.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16384.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16384.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8192.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8192.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4096.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4096.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2048.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2048.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1024.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1024.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 512.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 512.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 256.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 256.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 128.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 128.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 64.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 64.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.5
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.5
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.25
+2019-11-15 21:44:47,570 maskrcnn_benchmark.trainer INFO: eta: 11:09:28  iter: 20  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.8673)  loss_objectness: 0.6931 (0.7229)  loss_rpn_box_reg: 0.0728 (0.1083)  time: 0.3321 (0.5022)  data: 0.0010 (0.0413)  lr: -0.028176  max mem: 7446
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.03125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.03125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.015625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.015625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0078125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0078125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.00390625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.00390625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.001953125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.001953125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0009765625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0009765625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.00048828125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.00048828125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.000244140625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.000244140625
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0001220703125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 0.0001220703125
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.103515625e-05
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.103515625e-05
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.0517578125e-05
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.0517578125e-05
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.52587890625e-05
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.52587890625e-05
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.62939453125e-06
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.62939453125e-06
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.814697265625e-06
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.814697265625e-06
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9073486328125e-06
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9073486328125e-06
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.5367431640625e-07
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.5367431640625e-07
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.76837158203125e-07
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.76837158203125e-07
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.384185791015625e-07
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.384185791015625e-07
+2019-11-15 21:44:54,235 maskrcnn_benchmark.trainer INFO: eta: 9:16:41  iter: 40  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7802)  loss_objectness: 0.6931 (0.7080)  loss_rpn_box_reg: 0.0886 (0.1071)  time: 0.3316 (0.4177)  data: 0.0009 (0.0212)  lr: -0.026256  max mem: 7724
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1920928955078125e-07
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1920928955078125e-07
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.960464477539063e-08
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.960464477539063e-08
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.9802322387695312e-08
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.9802322387695312e-08
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4901161193847656e-08
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4901161193847656e-08
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.450580596923828e-09
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.450580596923828e-09
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.725290298461914e-09
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.725290298461914e-09
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.862645149230957e-09
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.862645149230957e-09
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.313225746154785e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.313225746154785e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.656612873077393e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.656612873077393e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3283064365386963e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3283064365386963e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1641532182693481e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1641532182693481e-10
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.820766091346741e-11
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.820766091346741e-11
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.9103830456733704e-11
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.9103830456733704e-11
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4551915228366852e-11
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4551915228366852e-11
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.275957614183426e-12
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.275957614183426e-12
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.637978807091713e-12
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.637978807091713e-12
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8189894035458565e-12
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8189894035458565e-12
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.094947017729282e-13
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.094947017729282e-13
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.547473508864641e-13
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.547473508864641e-13
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2737367544323206e-13
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2737367544323206e-13
+2019-11-15 21:45:00,800 maskrcnn_benchmark.trainer INFO: eta: 8:36:49  iter: 60  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7512)  loss_objectness: 0.6931 (0.7030)  loss_rpn_box_reg: 0.1369 (0.1196)  time: 0.3228 (0.3879)  data: 0.0009 (0.0144)  lr: -0.024336  max mem: 7724
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1368683772161603e-13
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1368683772161603e-13
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.684341886080802e-14
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.684341886080802e-14
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.842170943040401e-14
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.842170943040401e-14
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4210854715202004e-14
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4210854715202004e-14
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.105427357601002e-15
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.105427357601002e-15
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.552713678800501e-15
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.552713678800501e-15
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7763568394002505e-15
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7763568394002505e-15
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.881784197001252e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.881784197001252e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.440892098500626e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.440892098500626e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.220446049250313e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.220446049250313e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1102230246251565e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1102230246251565e-16
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.551115123125783e-17
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.551115123125783e-17
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7755575615628914e-17
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7755575615628914e-17
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3877787807814457e-17
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3877787807814457e-17
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.938893903907228e-18
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.938893903907228e-18
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.469446951953614e-18
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.469446951953614e-18
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.734723475976807e-18
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.734723475976807e-18
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.673617379884035e-19
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.673617379884035e-19
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.336808689942018e-19
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.336808689942018e-19
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.168404344971009e-19
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.168404344971009e-19
+2019-11-15 21:45:07,285 maskrcnn_benchmark.trainer INFO: eta: 8:15:29  iter: 80  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7367)  loss_objectness: 0.6931 (0.7005)  loss_rpn_box_reg: 0.0848 (0.1232)  time: 0.3183 (0.3720)  data: 0.0009 (0.0111)  lr: -0.022416  max mem: 7724
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0842021724855044e-19
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0842021724855044e-19
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.421010862427522e-20
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.421010862427522e-20
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.710505431213761e-20
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.710505431213761e-20
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3552527156068805e-20
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3552527156068805e-20
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.776263578034403e-21
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.776263578034403e-21
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.3881317890172014e-21
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.3881317890172014e-21
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6940658945086007e-21
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6940658945086007e-21
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.470329472543003e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.470329472543003e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.235164736271502e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.235164736271502e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.117582368135751e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.117582368135751e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0587911840678754e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0587911840678754e-22
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.293955920339377e-23
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.293955920339377e-23
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.6469779601696886e-23
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.6469779601696886e-23
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3234889800848443e-23
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3234889800848443e-23
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.617444900424222e-24
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.617444900424222e-24
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.308722450212111e-24
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.308722450212111e-24
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6543612251060553e-24
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6543612251060553e-24
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.271806125530277e-25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.271806125530277e-25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.1359030627651384e-25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.1359030627651384e-25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0679515313825692e-25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0679515313825692e-25
+2019-11-15 21:45:13,829 maskrcnn_benchmark.trainer INFO: eta: 8:03:26  iter: 100  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7280)  loss_objectness: 0.6931 (0.6991)  loss_rpn_box_reg: 0.1068 (0.1248)  time: 0.3259 (0.3630)  data: 0.0009 (0.0090)  lr: -0.020496  max mem: 7724
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0339757656912846e-25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0339757656912846e-25
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.169878828456423e-26
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.169878828456423e-26
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.5849394142282115e-26
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.5849394142282115e-26
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2924697071141057e-26
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2924697071141057e-26
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.462348535570529e-27
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.462348535570529e-27
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.2311742677852644e-27
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.2311742677852644e-27
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6155871338926322e-27
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6155871338926322e-27
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.077935669463161e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.077935669463161e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.0389678347315804e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.0389678347315804e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0194839173657902e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0194839173657902e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0097419586828951e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0097419586828951e-28
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.048709793414476e-29
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.048709793414476e-29
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.524354896707238e-29
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.524354896707238e-29
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.262177448353619e-29
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.262177448353619e-29
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.310887241768095e-30
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.310887241768095e-30
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.1554436208840472e-30
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.1554436208840472e-30
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5777218104420236e-30
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5777218104420236e-30
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.888609052210118e-31
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.888609052210118e-31
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.944304526105059e-31
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.944304526105059e-31
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9721522630525295e-31
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9721522630525295e-31
+2019-11-15 21:45:20,371 maskrcnn_benchmark.trainer INFO: eta: 7:55:20  iter: 120  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7222)  loss_objectness: 0.6931 (0.6981)  loss_rpn_box_reg: 0.0923 (0.1215)  time: 0.3234 (0.3570)  data: 0.0009 (0.0077)  lr: -0.018576  max mem: 7724
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.860761315262648e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.860761315262648e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.930380657631324e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.930380657631324e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.465190328815662e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.465190328815662e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.232595164407831e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.232595164407831e-32
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.162975822039155e-33
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.162975822039155e-33
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.0814879110195774e-33
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.0814879110195774e-33
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5407439555097887e-33
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5407439555097887e-33
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.703719777548943e-34
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.703719777548943e-34
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.851859888774472e-34
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.851859888774472e-34
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.925929944387236e-34
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.925929944387236e-34
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.62964972193618e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.62964972193618e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.81482486096809e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.81482486096809e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.407412430484045e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.407412430484045e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2037062152420224e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2037062152420224e-35
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.018531076210112e-36
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.018531076210112e-36
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.009265538105056e-36
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.009265538105056e-36
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.504632769052528e-36
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.504632769052528e-36
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.52316384526264e-37
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.52316384526264e-37
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.76158192263132e-37
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.76158192263132e-37
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.88079096131566e-37
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.88079096131566e-37
+2019-11-15 21:45:27,003 maskrcnn_benchmark.trainer INFO: eta: 7:50:23  iter: 140  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7180)  loss_objectness: 0.6931 (0.6973)  loss_rpn_box_reg: 0.0898 (0.1200)  time: 0.3362 (0.3534)  data: 0.0009 (0.0067)  lr: -0.016656  max mem: 7724
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.4039548065783e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.4039548065783e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.70197740328915e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.70197740328915e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.350988701644575e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.350988701644575e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1754943508222875e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1754943508222875e-38
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.877471754111438e-39
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.877471754111438e-39
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.938735877055719e-39
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.938735877055719e-39
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4693679385278594e-39
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4693679385278594e-39
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.346839692639297e-40
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.346839692639297e-40
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.6734198463196485e-40
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.6734198463196485e-40
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8367099231598242e-40
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8367099231598242e-40
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.183549615799121e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.183549615799121e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.591774807899561e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.591774807899561e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2958874039497803e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2958874039497803e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1479437019748901e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1479437019748901e-41
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.739718509874451e-42
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.739718509874451e-42
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.8698592549372254e-42
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.8698592549372254e-42
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4349296274686127e-42
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4349296274686127e-42
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.174648137343064e-43
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.174648137343064e-43
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.587324068671532e-43
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.587324068671532e-43
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.793662034335766e-43
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.793662034335766e-43
+2019-11-15 21:45:33,535 maskrcnn_benchmark.trainer INFO: eta: 7:45:48  iter: 160  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7149)  loss_objectness: 0.6931 (0.6968)  loss_rpn_box_reg: 0.0668 (0.1180)  time: 0.3237 (0.3501)  data: 0.0008 (0.0060)  lr: -0.014736  max mem: 7727
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.96831017167883e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.96831017167883e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.484155085839415e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.484155085839415e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2420775429197073e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2420775429197073e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1210387714598537e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1210387714598537e-44
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.605193857299268e-45
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.605193857299268e-45
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.802596928649634e-45
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.802596928649634e-45
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.401298464324817e-45
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.401298464324817e-45
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.006492321624085e-46
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.006492321624085e-46
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.503246160812043e-46
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.503246160812043e-46
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7516230804060213e-46
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7516230804060213e-46
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.758115402030107e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.758115402030107e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.3790577010150533e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.3790577010150533e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1895288505075267e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1895288505075267e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0947644252537633e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0947644252537633e-47
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.473822126268817e-48
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.473822126268817e-48
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7369110631344083e-48
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7369110631344083e-48
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3684555315672042e-48
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3684555315672042e-48
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.842277657836021e-49
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.842277657836021e-49
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.4211388289180104e-49
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.4211388289180104e-49
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7105694144590052e-49
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7105694144590052e-49
+2019-11-15 21:45:40,050 maskrcnn_benchmark.trainer INFO: eta: 7:42:06  iter: 180  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7125)  loss_objectness: 0.6931 (0.6964)  loss_rpn_box_reg: 0.0740 (0.1157)  time: 0.3220 (0.3474)  data: 0.0009 (0.0054)  lr: -0.012816  max mem: 7727
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.552847072295026e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.552847072295026e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.276423536147513e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.276423536147513e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1382117680737565e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1382117680737565e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0691058840368783e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0691058840368783e-50
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.345529420184391e-51
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.345529420184391e-51
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.6727647100921956e-51
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.6727647100921956e-51
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3363823550460978e-51
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3363823550460978e-51
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.681911775230489e-52
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.681911775230489e-52
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.3409558876152446e-52
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.3409558876152446e-52
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6704779438076223e-52
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6704779438076223e-52
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.352389719038111e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.352389719038111e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.176194859519056e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.176194859519056e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.088097429759528e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.088097429759528e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.044048714879764e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.044048714879764e-53
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.22024357439882e-54
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.22024357439882e-54
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.61012178719941e-54
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.61012178719941e-54
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.305060893599705e-54
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.305060893599705e-54
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.525304467998525e-55
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.525304467998525e-55
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.2626522339992623e-55
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.2626522339992623e-55
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6313261169996311e-55
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6313261169996311e-55
+2019-11-15 21:45:46,709 maskrcnn_benchmark.trainer INFO: eta: 7:40:04  iter: 200  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7106)  loss_objectness: 0.6931 (0.6998)  loss_rpn_box_reg: 0.0686 (0.1157)  time: 0.3350 (0.3459)  data: 0.0008 (0.0050)  lr: -0.010896  max mem: 7727
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.156630584998156e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.156630584998156e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.078315292499078e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.078315292499078e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.039157646249539e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.039157646249539e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0195788231247695e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0195788231247695e-56
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.0978941156238473e-57
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.0978941156238473e-57
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.5489470578119236e-57
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.5489470578119236e-57
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2744735289059618e-57
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2744735289059618e-57
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.372367644529809e-58
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.372367644529809e-58
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.1861838222649046e-58
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.1861838222649046e-58
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5930919111324523e-58
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5930919111324523e-58
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.965459555662261e-59
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.965459555662261e-59
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.982729777831131e-59
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.982729777831131e-59
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9913648889155653e-59
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9913648889155653e-59
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.956824444577827e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.956824444577827e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.9784122222889134e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.9784122222889134e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.4892061111444567e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.4892061111444567e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2446030555722283e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2446030555722283e-60
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.223015277861142e-61
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.223015277861142e-61
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.111507638930571e-61
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.111507638930571e-61
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5557538194652854e-61
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5557538194652854e-61
+2019-11-15 21:45:53,290 maskrcnn_benchmark.trainer INFO: eta: 7:37:54  iter: 220  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7116)  loss_objectness: 0.6931 (0.6991)  loss_rpn_box_reg: 0.0922 (0.1174)  time: 0.3238 (0.3444)  data: 0.0009 (0.0046)  lr: -0.008976  max mem: 7727
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.778769097326427e-62
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.778769097326427e-62
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.8893845486632136e-62
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.8893845486632136e-62
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9446922743316068e-62
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9446922743316068e-62
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.723461371658034e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.723461371658034e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.861730685829017e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.861730685829017e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.4308653429145085e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.4308653429145085e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2154326714572542e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2154326714572542e-63
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.077163357286271e-64
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.077163357286271e-64
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.0385816786431356e-64
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.0385816786431356e-64
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5192908393215678e-64
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5192908393215678e-64
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.596454196607839e-65
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.596454196607839e-65
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.7982270983039195e-65
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.7982270983039195e-65
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8991135491519597e-65
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8991135491519597e-65
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.495567745759799e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.495567745759799e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.7477838728798994e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.7477838728798994e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3738919364399497e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3738919364399497e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1869459682199748e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1869459682199748e-66
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.934729841099874e-67
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.934729841099874e-67
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.967364920549937e-67
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.967364920549937e-67
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4836824602749686e-67
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4836824602749686e-67
+2019-11-15 21:45:59,958 maskrcnn_benchmark.trainer INFO: eta: 7:36:35  iter: 240  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7100)  loss_objectness: 0.6931 (0.6986)  loss_rpn_box_reg: 0.0520 (0.1134)  time: 0.3363 (0.3435)  data: 0.0009 (0.0043)  lr: -0.007056  max mem: 7727
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.418412301374843e-68
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.418412301374843e-68
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.7092061506874214e-68
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.7092061506874214e-68
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8546030753437107e-68
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8546030753437107e-68
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.273015376718553e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.273015376718553e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.636507688359277e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.636507688359277e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3182538441796384e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3182538441796384e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1591269220898192e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1591269220898192e-69
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.795634610449096e-70
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.795634610449096e-70
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.897817305224548e-70
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.897817305224548e-70
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.448908652612274e-70
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.448908652612274e-70
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.24454326306137e-71
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.24454326306137e-71
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.622271631530685e-71
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.622271631530685e-71
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8111358157653425e-71
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8111358157653425e-71
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.055679078826712e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.055679078826712e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.527839539413356e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.527839539413356e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.263919769706678e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.263919769706678e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.131959884853339e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.131959884853339e-72
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.659799424266695e-73
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.659799424266695e-73
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.8298997121333476e-73
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.8298997121333476e-73
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4149498560666738e-73
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4149498560666738e-73
+2019-11-15 21:46:06,620 maskrcnn_benchmark.trainer INFO: eta: 7:35:24  iter: 260  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7087)  loss_objectness: 0.6931 (0.6982)  loss_rpn_box_reg: 0.0927 (0.1141)  time: 0.3275 (0.3427)  data: 0.0009 (0.0040)  lr: -0.005136  max mem: 7727
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.074749280333369e-74
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.074749280333369e-74
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.5373746401666845e-74
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.5373746401666845e-74
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7686873200833423e-74
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7686873200833423e-74
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.843436600416711e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.843436600416711e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.421718300208356e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.421718300208356e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.210859150104178e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.210859150104178e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.105429575052089e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.105429575052089e-75
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.527147875260445e-76
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.527147875260445e-76
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7635739376302223e-76
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7635739376302223e-76
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3817869688151111e-76
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3817869688151111e-76
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.908934844075556e-77
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.908934844075556e-77
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.454467422037778e-77
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.454467422037778e-77
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.727233711018889e-77
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.727233711018889e-77
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.636168555094445e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.636168555094445e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.3180842775472223e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.3180842775472223e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1590421387736112e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1590421387736112e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0795210693868056e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0795210693868056e-78
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.397605346934028e-79
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.397605346934028e-79
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.698802673467014e-79
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.698802673467014e-79
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.349401336733507e-79
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.349401336733507e-79
+2019-11-15 21:46:13,394 maskrcnn_benchmark.trainer INFO: eta: 7:34:55  iter: 280  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7076)  loss_objectness: 0.6931 (0.6978)  loss_rpn_box_reg: 0.0491 (0.1127)  time: 0.3370 (0.3424)  data: 0.0009 (0.0038)  lr: -0.003216  max mem: 7729
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.747006683667535e-80
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.747006683667535e-80
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.3735033418337674e-80
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.3735033418337674e-80
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6867516709168837e-80
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6867516709168837e-80
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.433758354584419e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.433758354584419e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.2168791772922093e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.2168791772922093e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1084395886461046e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1084395886461046e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0542197943230523e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0542197943230523e-81
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.271098971615262e-82
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.271098971615262e-82
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.635549485807631e-82
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.635549485807631e-82
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3177747429038154e-82
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3177747429038154e-82
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.588873714519077e-83
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.588873714519077e-83
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.2944368572595385e-83
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.2944368572595385e-83
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6472184286297693e-83
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.6472184286297693e-83
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.236092143148846e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.236092143148846e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.118046071574423e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.118046071574423e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0590230357872116e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.0590230357872116e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0295115178936058e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0295115178936058e-84
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.147557589468029e-85
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.147557589468029e-85
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.5737787947340145e-85
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.5737787947340145e-85
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2868893973670072e-85
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2868893973670072e-85
+2019-11-15 21:46:20,108 maskrcnn_benchmark.trainer INFO: eta: 7:34:12  iter: 300  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7067)  loss_objectness: 0.6931 (0.6975)  loss_rpn_box_reg: 0.0493 (0.1107)  time: 0.3361 (0.3419)  data: 0.0009 (0.0036)  lr: -0.001296  max mem: 7731
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.434446986835036e-86
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.434446986835036e-86
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.217223493417518e-86
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.217223493417518e-86
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.608611746708759e-86
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.608611746708759e-86
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.043058733543795e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.043058733543795e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.021529366771898e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.021529366771898e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.010764683385949e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.010764683385949e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0053823416929744e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0053823416929744e-87
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.026911708464872e-88
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.026911708464872e-88
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.513455854232436e-88
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.513455854232436e-88
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.256727927116218e-88
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.256727927116218e-88
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.28363963558109e-89
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.28363963558109e-89
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.141819817790545e-89
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.141819817790545e-89
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5709099088952725e-89
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5709099088952725e-89
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.854549544476363e-90
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.854549544476363e-90
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.9272747722381812e-90
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.9272747722381812e-90
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9636373861190906e-90
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9636373861190906e-90
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.818186930595453e-91
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.818186930595453e-91
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.909093465297727e-91
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.909093465297727e-91
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.4545467326488633e-91
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.4545467326488633e-91
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2272733663244316e-91
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.2272733663244316e-91
+2019-11-15 21:46:26,903 maskrcnn_benchmark.trainer INFO: eta: 7:33:55  iter: 320  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7058)  loss_objectness: 0.6931 (0.6973)  loss_rpn_box_reg: 0.0805 (0.1134)  time: 0.3384 (0.3418)  data: 0.0008 (0.0035)  lr: 0.000624  max mem: 7731
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.136366831622158e-92
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.136366831622158e-92
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.068183415811079e-92
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.068183415811079e-92
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5340917079055395e-92
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.5340917079055395e-92
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.670458539527698e-93
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.670458539527698e-93
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.835229269763849e-93
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.835229269763849e-93
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9176146348819244e-93
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.9176146348819244e-93
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.588073174409622e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.588073174409622e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.794036587204811e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.794036587204811e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3970182936024055e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3970182936024055e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1985091468012028e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1985091468012028e-94
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.992545734006014e-95
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.992545734006014e-95
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.996272867003007e-95
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.996272867003007e-95
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4981364335015035e-95
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4981364335015035e-95
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.490682167507517e-96
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.490682167507517e-96
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.745341083753759e-96
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.745341083753759e-96
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8726705418768793e-96
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.8726705418768793e-96
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.363352709384397e-97
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.363352709384397e-97
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.6816763546921983e-97
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.6816763546921983e-97
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3408381773460992e-97
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.3408381773460992e-97
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1704190886730496e-97
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1704190886730496e-97
+2019-11-15 21:46:33,622 maskrcnn_benchmark.trainer INFO: eta: 7:33:20  iter: 340  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7051)  loss_objectness: 0.6931 (0.6970)  loss_rpn_box_reg: 0.0661 (0.1133)  time: 0.3321 (0.3415)  data: 0.0009 (0.0033)  lr: 0.002544  max mem: 7731
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.852095443365248e-98
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.852095443365248e-98
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.926047721682624e-98
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.926047721682624e-98
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.463023860841312e-98
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.463023860841312e-98
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.31511930420656e-99
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.31511930420656e-99
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.65755965210328e-99
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.65755965210328e-99
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.82877982605164e-99
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.82877982605164e-99
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.1438991302582e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 9.1438991302582e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.5719495651291e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.5719495651291e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.28597478256455e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.28597478256455e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.142987391282275e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.142987391282275e-100
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.714936956411375e-101
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.714936956411375e-101
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.8574684782056875e-101
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.8574684782056875e-101
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4287342391028437e-101
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.4287342391028437e-101
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.143671195514219e-102
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 7.143671195514219e-102
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.5718355977571093e-102
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.5718355977571093e-102
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7859177988785547e-102
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7859177988785547e-102
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.929588994392773e-103
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.929588994392773e-103
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.464794497196387e-103
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.464794497196387e-103
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2323972485981933e-103
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.2323972485981933e-103
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1161986242990967e-103
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.1161986242990967e-103
+2019-11-15 21:46:40,422 maskrcnn_benchmark.trainer INFO: eta: 7:33:07  iter: 360  loss: nan (nan)  loss_classifier: nan (nan)  loss_box_reg: nan (nan)  loss_mask: 0.6931 (0.7044)  loss_objectness: 0.6931 (0.6968)  loss_rpn_box_reg: 0.0616 (0.1137)  time: 0.3396 (0.3414)  data: 0.0009 (0.0032)  lr: 0.004464  max mem: 7731
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.5809931214954833e-104
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.5809931214954833e-104
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7904965607477417e-104
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7904965607477417e-104
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3952482803738708e-104
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3952482803738708e-104
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.976241401869354e-105
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.976241401869354e-105
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.488120700934677e-105
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.488120700934677e-105
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7440603504673385e-105
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.7440603504673385e-105
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.720301752336693e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.720301752336693e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.3601508761683463e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.3601508761683463e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1800754380841732e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.1800754380841732e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0900377190420866e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.0900377190420866e-106
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.450188595210433e-107
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 5.450188595210433e-107
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7250942976052165e-107
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2.7250942976052165e-107
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3625471488026082e-107
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1.3625471488026082e-107
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.812735744013041e-108
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 6.812735744013041e-108
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.4063678720065206e-108
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 3.4063678720065206e-108

@@ -27,6 +27,7 @@ SLURM_JOB_ID=${SLURM_JOB_ID:-$RANDOM}
 MULTI_NODE=${MULTI_NODE:-''}
 echo "Run vars: id $SLURM_JOB_ID gpus $SLURM_NTASKS_PER_NODE mparams $MULTI_NODE"
 
+FLAGS=${FLAGS:-"9"}
 
 # runs benchmark and reports time to convergence
 # to use the script:
@@ -56,7 +57,7 @@ python ml_perf/reference_implementation.py \
   --num_gpus_train=$DGXNGPU \
   --num_socket=$DGXNSOCKET \
   --cores_per_socket=$DGXSOCKETCORES \
-  --flagfile=ml_perf/flags/9/rl_loop.flags
+  --flagfile="ml_perf/flags/${FLAGS}/rl_loop.flags"
 
 # end timing
 end=$(date +%s)
@@ -70,7 +71,7 @@ python ml_perf/eval_models.py \
   --num_gpus_train=$DGXNGPU \
   --num_socket=$DGXNSOCKET \
   --cores_per_socket=$DGXSOCKETCORES \
-  --flags_dir=ml_perf/flags/9/ ; ret_code=$?
+  --flags_dir="ml_perf/flags/${FLAGS}/" ; ret_code=$?
 
 set +x
 

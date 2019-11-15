@@ -5,7 +5,7 @@ import datetime as dt
 import numpy as np
 
 
-SYSTEM='LambdaBlade2080Ti'
+SYSTEM='LambdaDual2080Ti'
 PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
 
 tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
@@ -27,7 +27,8 @@ def single_stage_detector_T2S(filename):
         if time_end[:2] == '12':
             time_end = '00' + time_end[2:]
     else:
-        time_end = str(int(time_end[:2]) + 12) + time_end[2:]
+        if not int(time_end[:2]) == 12:
+            time_end = str(int(time_end[:2]) + 12) + time_end[2:]
 
 
     line_start = lines[1].split(' ')
@@ -37,7 +38,8 @@ def single_stage_detector_T2S(filename):
         if time_start[:2] == '12':
             time_start = '00' + time_start[2:]
     else:
-        time_start = str(int(time_start[:2]) + 12) + time_start[2:]
+        if not int(time_start[:2]) == 12:
+            time_start = str(int(time_start[:2]) + 12) + time_start[2:]
 
     date_start = date_start.split('-')
     time_start = time_start.split(':')
@@ -80,7 +82,8 @@ def maskrcnn_T2S(filename):
         if time_end[:2] == '12':
             time_end = '00' + time_end[2:]
     else:
-        time_end = str(int(time_end[:2]) + 12) + time_end[2:]
+        if not int(time_end[:2]) == 12:
+            time_end = str(int(time_end[:2]) + 12) + time_end[2:]
 
 
     line_start = lines[1].split(' ')
@@ -91,7 +94,8 @@ def maskrcnn_T2S(filename):
         if time_start[:2] == '12':
             time_start = '00' + time_start[2:]
     else:
-        time_start = str(int(time_start[:2]) + 12) + time_start[2:]
+        if not int(time_start[:2]) == 12:
+            time_start = str(int(time_start[:2]) + 12) + time_start[2:]
 
     date_start = date_start.split('-')
     time_start = time_start.split(':')
@@ -135,7 +139,8 @@ def resnet_T2S(filename):
         if time_end[:2] == '12':
             time_end = '00' + time_end[2:]
     else:
-        time_end = str(int(time_end[:2]) + 12) + time_end[2:]
+        if not int(time_end[:2]) == 12:
+            time_end = str(int(time_end[:2]) + 12) + time_end[2:]
 
 
     line_start = lines[1].split(' ')
@@ -146,7 +151,8 @@ def resnet_T2S(filename):
         if time_start[:2] == '12':
             time_start = '00' + time_start[2:]
     else:
-        time_start = str(int(time_start[:2]) + 12) + time_start[2:]
+        if not int(time_start[:2]) == 12:
+            time_start = str(int(time_start[:2]) + 12) + time_start[2:]
 
     date_start = date_start.split('-')
     time_start = time_start.split(':')
@@ -189,7 +195,8 @@ def gnmt_T2S(filename):
         if time_end[:2] == '12':
             time_end = '00' + time_end[2:]
     else:
-        time_end = str(int(time_end[:2]) + 12) + time_end[2:]
+        if not int(time_end[:2]) == 12:
+            time_end = str(int(time_end[:2]) + 12) + time_end[2:]
 
 
     line_start = lines[1].split(' ')
@@ -200,7 +207,8 @@ def gnmt_T2S(filename):
         if time_start[:2] == '12':
             time_start = '00' + time_start[2:]
     else:
-        time_start = str(int(time_start[:2]) + 12) + time_start[2:]
+        if not int(time_start[:2]) == 12:
+            time_start = str(int(time_start[:2]) + 12) + time_start[2:]
 
     date_start = date_start.split('-')
     time_start = time_start.split(':')
@@ -296,12 +304,15 @@ for task, t_name in zip(tasks, throughput_names):
     for file in os.listdir(task_path):
         if file.endswith(".log"):
             filename = os.path.join(task_path, file)
+            try:
+                t2solution = locals()[task + "_T2S"](filename)
+                tpsec = locals()[task + "_TPS"](filename)
 
-            t2solution = locals()[task + "_T2S"](filename)
-            tpsec = locals()[task + "_TPS"](filename)
-
-            list_t2solution.append(t2solution)
-            list_tpsec.append(tpsec)
+                list_t2solution.append(t2solution)
+                list_tpsec.append(tpsec)
+            except:
+                list_t2solution.append(-1.0)
+                list_tpsec.append(-1.0)
     
     array_t2solution = np.asarray(list_t2solution)
     array_tpsec = np.asarray(list_tpsec)

@@ -14,3 +14,6 @@ DGXSOCKETCORES=10
 DGXNSOCKET=1
 DGXHT=2         # HT is on is 2, HT off is 1
 DGXIBDEVICES=''
+
+## Training config
+FLAGS='9_dual'

@@ -1,0 +1,259 @@
+Beginning trial 1 of 1
+Gathering sys log on lambda-quad
+:::MLL 1573766377.597 submission_benchmark: {"value": "transformer", "metadata": {"file": "mlperf_log_utils.py", "lineno": 225}}
+:::MLL 1573766377.598 submission_org: {"value": "NVIDIA", "metadata": {"file": "mlperf_log_utils.py", "lineno": 230}}
+WARNING: Log validation: Key "submission_division" is not in known transformer keys.
+:::MLL 1573766377.599 submission_division: {"value": "closed", "metadata": {"file": "mlperf_log_utils.py", "lineno": 234}}
+:::MLL 1573766377.600 submission_status: {"value": "onprem", "metadata": {"file": "mlperf_log_utils.py", "lineno": 238}}
+:::MLL 1573766377.601 submission_platform: {"value": "1xSystem Product Name", "metadata": {"file": "mlperf_log_utils.py", "lineno": 242}}
+:::MLL 1573766377.602 submission_entry: {"value": "{'hardware': 'System Product Name', 'framework': 'PyTorch NVIDIA Release 19.05', 'power': 'N/A', 'notes': 'N/A', 'interconnect': ' ', 'os': 'Ubuntu 18.04.3 LTS / ', 'libraries': \"{'container_base': 'Ubuntu-16.04', 'openmpi_version': '3.1.3', 'mofed_version': '4.7-1.0.0', 'cuda_version': '10.1.163', 'cuda_driver_version': '418.67', 'nccl_version': '2.4.6', 'cudnn_version': '7.6.0.64', 'cublas_version': '10.2.0.163', 'trt_version': '5.1.5.0', 'dali_version': '0.9.1'}\", 'compilers': 'gcc (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609', 'nodes': \"{'num_nodes': '1', 'cpu': '1x Intel(R) Core(TM) i9-9820X CPU @ 3.30GHz', 'num_cores': '10', 'num_vcpus': '20', 'accelerator': 'GeForce RTX 2080 Ti', 'num_accelerators': '2', 'sys_mem_size': '125 GB', 'sys_storage_type': '<unknown bus> SSD', 'sys_storage_size': '2x 54.5M + 1x 1.8T + 2x 14.8M + 1x 156M + 2x 3.7M + 2x 140.7M + 1x 2.3M + 1x 34.6M + 1x 14.5M + 1x 956K + 1x 44.2M + 1x 4.2M + 2x 89.1M', 'cpu_accel_interconnect': 'UPI', 'network_card': '', 'num_network_cards': '0', 'notes': ''}\"}", "metadata": {"file": "mlperf_log_utils.py", "lineno": 246}}
+:::MLL 1573766377.603 submission_poc_name: {"value": "Paulius Micikevicius", "metadata": {"file": "mlperf_log_utils.py", "lineno": 250}}
+:::MLL 1573766377.604 submission_poc_email: {"value": "pauliusm@nvidia.com", "metadata": {"file": "mlperf_log_utils.py", "lineno": 254}}
+Clearing caches
+:::MLL 1573766378.829 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+Launching on node lambda-quad
++ pids+=($!)
++ set +x
+++ eval echo
++++ echo
++ docker exec -e DGXSYSTEM=LambdaDual2080Ti -e 'MULTI_NODE= --master_port=5237' -e 'SEED=    15575279' -e SLURM_JOB_ID=191114131901695843969 -e SLURM_NTASKS_PER_NODE= -e SLURM_NNODES=1 -e MODE=TRAIN cont_191114131901695843969 ./run_and_time.sh
+Run vars: id 191114131901695843969 gpus 2 mparams  --master_port=5237
++ SEED='    15575279'
++ MAX_TOKENS=2560
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1573766379
++++ date '+%Y-%m-%d %r'
+++ START_FMT='2019-11-14 09:19:39 PM'
+++ echo 'STARTING TIMING RUN AT 2019-11-14 09:19:39 PM'
+STARTING TIMING RUN AT 2019-11-14 09:19:39 PM
+++ [[ 2 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 1 --ncores_per_socket 10 --nproc_per_node 2 --master_port=5237 train.py /data --seed 15575279 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 1000 --lr 0.500e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 2560 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --max-source-positions 64 --max-target-positions 64 --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 105404416 --parallel-backward-allred-cuda-nstreams 2 --adam-betas '(0.9,0.98)'
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 5237, WORLD_SIZE: 2, RANK: 1
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 5237, WORLD_SIZE: 2, RANK: 0
+| distributed init done!
+| distributed init done!
+| initialized host lambda-quad as rank 0 and device id 0
+:::MLL 1573766383.108 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1573766383.108 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+Namespace(adam_betas='(0.9,0.98)', adam_eps=1e-09, adaptive_softmax_cutoff=None, arch='transformer_wmt_en_de_big_t2t', attention_dropout=0.1, batch_multiple_strategy='dynamic', batching_scheme='v0p5_better', beam=4, bucket_growth_factor=1.035, clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', data='/data', dataloader_num_workers=1, decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, device_id=0, distributed_backend='nccl', distributed_init_method='env://', distributed_port=-1, distributed_rank=0, distributed_world_size=2, dropout=0.1, enable_dataloader_pin_memory=False, enable_parallel_backward_allred_opt=True, enable_parallel_backward_allred_opt_correctness_check=False, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=True, fast_xentropy=True, fp16=True, fuse_dropout_add=False, fuse_relu_dropout=False, gen_subset='test', ignore_case=True, keep_interval_updates=-1, label_smoothing=0.1, left_pad_source='True', left_pad_target='False', lenpen=0.6, local_rank=0, log_format=None, log_interval=1000, log_translations=False, lr=[0.0005], lr_scheduler='inverse_sqrt', lr_shrink=0.1, max_epoch=30, max_len_a=1.0, max_len_b=50, max_sentences=None, max_sentences_valid=None, max_source_positions=64, max_target_positions=64, max_tokens=2560, max_update=0, min_len=1, min_loss_scale=0.0001, min_lr=0.0, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_epoch_checkpoints=False, no_progress_bar=False, no_save=True, no_token_positional_embeddings=False, num_shards=1, online_eval=False, optimizer='adam', parallel_backward_allred_cuda_nstreams=2, parallel_backward_allred_opt_threshold=105404416, path=None, prefix_size=0, print_alignment=False, profile=None, quiet=False, raw_text=False, relu_dropout=0.1, remove_bpe=None, replace_unk=None, restore_file='checkpoint_last.pt', sampling=False, sampling_temperature=1, sampling_topk=-1, save_dir='checkpoints', save_interval=1, save_interval_updates=0, score_reference=False, seed=15575279, sentence_avg=False, seq_len_multiple=2, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, softmax_type='fast_fill', source_lang='en', target_bleu=25.0, target_lang='de', task='translation', train_subset='train', unkpen=0, unnormalized=False, update_freq=[1], valid_subset='valid', validate_interval=1, warmup_init_lr=0.0, warmup_updates=1000, weight_decay=0.0)
+:::MLL 1573766386.173 global_batch_size: {"value": 5120, "metadata": {"file": "train.py", "lineno": 74}}
+:::MLL 1573766386.173 opt_name: {"value": "adam", "metadata": {"file": "train.py", "lineno": 75}}
+:::MLL 1573766386.174 opt_base_learning_rate: {"value": 0.0005, "metadata": {"file": "train.py", "lineno": 77}}
+:::MLL 1573766386.174 opt_learning_rate_warmup_steps: {"value": 1000, "metadata": {"file": "train.py", "lineno": 78}}
+:::MLL 1573766386.174 max_sequence_length: {"value": 64, "metadata": {"file": "train.py", "lineno": 80}}
+:::MLL 1573766386.174 opt_adam_beta_1: {"value": 0.9, "metadata": {"file": "train.py", "lineno": 81}}
+:::MLL 1573766386.174 opt_adam_beta_2: {"value": 0.98, "metadata": {"file": "train.py", "lineno": 82}}
+:::MLL 1573766386.175 opt_adam_epsilon: {"value": 1e-09, "metadata": {"file": "train.py", "lineno": 83}}
+| [en] dictionary: 33712 types
+| [de] dictionary: 33712 types
+| model transformer_wmt_en_de_big_t2t, criterion LabelSmoothedCrossEntropyCriterion
+| num. model params: 210808832
+| parallel all-reduce ENABLED. all-reduce threshold: 105404416
+| # of parallel all-reduce cuda streams: 2
+| training on 2 GPUs
+| max tokens per GPU = 2560 and max sentences per GPU = None
+:::MLL 1573766389.954 init_stop: {"value": null, "metadata": {"file": "train.py", "lineno": 140}}
+:::MLL 1573766389.954 run_start: {"value": null, "metadata": {"file": "train.py", "lineno": 142}}
+filename: /data/train.en-de.en
+raw_text: False
+| /data train 4590101 examples
+filename: /data/train1.en-de.en
+raw_text: False
+filename: /data/train1.de-en.en
+raw_text: False
+srcline: tensor([32700,   358,     8, 11797,  9198,     6,    65,  7098,  2722,   625,     7, 14319,  8337,  5336, 28535,     6,     4,     2])
+| Sentences are being padded to multiples of: 2
+filename: /data/test.en-de.en
+raw_text: False
+| /data test 3003 examples
+srcline: tensor([ 7549,  4344,    64, 32364,  1259,    20, 13504,  8959,  3868,     2])
+| Sentences are being padded to multiples of: 2
+filename: /data/test1.en-de.en
+raw_text: False
+filename: /data/test1.de-en.en
+raw_text: False
+:::MLL 1573766390.853 block_start: {"value": null, "metadata": {"first_epoch_num": 1, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1573766390.853 epoch_start: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 163}}
+generated 53305 batches in 1.737923s
+got epoch iterator 1.7394342422485352
+| WARNING: overflow detected, setting loss scale to: 64.0
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:   1000 / 26653 loss=10.263, nll_loss=0.000, ppl=1.00, wps=23979, ups=5.1, wpb=4582, bsz=159, num_updates=999, lr=0.0004995, gnorm=163337.165, clip=100%, oom=0, loss_scale=32.000, wall=195
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:   2000 / 26653 loss=9.020, nll_loss=0.000, ppl=1.00, wps=23881, ups=5.1, wpb=4595, bsz=160, num_updates=1998, lr=0.00035373, gnorm=103286.812, clip=100%, oom=0, loss_scale=16.000, wall=389
+| epoch 001:   3000 / 26653 loss=8.227, nll_loss=0.000, ppl=1.00, wps=23838, ups=5.1, wpb=4601, bsz=159, num_updates=2998, lr=0.000288771, gnorm=79398.988, clip=100%, oom=0, loss_scale=16.000, wall=583
+| epoch 001:   4000 / 26653 loss=7.699, nll_loss=0.000, ppl=1.00, wps=23814, ups=5.1, wpb=4601, bsz=160, num_updates=3998, lr=0.000250063, gnorm=71798.504, clip=100%, oom=0, loss_scale=32.000, wall=776
+| epoch 001:   5000 / 26653 loss=7.332, nll_loss=0.000, ppl=1.00, wps=23777, ups=5.2, wpb=4597, bsz=159, num_updates=4998, lr=0.000223652, gnorm=69491.637, clip=100%, oom=0, loss_scale=32.000, wall=970
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:   6000 / 26653 loss=7.049, nll_loss=0.000, ppl=1.00, wps=23761, ups=5.2, wpb=4597, bsz=159, num_updates=5997, lr=0.000204175, gnorm=68653.509, clip=100%, oom=0, loss_scale=32.000, wall=1164
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:   7000 / 26653 loss=6.831, nll_loss=0.000, ppl=1.00, wps=23752, ups=5.2, wpb=4597, bsz=159, num_updates=6996, lr=0.000189036, gnorm=65178.512, clip=100%, oom=0, loss_scale=16.000, wall=1358
+| epoch 001:   8000 / 26653 loss=6.651, nll_loss=0.000, ppl=1.00, wps=23750, ups=5.2, wpb=4598, bsz=159, num_updates=7996, lr=0.000176821, gnorm=60562.844, clip=100%, oom=0, loss_scale=16.000, wall=1552
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:   9000 / 26653 loss=6.500, nll_loss=0.000, ppl=1.00, wps=23750, ups=5.2, wpb=4600, bsz=159, num_updates=8995, lr=0.000166713, gnorm=57922.488, clip=100%, oom=0, loss_scale=16.000, wall=1746
+| epoch 001:  10000 / 26653 loss=6.375, nll_loss=0.000, ppl=1.00, wps=23754, ups=5.2, wpb=4601, bsz=159, num_updates=9995, lr=0.000158153, gnorm=54875.213, clip=100%, oom=0, loss_scale=16.000, wall=1940
+| epoch 001:  11000 / 26653 loss=6.270, nll_loss=0.000, ppl=1.00, wps=23737, ups=5.2, wpb=4598, bsz=159, num_updates=10995, lr=0.00015079, gnorm=52652.330, clip=100%, oom=0, loss_scale=32.000, wall=2134
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:  12000 / 26653 loss=6.177, nll_loss=0.000, ppl=1.00, wps=23725, ups=5.2, wpb=4596, bsz=159, num_updates=11994, lr=0.000144374, gnorm=50680.988, clip=100%, oom=0, loss_scale=16.000, wall=2328
+| epoch 001:  13000 / 26653 loss=6.094, nll_loss=0.000, ppl=1.00, wps=23721, ups=5.2, wpb=4596, bsz=159, num_updates=12994, lr=0.000138707, gnorm=48854.177, clip=100%, oom=0, loss_scale=16.000, wall=2522
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:  14000 / 26653 loss=6.020, nll_loss=0.000, ppl=1.00, wps=23718, ups=5.2, wpb=4596, bsz=159, num_updates=13993, lr=0.000133664, gnorm=48876.483, clip=100%, oom=0, loss_scale=16.000, wall=2716
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 001:  15000 / 26653 loss=5.953, nll_loss=0.000, ppl=1.00, wps=23719, ups=5.2, wpb=4597, bsz=159, num_updates=14992, lr=0.000129134, gnorm=47066.821, clip=100%, oom=0, loss_scale=8.000, wall=2910
+| epoch 001:  16000 / 26653 loss=5.892, nll_loss=0.000, ppl=1.00, wps=23715, ups=5.2, wpb=4596, bsz=159, num_updates=15992, lr=0.000125031, gnorm=44959.009, clip=100%, oom=0, loss_scale=8.000, wall=3103
+| epoch 001:  17000 / 26653 loss=5.838, nll_loss=0.000, ppl=1.00, wps=23706, ups=5.2, wpb=4594, bsz=159, num_updates=16992, lr=0.000121296, gnorm=43402.400, clip=100%, oom=0, loss_scale=16.000, wall=3297
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 001:  18000 / 26653 loss=5.789, nll_loss=0.000, ppl=1.00, wps=23704, ups=5.2, wpb=4594, bsz=159, num_updates=17991, lr=0.000117881, gnorm=41737.903, clip=100%, oom=0, loss_scale=8.000, wall=3491
+| epoch 001:  19000 / 26653 loss=5.742, nll_loss=0.000, ppl=1.00, wps=23708, ups=5.2, wpb=4595, bsz=159, num_updates=18991, lr=0.000114735, gnorm=40243.863, clip=100%, oom=0, loss_scale=8.000, wall=3685
+| epoch 001:  20000 / 26653 loss=5.699, nll_loss=0.000, ppl=1.00, wps=23705, ups=5.2, wpb=4595, bsz=159, num_updates=19991, lr=0.000111829, gnorm=39567.865, clip=100%, oom=0, loss_scale=16.000, wall=3879
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 001:  21000 / 26653 loss=5.660, nll_loss=0.000, ppl=1.00, wps=23697, ups=5.2, wpb=4594, bsz=159, num_updates=20990, lr=0.000109135, gnorm=38943.537, clip=100%, oom=0, loss_scale=8.000, wall=4073
+| epoch 001:  22000 / 26653 loss=5.622, nll_loss=0.000, ppl=1.00, wps=23700, ups=5.2, wpb=4594, bsz=159, num_updates=21990, lr=0.000106625, gnorm=37780.588, clip=100%, oom=0, loss_scale=8.000, wall=4267
+| epoch 001:  23000 / 26653 loss=5.588, nll_loss=0.000, ppl=1.00, wps=23702, ups=5.2, wpb=4595, bsz=159, num_updates=22990, lr=0.00010428, gnorm=36733.698, clip=100%, oom=0, loss_scale=16.000, wall=4461
+| epoch 001:  24000 / 26653 loss=5.557, nll_loss=0.000, ppl=1.00, wps=23700, ups=5.2, wpb=4594, bsz=159, num_updates=23990, lr=0.000102083, gnorm=36325.497, clip=100%, oom=0, loss_scale=16.000, wall=4655
+| epoch 001:  25000 / 26653 loss=5.528, nll_loss=0.000, ppl=1.00, wps=23700, ups=5.2, wpb=4594, bsz=159, num_updates=24990, lr=0.00010002, gnorm=35968.286, clip=100%, oom=0, loss_scale=32.000, wall=4848
+| epoch 001:  26000 / 26653 loss=5.499, nll_loss=0.000, ppl=1.00, wps=23700, ups=5.2, wpb=4594, bsz=159, num_updates=25990, lr=9.80769e-05, gnorm=36648.820, clip=100%, oom=0, loss_scale=32.000, wall=5042
+| epoch 001 | loss 5.482 | nll_loss 0.000 | ppl 1.00 | wps 23695 | ups 5.2 | wpb 4594 | bsz 159 | num_updates 26642 | lr 9.68694e-05 | gnorm 37065.993 | clip 100% | oom 0 | loss_scale 32.000 | wall 5169
+epoch time  5165.017357826233
+:::MLL 1573771557.612 epoch_stop: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 201}}
+:::MLL 1573771557.613 eval_start: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 547}}
+generated 51 batches in 0.000599s
+| Translated 1509 sentences (43365 tokens) in 11.9s (126.93 sentences/s, 3647.58 tokens/s)
+| Generate test with beam=4: bleu_score=22.1053
+| Eval completed in: 17.74s
+:::MLL 1573771575.351 eval_stop: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 658}}
+:::MLL 1573771575.355 eval_accuracy: {"value": "22.105340659618378", "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 211}}
+validation and scoring  17.744951009750366
+:::MLL 1573771575.405 block_stop: {"value": null, "metadata": {"first_epoch_num": 1, "file": "train.py", "lineno": 226}}
+:::MLL 1573771575.406 block_start: {"value": null, "metadata": {"first_epoch_num": 2, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1573771575.406 epoch_start: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 163}}
+generated 53305 batches in 1.745800s
+got epoch iterator 1.8100950717926025
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 002:   1000 / 26653 loss=4.706, nll_loss=0.000, ppl=1.00, wps=23659, ups=4.7, wpb=4590, bsz=158, num_updates=27642, lr=9.5101e-05, gnorm=36747.599, clip=100%, oom=0, loss_scale=16.000, wall=5383
+| epoch 002:   2000 / 26653 loss=4.711, nll_loss=0.000, ppl=1.00, wps=23681, ups=4.9, wpb=4593, bsz=160, num_updates=28642, lr=9.34261e-05, gnorm=36411.894, clip=100%, oom=0, loss_scale=16.000, wall=5577
+| epoch 002:   3000 / 26653 loss=4.723, nll_loss=0.000, ppl=1.00, wps=23668, ups=5.0, wpb=4587, bsz=160, num_updates=29642, lr=9.18367e-05, gnorm=36969.700, clip=100%, oom=0, loss_scale=32.000, wall=5770
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 002:   4000 / 26653 loss=4.714, nll_loss=0.000, ppl=1.00, wps=23661, ups=5.0, wpb=4588, bsz=160, num_updates=30641, lr=9.03272e-05, gnorm=37512.038, clip=100%, oom=0, loss_scale=16.000, wall=5964
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 002:   5000 / 26653 loss=4.711, nll_loss=0.000, ppl=1.00, wps=23654, ups=5.1, wpb=4588, bsz=160, num_updates=31640, lr=8.88898e-05, gnorm=37134.916, clip=100%, oom=0, loss_scale=8.000, wall=6158
+| epoch 002:   6000 / 26653 loss=4.706, nll_loss=0.000, ppl=1.00, wps=23654, ups=5.1, wpb=4588, bsz=160, num_updates=32640, lr=8.75175e-05, gnorm=36416.400, clip=100%, oom=0, loss_scale=8.000, wall=6352
+| epoch 002:   7000 / 26653 loss=4.702, nll_loss=0.000, ppl=1.00, wps=23661, ups=5.1, wpb=4589, bsz=160, num_updates=33640, lr=8.62069e-05, gnorm=35797.068, clip=100%, oom=0, loss_scale=16.000, wall=6546
+| epoch 002:   8000 / 26653 loss=4.696, nll_loss=0.000, ppl=1.00, wps=23661, ups=5.1, wpb=4588, bsz=160, num_updates=34640, lr=8.49535e-05, gnorm=35553.133, clip=100%, oom=0, loss_scale=16.000, wall=6740
+| epoch 002:   9000 / 26653 loss=4.693, nll_loss=0.000, ppl=1.00, wps=23675, ups=5.1, wpb=4591, bsz=160, num_updates=35640, lr=8.37532e-05, gnorm=35433.632, clip=100%, oom=0, loss_scale=32.000, wall=6934
+| WARNING: overflow detected, setting loss scale to: 16.0
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 002:  10000 / 26653 loss=4.692, nll_loss=0.000, ppl=1.00, wps=23681, ups=5.1, wpb=4593, bsz=159, num_updates=36638, lr=8.26046e-05, gnorm=35618.690, clip=100%, oom=0, loss_scale=8.000, wall=7127
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 002:  11000 / 26653 loss=4.685, nll_loss=0.000, ppl=1.00, wps=23675, ups=5.1, wpb=4592, bsz=159, num_updates=37637, lr=8.15009e-05, gnorm=35023.841, clip=100%, oom=0, loss_scale=4.000, wall=7321
+| epoch 002:  12000 / 26653 loss=4.679, nll_loss=0.000, ppl=1.00, wps=23688, ups=5.1, wpb=4595, bsz=159, num_updates=38637, lr=8.04393e-05, gnorm=34299.815, clip=100%, oom=0, loss_scale=4.000, wall=7515
+| epoch 002:  13000 / 26653 loss=4.675, nll_loss=0.000, ppl=1.00, wps=23690, ups=5.1, wpb=4595, bsz=159, num_updates=39637, lr=7.94181e-05, gnorm=33622.251, clip=100%, oom=0, loss_scale=8.000, wall=7709
+| epoch 002:  14000 / 26653 loss=4.673, nll_loss=0.000, ppl=1.00, wps=23687, ups=5.1, wpb=4594, bsz=159, num_updates=40637, lr=7.84349e-05, gnorm=33137.186, clip=100%, oom=0, loss_scale=8.000, wall=7903
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 002:  15000 / 26653 loss=4.670, nll_loss=0.000, ppl=1.00, wps=23681, ups=5.1, wpb=4593, bsz=159, num_updates=41636, lr=7.74882e-05, gnorm=32567.667, clip=100%, oom=0, loss_scale=4.000, wall=8097
+| epoch 002:  16000 / 26653 loss=4.666, nll_loss=0.000, ppl=1.00, wps=23673, ups=5.1, wpb=4592, bsz=159, num_updates=42636, lr=7.65741e-05, gnorm=31967.316, clip=100%, oom=0, loss_scale=4.000, wall=8291
+| epoch 002:  17000 / 26653 loss=4.662, nll_loss=0.000, ppl=1.00, wps=23674, ups=5.1, wpb=4592, bsz=159, num_updates=43636, lr=7.56916e-05, gnorm=31498.170, clip=100%, oom=0, loss_scale=8.000, wall=8485
+| epoch 002:  18000 / 26653 loss=4.661, nll_loss=0.000, ppl=1.00, wps=23677, ups=5.1, wpb=4593, bsz=159, num_updates=44636, lr=7.48389e-05, gnorm=31110.027, clip=100%, oom=0, loss_scale=8.000, wall=8679
+| epoch 002:  19000 / 26653 loss=4.658, nll_loss=0.000, ppl=1.00, wps=23675, ups=5.1, wpb=4592, bsz=159, num_updates=45636, lr=7.40144e-05, gnorm=30933.019, clip=100%, oom=0, loss_scale=16.000, wall=8873
+| epoch 002:  20000 / 26653 loss=4.656, nll_loss=0.000, ppl=1.00, wps=23671, ups=5.1, wpb=4591, bsz=159, num_updates=46636, lr=7.32166e-05, gnorm=30872.378, clip=100%, oom=0, loss_scale=16.000, wall=9067
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 002:  21000 / 26653 loss=4.651, nll_loss=0.000, ppl=1.00, wps=23673, ups=5.1, wpb=4591, bsz=159, num_updates=47635, lr=7.24448e-05, gnorm=31057.874, clip=100%, oom=0, loss_scale=16.000, wall=9260
+| epoch 002:  22000 / 26653 loss=4.650, nll_loss=0.000, ppl=1.00, wps=23673, ups=5.1, wpb=4591, bsz=159, num_updates=48635, lr=7.16961e-05, gnorm=31001.368, clip=100%, oom=0, loss_scale=16.000, wall=9454
+| epoch 002:  23000 / 26653 loss=4.647, nll_loss=0.000, ppl=1.00, wps=23682, ups=5.1, wpb=4593, bsz=159, num_updates=49635, lr=7.09702e-05, gnorm=31080.518, clip=100%, oom=0, loss_scale=32.000, wall=9648
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 002:  24000 / 26653 loss=4.643, nll_loss=0.000, ppl=1.00, wps=23684, ups=5.1, wpb=4594, bsz=159, num_updates=50634, lr=7.02666e-05, gnorm=31543.094, clip=100%, oom=0, loss_scale=16.000, wall=9842
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 002:  25000 / 26653 loss=4.641, nll_loss=0.000, ppl=1.00, wps=23682, ups=5.1, wpb=4593, bsz=159, num_updates=51633, lr=6.95835e-05, gnorm=31402.915, clip=100%, oom=0, loss_scale=8.000, wall=10036
+| epoch 002:  26000 / 26653 loss=4.636, nll_loss=0.000, ppl=1.00, wps=23685, ups=5.1, wpb=4594, bsz=159, num_updates=52633, lr=6.89193e-05, gnorm=31077.055, clip=100%, oom=0, loss_scale=8.000, wall=10230
+| epoch 002 | loss 4.634 | nll_loss 0.000 | ppl 1.00 | wps 23685 | ups 5.1 | wpb 4594 | bsz 159 | num_updates 53285 | lr 6.84964e-05 | gnorm 30872.954 | clip 100% | oom 0 | loss_scale 8.000 | wall 10356
+epoch time  5167.776172876358
+:::MLL 1573776744.994 epoch_stop: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 201}}
+:::MLL 1573776744.995 eval_start: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 547}}
+generated 51 batches in 0.000608s
+| Translated 1509 sentences (43694 tokens) in 11.9s (126.72 sentences/s, 3669.20 tokens/s)
+| Generate test with beam=4: bleu_score=23.7019
+| Eval completed in: 17.40s
+:::MLL 1573776762.398 eval_stop: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 658}}
+:::MLL 1573776762.401 eval_accuracy: {"value": "23.701907694339752", "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 211}}
+validation and scoring  17.408674955368042
+:::MLL 1573776762.452 block_stop: {"value": null, "metadata": {"first_epoch_num": 2, "file": "train.py", "lineno": 226}}
+:::MLL 1573776762.453 block_start: {"value": null, "metadata": {"first_epoch_num": 3, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1573776762.453 epoch_start: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 163}}
+generated 53305 batches in 1.755749s
+got epoch iterator 1.8196609020233154
+| epoch 003:   1000 / 26653 loss=4.498, nll_loss=0.000, ppl=1.00, wps=23562, ups=4.7, wpb=4569, bsz=158, num_updates=54286, lr=6.78619e-05, gnorm=30812.953, clip=100%, oom=0, loss_scale=16.000, wall=10570
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003:   2000 / 26653 loss=4.508, nll_loss=0.000, ppl=1.00, wps=23612, ups=4.9, wpb=4578, bsz=160, num_updates=55285, lr=6.7246e-05, gnorm=30591.803, clip=100%, oom=0, loss_scale=8.000, wall=10763
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 003:   3000 / 26653 loss=4.504, nll_loss=0.000, ppl=1.00, wps=23654, ups=5.0, wpb=4587, bsz=160, num_updates=56284, lr=6.66465e-05, gnorm=30227.573, clip=100%, oom=0, loss_scale=4.000, wall=10957
+| epoch 003:   4000 / 26653 loss=4.512, nll_loss=0.000, ppl=1.00, wps=23636, ups=5.0, wpb=4583, bsz=159, num_updates=57284, lr=6.60622e-05, gnorm=29826.059, clip=100%, oom=0, loss_scale=4.000, wall=11151
+| epoch 003:   5000 / 26653 loss=4.504, nll_loss=0.000, ppl=1.00, wps=23624, ups=5.1, wpb=4581, bsz=159, num_updates=58284, lr=6.54931e-05, gnorm=29512.211, clip=100%, oom=0, loss_scale=8.000, wall=11345
+| epoch 003:   6000 / 26653 loss=4.503, nll_loss=0.000, ppl=1.00, wps=23656, ups=5.1, wpb=4586, bsz=159, num_updates=59284, lr=6.49384e-05, gnorm=29259.791, clip=100%, oom=0, loss_scale=8.000, wall=11539
+| epoch 003:   7000 / 26653 loss=4.502, nll_loss=0.000, ppl=1.00, wps=23684, ups=5.1, wpb=4591, bsz=159, num_updates=60284, lr=6.43975e-05, gnorm=29161.295, clip=100%, oom=0, loss_scale=16.000, wall=11733
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003:   8000 / 26653 loss=4.499, nll_loss=0.000, ppl=1.00, wps=23674, ups=5.1, wpb=4589, bsz=159, num_updates=61283, lr=6.38705e-05, gnorm=29094.654, clip=100%, oom=0, loss_scale=8.000, wall=11926
+| epoch 003:   9000 / 26653 loss=4.499, nll_loss=0.000, ppl=1.00, wps=23667, ups=5.1, wpb=4588, bsz=159, num_updates=62283, lr=6.33556e-05, gnorm=28862.046, clip=100%, oom=0, loss_scale=8.000, wall=12120
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 003:  10000 / 26653 loss=4.494, nll_loss=0.000, ppl=1.00, wps=23670, ups=5.1, wpb=4589, bsz=159, num_updates=63282, lr=6.28536e-05, gnorm=28580.056, clip=100%, oom=0, loss_scale=4.000, wall=12314
+| epoch 003:  11000 / 26653 loss=4.491, nll_loss=0.000, ppl=1.00, wps=23669, ups=5.1, wpb=4589, bsz=159, num_updates=64282, lr=6.23628e-05, gnorm=28248.996, clip=100%, oom=0, loss_scale=4.000, wall=12508
+| epoch 003:  12000 / 26653 loss=4.492, nll_loss=0.000, ppl=1.00, wps=23670, ups=5.1, wpb=4589, bsz=159, num_updates=65282, lr=6.18833e-05, gnorm=27984.880, clip=100%, oom=0, loss_scale=8.000, wall=12702
+| epoch 003:  13000 / 26653 loss=4.493, nll_loss=0.000, ppl=1.00, wps=23673, ups=5.1, wpb=4590, bsz=159, num_updates=66282, lr=6.14147e-05, gnorm=27785.070, clip=100%, oom=0, loss_scale=8.000, wall=12896
+| epoch 003:  14000 / 26653 loss=4.490, nll_loss=0.000, ppl=1.00, wps=23682, ups=5.1, wpb=4592, bsz=159, num_updates=67282, lr=6.09566e-05, gnorm=27700.393, clip=100%, oom=0, loss_scale=16.000, wall=13089
+| epoch 003:  15000 / 26653 loss=4.492, nll_loss=0.000, ppl=1.00, wps=23684, ups=5.1, wpb=4592, bsz=159, num_updates=68282, lr=6.05086e-05, gnorm=27731.713, clip=100%, oom=0, loss_scale=16.000, wall=13283
+| WARNING: overflow detected, setting loss scale to: 16.0
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003:  16000 / 26653 loss=4.493, nll_loss=0.000, ppl=1.00, wps=23678, ups=5.1, wpb=4591, bsz=159, num_updates=69280, lr=6.00712e-05, gnorm=27791.929, clip=100%, oom=0, loss_scale=8.000, wall=13477
+| epoch 003:  17000 / 26653 loss=4.489, nll_loss=0.000, ppl=1.00, wps=23680, ups=5.1, wpb=4592, bsz=159, num_updates=70280, lr=5.96423e-05, gnorm=27606.526, clip=100%, oom=0, loss_scale=8.000, wall=13671
+| epoch 003:  18000 / 26653 loss=4.487, nll_loss=0.000, ppl=1.00, wps=23684, ups=5.1, wpb=4592, bsz=159, num_updates=71280, lr=5.92224e-05, gnorm=27450.455, clip=100%, oom=0, loss_scale=16.000, wall=13865
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003:  19000 / 26653 loss=4.485, nll_loss=0.000, ppl=1.00, wps=23684, ups=5.1, wpb=4593, bsz=159, num_updates=72279, lr=5.88117e-05, gnorm=27381.005, clip=100%, oom=0, loss_scale=8.000, wall=14059
+| epoch 003:  20000 / 26653 loss=4.486, nll_loss=0.000, ppl=1.00, wps=23686, ups=5.1, wpb=4593, bsz=159, num_updates=73279, lr=5.84091e-05, gnorm=27212.133, clip=100%, oom=0, loss_scale=8.000, wall=14253
+| epoch 003:  21000 / 26653 loss=4.485, nll_loss=0.000, ppl=1.00, wps=23688, ups=5.1, wpb=4593, bsz=159, num_updates=74279, lr=5.80146e-05, gnorm=27145.634, clip=100%, oom=0, loss_scale=16.000, wall=14446
+| epoch 003:  22000 / 26653 loss=4.484, nll_loss=0.000, ppl=1.00, wps=23698, ups=5.1, wpb=4595, bsz=159, num_updates=75279, lr=5.76279e-05, gnorm=27185.680, clip=100%, oom=0, loss_scale=16.000, wall=14640
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 003:  23000 / 26653 loss=4.484, nll_loss=0.000, ppl=1.00, wps=23693, ups=5.1, wpb=4594, bsz=159, num_updates=76278, lr=5.72493e-05, gnorm=27329.614, clip=100%, oom=0, loss_scale=16.000, wall=14834
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003:  24000 / 26653 loss=4.484, nll_loss=0.000, ppl=1.00, wps=23690, ups=5.1, wpb=4594, bsz=159, num_updates=77277, lr=5.68781e-05, gnorm=27292.190, clip=100%, oom=0, loss_scale=8.000, wall=15028
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 003:  25000 / 26653 loss=4.483, nll_loss=0.000, ppl=1.00, wps=23693, ups=5.1, wpb=4594, bsz=159, num_updates=78276, lr=5.6514e-05, gnorm=27051.100, clip=100%, oom=0, loss_scale=4.000, wall=15222
+| epoch 003:  26000 / 26653 loss=4.481, nll_loss=0.000, ppl=1.00, wps=23695, ups=5.1, wpb=4594, bsz=159, num_updates=79276, lr=5.61564e-05, gnorm=26804.757, clip=100%, oom=0, loss_scale=4.000, wall=15415
+| epoch 003 | loss 4.481 | nll_loss 0.000 | ppl 1.00 | wps 23691 | ups 5.1 | wpb 4594 | bsz 159 | num_updates 79928 | lr 5.59269e-05 | gnorm 26697.653 | clip 100% | oom 0 | loss_scale 8.000 | wall 15542
+epoch time  5166.143567800522
+:::MLL 1573781930.437 epoch_stop: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 201}}
+:::MLL 1573781930.438 eval_start: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 547}}
+generated 51 batches in 0.000583s
+| Translated 1509 sentences (42803 tokens) in 11.3s (133.40 sentences/s, 3783.92 tokens/s)
+| Generate test with beam=4: bleu_score=25.2046
+| Eval completed in: 17.04s
+:::MLL 1573781947.482 eval_stop: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 658}}
+:::MLL 1573781947.486 eval_accuracy: {"value": "25.204607844352722", "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 211}}
+validation and scoring  17.069713830947876
+:::MLL 1573781947.537 block_stop: {"value": null, "metadata": {"first_epoch_num": 3, "file": "train.py", "lineno": 226}}
+:::MLL 1573781947.537 run_stop: {"value": null, "metadata": {"status": "success", "file": "train.py", "lineno": 231}}
+| done training in 15557.8 seconds
+++ ret_code=0
+++ sleep 3
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1573781951
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-11-15 01:39:11 AM
+RESULT,transformer,    15575279,15572,,2019-11-14 09:19:39 PM
+++ END_FMT='2019-11-15 01:39:11 AM'
+++ echo 'ENDING TIMING RUN AT 2019-11-15 01:39:11 AM'
+++ RESULT=15572
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15575279,15572,,2019-11-14 09:19:39 PM'
++ set +x

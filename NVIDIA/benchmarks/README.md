@@ -21,6 +21,7 @@ This is a repository to preproduce Lambda Labs' MLPerf results.
 sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove
 sudo apt-get install python3-dev
 sudo apt install unzip
+sudo apt install virtualenv
 
 # Clone repo
 cd

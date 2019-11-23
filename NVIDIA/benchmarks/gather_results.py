@@ -5,7 +5,7 @@ import datetime as dt
 import numpy as np
 
 
-SYSTEM='LambdaDual2080Ti'
+SYSTEM='LambdaHyperplane16'
 PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
 
 tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']

@@ -112,7 +112,7 @@ __Training Throughput (The higher the better)__
 | Lambda Quad 2080Ti | 1096.60 | 35.70 | 2739.52 | 147396.0 | 13.12 | 0.15 |
 | Lambda Dual 2080Ti | 593.10 | x | 1455.81 | 86146.37 | 10.31 | 0.62 ?? |
 | DGX2 Reference | 8274.91 | 272.97 | 22361.42 | 1349928.90 | 84.86 | x |
-
+| DGX2H Reference | 9134.41 | 289.21 | 24556.04 | 1491560.27 | 95.86 | x |
 
 __Minutes to Solution (The lower the better)__
 
@@ -124,5 +124,6 @@ __Minutes to Solution (The lower the better)__
 | Lambda Quad 2080Ti | 88.31 | 598.2 | 501.35 | 124.16 | 100.86 | 143.15 |
 | Lambda Quad 2080Ti | 162.95 | x | 1001.5 | 338.68 | 259.29 | 64.43 ?? |
 | DGX2 Reference | 13.32 | 108.02 | 59.8 | 12.23 | 11.62 | x |
+| DGX2H Reference | 12.28 | 96.47 | 54.95 | 10.58 | 10.26 | x |
 
 * Training Throughtput is a fairer metric as the training may take different numbers of epochs to reach the solution due to random initialization and data shuffling.

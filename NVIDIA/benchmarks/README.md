@@ -111,6 +111,8 @@ __Training Throughput (The higher the better)__
 | Lambda Blade 2080Ti | 2575.92  | 72.86  | 6301.29  | 326569.0  | 26.68  |  0.30 |
 | Lambda Quad 2080Ti | 1096.60 | 35.70 | 2739.52 | 147396.0 | 13.12 | 0.15 |
 | Lambda Dual 2080Ti | 593.10 | x | 1455.81 | 86146.37 | 10.31 | 0.62 ?? |
+| DGX2 Reference | 8274.91 | 272.97 | 22361.42 | 1349928.90 | 84.86 | x |
+
 
 __Minutes to Solution (The lower the better)__
 
@@ -121,5 +123,6 @@ __Minutes to Solution (The lower the better)__
 | Lambda Blade 2080Ti | 38.25  | 586.66  | 206.2  | 45.03  | 66.45  |  51.23 |
 | Lambda Quad 2080Ti | 88.31 | 598.2 | 501.35 | 124.16 | 100.86 | 143.15 |
 | Lambda Quad 2080Ti | 162.95 | x | 1001.5 | 338.68 | 259.29 | 64.43 ?? |
+| DGX2 Reference | 13.32 | 108.02 | 59.8 | 12.23 | 11.62 | x |
 
 * Training Throughtput is a fairer metric as the training may take different numbers of epochs to reach the solution due to random initialization and data shuffling.

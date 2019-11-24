@@ -7,9 +7,14 @@ import numpy as np
 
 SYSTEM='LambdaHyperplane16'
 PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
+FORMAT = ".log"
 
-tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
-throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
+#tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
+#throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
+
+tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation']
+throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec']
+
 
 def tail(filename, n):
     proc = subprocess.Popen(['tail', '-n', str(n), filename], stdout=subprocess.PIPE)
@@ -302,7 +307,7 @@ for task, t_name in zip(tasks, throughput_names):
     list_t2solution = []
     list_tpsec = []
     for file in os.listdir(task_path):
-        if file.endswith(".log"):
+        if file.endswith(FORMAT):
             filename = os.path.join(task_path, file)
             try:
                 t2solution = locals()[task + "_T2S"](filename)

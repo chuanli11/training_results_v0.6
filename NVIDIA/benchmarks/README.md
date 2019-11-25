@@ -106,7 +106,6 @@ __Training Throughput (The higher the better)__
 
 |   | ssd (samples/sec) | maskrcnn (iterations/s) | resnet (samples/sec) | gnmt (Tok/s) | translation (batches/sec) | minigo (epochs/min) |
 |---|---|---|---|---|---|---|
-| DGX2H Reference | 9134.41 | 289.21 | 24556.04 | 1491560.27 | 95.86 | x |
 | DGX2 Reference | 8274.91 | 272.97 | 22361.42 | 1349928.90 | 84.86 | x |
 | LambdaHyperplane16 | 8040.79 | 257.07 | 21767.38 | 1313706.02 | 83.47 | x |
 | DGX1 Reference  | 4420.04  | 132.2  | 11224  |  727808 | 33.82  | 0.61  |
@@ -120,7 +119,6 @@ __Minutes to Solution (The lower the better)__
 
 |   | ssd  | maskrcnn  | resnet  | gnmt  | translation  | minigo  |
 |---|---|---|---|---|---|---|
-| DGX2H Reference | 12.28 | 96.47 | 54.95 | 10.58 | 10.26 | x |
 | DGX2 Reference | 13.32 | 108.02 | 59.8 | 12.23 | 11.62 | x |
 | LambdaHyperplane16 | 14.05 | 109.01 | 61.48 | 12.97 | 13.01 | x |
 | DGX1 Reference  | 22.03  | 207.48  | 115.22  |  20.55 | 20.34  | 27.39  |

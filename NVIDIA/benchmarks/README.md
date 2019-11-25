@@ -122,7 +122,7 @@ __Minutes to Solution (The lower the better)__
 |---|---|---|---|---|---|---|
 | DGX2H Reference | 12.28 | 96.47 | 54.95 | 10.58 | 10.26 | x |
 | DGX2 Reference | 13.32 | 108.02 | 59.8 | 12.23 | 11.62 | x |
-| DGX2 Reference | 14.05 | 109.01 | 61.48 | 12.97 | 13.01 | x |
+| LambdaHyperplane16 | 14.05 | 109.01 | 61.48 | 12.97 | 13.01 | x |
 | DGX1 Reference  | 22.03  | 207.48  | 115.22  |  20.55 | 20.34  | 27.39  |
 | Lambda HyperPlane Basic | 23.33  | 206.82  | 117.21  | 23.50  | 19.85  |  29.76 |
 | Lambda Blade 2080Ti | 38.25  | 586.66  | 206.2  | 45.03  | 66.45  |  51.23 |

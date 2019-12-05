@@ -318,7 +318,8 @@ for task, t_name in zip(tasks, throughput_names):
             except:
                 list_t2solution.append(-1.0)
                 list_tpsec.append(-1.0)
-    
+    #print(list_t2solution)
+    #print(list_tpsec)
     array_t2solution = np.asarray(list_t2solution)
     array_tpsec = np.asarray(list_tpsec)
 

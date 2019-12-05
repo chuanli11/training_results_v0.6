@@ -49,11 +49,11 @@ NEXP=$NUM_RUN DATADIR=/home/ubuntu/data/mlperf/imagenet-mxnet LOGDIR=/home/ubunt
 popd
 
 
-# -----------------------------------------
-# minigo
-# -----------------------------------------
-pushd .
-cd minigo/implementations/tensorflow
-docker build --pull -t mlperf-nvidia:minigo .
-NEXP=$NUM_RUN LOGDIR=/home/ubuntu/benchmarks/mlperf/minigo_$SYSTEM CONT=mlperf-nvidia:minigo PULL=0 DGXSYSTEM=$SYSTEM ./run.sub
-popd
+## -----------------------------------------
+## minigo
+## -----------------------------------------
+#pushd .
+#cd minigo/implementations/tensorflow
+#docker build --pull -t mlperf-nvidia:minigo .
+#NEXP=$NUM_RUN LOGDIR=/home/ubuntu/benchmarks/mlperf/minigo_$SYSTEM CONT=mlperf-nvidia:minigo PULL=0 DGXSYSTEM=$SYSTEM ./run.sub
+#popd

@@ -5,15 +5,15 @@ import datetime as dt
 import numpy as np
 
 
-SYSTEM='LambdaHyperplane16'
+SYSTEM='LambdaHyperplaneBasic'
 PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
 FORMAT = ".log"
 
-#tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
-#throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
+tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
+throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
 
-tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation']
-throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec']
+#tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation']
+#throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec']
 
 
 def tail(filename, n):

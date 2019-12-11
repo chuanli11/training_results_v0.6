@@ -29,6 +29,7 @@ git clone https://github.com/lambdal/training_results_v0.6.git
 cd training_results_v0.6
 
 # Install nvidia-docker
+cd NVIDIA/benchmarks
 ./install.sh
 
 # Add user docker to sudo group
@@ -38,6 +39,7 @@ sudo usermod -a -G docker $USER
 sudo reboot
 
 # Install OFED
+cd
 cd Downloads
 wget http://www.mellanox.com/downloads/ofed/MLNX_OFED-4.4-1.0.0.0/MLNX_OFED_LINUX-4.4-1.0.0.0-ubuntu18.04-x86_64.tgz .
 tar -xvf MLNX_OFED_LINUX-4.4-1.0.0.0-ubuntu18.04-x86_64.tgz

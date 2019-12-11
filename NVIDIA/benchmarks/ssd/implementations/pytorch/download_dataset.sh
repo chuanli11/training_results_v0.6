@@ -16,8 +16,8 @@
 
 # Get COCO 2017 data sets
 dir=$(pwd)
-mkdir -p /home/ubuntu/data/mlperf/object_detection/coco2017
-cd /home/ubuntu/data/mlperf/object_detection/coco2017
+mkdir -p /home/$USER/data/mlperf/object_detection/coco2017
+cd /home/$USER/data/mlperf/object_detection/coco2017
 curl -O http://images.cocodataset.org/zips/train2017.zip
 unzip train2017.zip
 curl -O http://images.cocodataset.org/zips/val2017.zip

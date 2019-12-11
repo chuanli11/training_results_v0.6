@@ -1,10 +1,12 @@
 #!/bin/bash
 
+DIR_ROOT=$(pwd)
+
 ## -----------------------------------------
 ## resnet
 ## -----------------------------------------
-#FILE_TRAIN="/home/$USER/ILSVRC2012_img_train.tar"
-#FILE_VAL="/home/$USER/ILSVRC2012_img_val.tar"
+#FILE_TRAIN="$DIR_ROOT/ILSVRC2012_img_train.tar"
+#FILE_VAL="$DIR_ROOT/ILSVRC2012_img_val.tar"
 #
 #if test -f "$FILE_TRAIN"; then
 #    echo "$FILE_TRAIN exist"
@@ -28,41 +30,41 @@
 #. venv-mxnet/bin/activate
 #pip install opencv-python mxnet
 #
-#mkdir -p ~/data/mlperf/imagenet-mxnet/val-jpeg
-#tar -vxf ILSVRC2012_img_val.tar -C ~/data/mlperf/imagenet-mxnet/val-jpeg
+#mkdir -p $DIR_ROOT/data/mlperf/imagenet-mxnet/val-jpeg
+#tar -vxf ILSVRC2012_img_val.tar -C $DIR_ROOT/data/mlperf/imagenet-mxnet/val-jpeg
 #
 #pushd .
-#cd ~/data/mlperf/imagenet-mxnet/val-jpeg
+#cd $DIR_ROOT/data/mlperf/imagenet-mxnet/val-jpeg
 #wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh | bash
 #
-#mkdir -p ~/data/mlperf/imagenet-mxnet/train-jpeg
-#mkdir -p ~/data/mlperf/imagenet-mxnet/train-tar
+#mkdir -p $DIR_ROOT/data/mlperf/imagenet-mxnet/train-jpeg
+#mkdir -p $DIR_ROOT/data/mlperf/imagenet-mxnet/train-tar
 #
 #popd
 #
-#tar -vxf ILSVRC2012_img_train.tar -C ~/data/mlperf/imagenet-mxnet/train-tar
-#for filename in /home/$USER/data/mlperf/imagenet-mxnet/train-tar/*.tar; do
-#        outputname="/home/$USER/data/mlperf/imagenet-mxnet/train-jpeg/$(basename "$filename" .tar)"
+#tar -vxf ILSVRC2012_img_train.tar -C $DIR_ROOT/data/mlperf/imagenet-mxnet/train-tar
+#for filename in $DIR_ROOT/data/mlperf/imagenet-mxnet/train-tar/*.tar; do
+#        outputname="$DIR_ROOT/data/mlperf/imagenet-mxnet/train-jpeg/$(basename "$filename" .tar)"
 #        mkdir -p $outputname
 #        tar -vxf $filename -C $outputname
 #done
 #
-#python /home/$USER/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --list --recursive train /home/$USER/data/mlperf/imagenet-mxnet/train-jpeg
+#python $DIR_ROOT/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --list --recursive train $DIR_ROOT/data/mlperf/imagenet-mxnet/train-jpeg
 #
-#python /home/$USER/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --list --recursive val /home/$USER/data/mlperf/imagenet-mxnet/val-jpeg
+#python $DIR_ROOT/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --list --recursive val $DIR_ROOT/data/mlperf/imagenet-mxnet/val-jpeg
 #
-#python /home/$USER/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --pass-through --num-thread 20 train /home/$USER/data/mlperf/imagenet-mxnet/train-jpeg
+#python $DIR_ROOT/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --pass-through --num-thread 20 train $DIR_ROOT/data/mlperf/imagenet-mxnet/train-jpeg
 #
-#python /home/$USER/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --pass-through --num-thread 20 val /home/$USER/data/mlperf/imagenet-mxnet/val-jpeg
+#python $DIR_ROOT/venv-mxnet/lib/python3.6/site-packages/mxnet/tools/im2rec.py --pass-through --num-thread 20 val $DIR_ROOT/data/mlperf/imagenet-mxnet/val-jpeg
 #
 #
-#mv /home/$USER/train.idx /home/$USER/data/mlperf/imagenet-mxnet
-#mv /home/$USER/train.rec /home/$USER/data/mlperf/imagenet-mxnet
-#mv /home/$USER/train.lst /home/$USER/data/mlperf/imagenet-mxnet
+#mv $DIR_ROOT/train.idx $DIR_ROOT/data/mlperf/imagenet-mxnet
+#mv $DIR_ROOT/train.rec $DIR_ROOT/data/mlperf/imagenet-mxnet
+#mv $DIR_ROOT/train.lst $DIR_ROOT/data/mlperf/imagenet-mxnet
 #
-#mv /home/$USER/val.idx /home/$USER/data/mlperf/imagenet-mxnet
-#mv /home/$USER/val.rec /home/$USER/data/mlperf/imagenet-mxnet
-#mv /home/$USER/val.lst /home/$USER/data/mlperf/imagenet-mxnet
+#mv $DIR_ROOT/val.idx $DIR_ROOT/data/mlperf/imagenet-mxnet
+#mv $DIR_ROOT/val.rec $DIR_ROOT/data/mlperf/imagenet-mxnet
+#mv $DIR_ROOT/val.lst $DIR_ROOT/data/mlperf/imagenet-mxnet
 #
 #deactivate
 #
@@ -83,7 +85,7 @@
 # -----------------------------------------
 pushd .
 cd gnmt/implementations
-./download_dataset.sh "/home/$USER/data/mlperf/rnn_translator"
+./download_dataset.sh "$DIR_ROOT/data/mlperf/rnn_translator"
 popd
 
 # -----------------------------------------

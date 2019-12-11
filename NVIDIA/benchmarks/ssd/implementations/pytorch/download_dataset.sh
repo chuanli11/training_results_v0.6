@@ -15,9 +15,9 @@
 # limitations under the License.
 
 # Get COCO 2017 data sets
-dir=$(pwd)
-mkdir -p /home/$USER/data/mlperf/object_detection/coco2017
-cd /home/$USER/data/mlperf/object_detection/coco2017
+DIR_ROOT=$(pwd)
+mkdir -p $DIR_ROOT/data/mlperf/object_detection/coco2017
+cd $DIR_ROOT/data/mlperf/object_detection/coco2017
 curl -O http://images.cocodataset.org/zips/train2017.zip
 unzip train2017.zip
 curl -O http://images.cocodataset.org/zips/val2017.zip

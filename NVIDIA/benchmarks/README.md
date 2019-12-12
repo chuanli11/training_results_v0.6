@@ -98,6 +98,7 @@ ex `GRUB_CMDLINE_LINUX="spectre_v2=off transparent_hugepage=madvise"`
 _Change cpupower Setting_
 
 ```
+sudo apt-get install -y linux-tools-$(uname -r)
 sudo cpupower frequency-set -g performance
 ```
 

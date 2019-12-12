@@ -122,7 +122,9 @@ Use this command to run all benchmarks
 ./run_mlperf.sh LambdaBlade2080Ti 3
 ./run_mlperf.sh LambdaQuad2080Ti 3
 ./run_mlperf.sh LambdaDual2080Ti 3
+./run_mlperf.sh LambdaCloud4xQuadro5000 1 /data/training_results_v0.6/NVIDIA/benchmarks/data /data/training_results_v0.6/NVIDIA/benchmarks/logs
 ```
+
 
 To compile statistics, run this command with the correct `SYSTEM`, `PATH_RESULTS` and `FORMAT` settings:
 

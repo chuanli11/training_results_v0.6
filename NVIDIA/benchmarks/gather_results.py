@@ -5,8 +5,8 @@ import datetime as dt
 import numpy as np
 
 
-SYSTEM='LambdaHyperplaneBasic'
-PATH_RESULTS = '/home/ubuntu/benchmarks/mlperf'
+SYSTEM='LambdaCloud4xQuadro5000'
+PATH_RESULTS = 'logs'
 FORMAT = ".log"
 
 tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']

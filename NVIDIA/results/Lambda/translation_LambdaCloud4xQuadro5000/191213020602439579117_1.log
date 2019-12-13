@@ -1,0 +1,187 @@
+Beginning trial 1 of 1
+Gathering sys log on oop
+:::MLL 1576202800.507 submission_benchmark: {"value": "transformer", "metadata": {"file": "mlperf_log_utils.py", "lineno": 225}}
+:::MLL 1576202800.509 submission_org: {"value": "NVIDIA", "metadata": {"file": "mlperf_log_utils.py", "lineno": 230}}
+WARNING: Log validation: Key "submission_division" is not in known transformer keys.
+:::MLL 1576202800.510 submission_division: {"value": "closed", "metadata": {"file": "mlperf_log_utils.py", "lineno": 234}}
+:::MLL 1576202800.511 submission_status: {"value": "onprem", "metadata": {"file": "mlperf_log_utils.py", "lineno": 238}}
+:::MLL 1576202800.512 submission_platform: {"value": "1xStandard PC (Q35 + ICH9, 2009)", "metadata": {"file": "mlperf_log_utils.py", "lineno": 242}}
+:::MLL 1576202800.513 submission_entry: {"value": "{'hardware': 'Standard PC (Q35 + ICH9, 2009)', 'framework': 'PyTorch NVIDIA Release 19.05', 'power': 'N/A', 'notes': 'N/A', 'interconnect': ' ', 'os': 'Ubuntu 18.04.3 LTS / ', 'libraries': \"{'container_base': 'Ubuntu-16.04', 'openmpi_version': '3.1.3', 'mofed_version': '4.4-1.0.0', 'cuda_version': '10.1.163', 'cuda_driver_version': '418.67', 'nccl_version': '2.4.6', 'cudnn_version': '7.6.0.64', 'cublas_version': '10.2.0.163', 'trt_version': '5.1.5.0', 'dali_version': '0.9.1'}\", 'compilers': 'gcc (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609', 'nodes': \"{'num_nodes': '1', 'cpu': '1x AMD EPYC Processor (with IBPB)', 'num_cores': '1', 'num_vcpus': '1', 'accelerator': 'Quadro RTX 5000', 'num_accelerators': '4', 'sys_mem_size': '31 GB', 'sys_storage_type': '<unknown bus> SSD', 'sys_storage_size': '2x 89.1M + 1x 500G + 1x 48G', 'cpu_accel_interconnect': 'QPI', 'network_card': '', 'num_network_cards': '0', 'notes': ''}\"}", "metadata": {"file": "mlperf_log_utils.py", "lineno": 246}}
+:::MLL 1576202800.514 submission_poc_name: {"value": "Paulius Micikevicius", "metadata": {"file": "mlperf_log_utils.py", "lineno": 250}}
+:::MLL 1576202800.515 submission_poc_email: {"value": "pauliusm@nvidia.com", "metadata": {"file": "mlperf_log_utils.py", "lineno": 254}}
+Clearing caches
+:::MLL 1576202802.021 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+Launching on node oop
++ pids+=($!)
++ set +x
+++ eval echo
++++ echo
++ docker exec -e DGXSYSTEM=LambdaCloud4xQuadro5000 -e 'MULTI_NODE= --master_port=5213' -e 'SEED=    11532144' -e SLURM_JOB_ID=191213020602439579117 -e SLURM_NTASKS_PER_NODE= -e SLURM_NNODES=1 -e MODE=TRAIN cont_191213020602439579117 ./run_and_time.sh
+Run vars: id 191213020602439579117 gpus 4 mparams  --master_port=5213
++ SEED='    11532144'
++ MAX_TOKENS=5120
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1576202802
++++ date '+%Y-%m-%d %r'
+++ START_FMT='2019-12-13 02:06:42 AM'
+++ echo 'STARTING TIMING RUN AT 2019-12-13 02:06:42 AM'
+++ [[ 4 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+STARTING TIMING RUN AT 2019-12-13 02:06:42 AM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 1 --ncores_per_socket 10 --nproc_per_node 4 --master_port=5213 train.py /data --seed 11532144 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 1000 --lr 0.976e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 5120 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --max-source-positions 64 --max-target-positions 64 --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 105404416 --parallel-backward-allred-cuda-nstreams 2 --adam-betas '(0.9,0.98)'
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 5213, WORLD_SIZE: 4, RANK: 0
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 5213, WORLD_SIZE: 4, RANK: 2
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 5213, WORLD_SIZE: 4, RANK: 3
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 5213, WORLD_SIZE: 4, RANK: 1
+| distributed init done!
+:::MLL 1576202807.574 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+| initialized host oop as rank 0 and device id 0
+:::MLL 1576202807.586 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1576202807.595 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1576202807.608 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+Namespace(adam_betas='(0.9,0.98)', adam_eps=1e-09, adaptive_softmax_cutoff=None, arch='transformer_wmt_en_de_big_t2t', attention_dropout=0.1, batch_multiple_strategy='dynamic', batching_scheme='v0p5_better', beam=4, bucket_growth_factor=1.035, clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', data='/data', dataloader_num_workers=1, decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, device_id=0, distributed_backend='nccl', distributed_init_method='env://', distributed_port=-1, distributed_rank=0, distributed_world_size=4, dropout=0.1, enable_dataloader_pin_memory=False, enable_parallel_backward_allred_opt=True, enable_parallel_backward_allred_opt_correctness_check=False, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=True, fast_xentropy=True, fp16=True, fuse_dropout_add=False, fuse_relu_dropout=False, gen_subset='test', ignore_case=True, keep_interval_updates=-1, label_smoothing=0.1, left_pad_source='True', left_pad_target='False', lenpen=0.6, local_rank=0, log_format=None, log_interval=1000, log_translations=False, lr=[0.000976], lr_scheduler='inverse_sqrt', lr_shrink=0.1, max_epoch=30, max_len_a=1.0, max_len_b=50, max_sentences=None, max_sentences_valid=None, max_source_positions=64, max_target_positions=64, max_tokens=5120, max_update=0, min_len=1, min_loss_scale=0.0001, min_lr=0.0, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_epoch_checkpoints=False, no_progress_bar=False, no_save=True, no_token_positional_embeddings=False, num_shards=1, online_eval=False, optimizer='adam', parallel_backward_allred_cuda_nstreams=2, parallel_backward_allred_opt_threshold=105404416, path=None, prefix_size=0, print_alignment=False, profile=None, quiet=False, raw_text=False, relu_dropout=0.1, remove_bpe=None, replace_unk=None, restore_file='checkpoint_last.pt', sampling=False, sampling_temperature=1, sampling_topk=-1, save_dir='checkpoints', save_interval=1, save_interval_updates=0, score_reference=False, seed=11532144, sentence_avg=False, seq_len_multiple=2, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, softmax_type='fast_fill', source_lang='en', target_bleu=25.0, target_lang='de', task='translation', train_subset='train', unkpen=0, unnormalized=False, update_freq=[1], valid_subset='valid', validate_interval=1, warmup_init_lr=0.0, warmup_updates=1000, weight_decay=0.0)
+:::MLL 1576202814.472 global_batch_size: {"value": 20480, "metadata": {"file": "train.py", "lineno": 74}}
+:::MLL 1576202814.472 opt_name: {"value": "adam", "metadata": {"file": "train.py", "lineno": 75}}
+:::MLL 1576202814.472 opt_base_learning_rate: {"value": 0.000976, "metadata": {"file": "train.py", "lineno": 77}}
+:::MLL 1576202814.473 opt_learning_rate_warmup_steps: {"value": 1000, "metadata": {"file": "train.py", "lineno": 78}}
+:::MLL 1576202814.473 max_sequence_length: {"value": 64, "metadata": {"file": "train.py", "lineno": 80}}
+:::MLL 1576202814.474 opt_adam_beta_1: {"value": 0.9, "metadata": {"file": "train.py", "lineno": 81}}
+:::MLL 1576202814.474 opt_adam_beta_2: {"value": 0.98, "metadata": {"file": "train.py", "lineno": 82}}
+:::MLL 1576202814.474 opt_adam_epsilon: {"value": 1e-09, "metadata": {"file": "train.py", "lineno": 83}}
+| [en] dictionary: 33712 types
+| [de] dictionary: 33712 types
+| model transformer_wmt_en_de_big_t2t, criterion LabelSmoothedCrossEntropyCriterion
+| num. model params: 210808832
+| parallel all-reduce ENABLED. all-reduce threshold: 105404416
+| # of parallel all-reduce cuda streams: 2
+| training on 4 GPUs
+| max tokens per GPU = 5120 and max sentences per GPU = None
+:::MLL 1576202822.643 init_stop: {"value": null, "metadata": {"file": "train.py", "lineno": 140}}
+:::MLL 1576202822.644 run_start: {"value": null, "metadata": {"file": "train.py", "lineno": 142}}
+filename: /data/train.en-de.en
+raw_text: False
+| /data train 4590101 examples
+filename: /data/train1.en-de.en
+raw_text: False
+filename: /data/train1.de-en.en
+raw_text: False
+srcline: tensor([   30, 32955, 24374,  4451,   236,    17,    14,   558,   808, 23963,   236,  2230,     7,    14,  4609, 18016,     6,  1272,   811,     3,  4691,  1065,   538,    10,     5, 16614,    16,  3168,   319,  2634,    18,  3858,    10,     5,   359,    16,  7779,     8,  1454,  8074,  7562,   319,  5347,     4,     2])
+| Sentences are being padded to multiples of: 2
+filename: /data/test.en-de.en
+raw_text: False
+| /data test 3003 examples
+srcline: tensor([ 7549,  4344,    64, 32364,  1259,    20, 13504,  8959,  3868,     2])
+| Sentences are being padded to multiples of: 2
+filename: /data/test1.en-de.en
+raw_text: False
+filename: /data/test1.de-en.en
+raw_text: False
+:::MLL 1576202825.662 block_start: {"value": null, "metadata": {"first_epoch_num": 1, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1576202825.662 epoch_start: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 163}}
+generated 26319 batches in 1.548193s
+got epoch iterator 1.5505216121673584
+| WARNING: overflow detected, setting loss scale to: 64.0
+| WARNING: overflow detected, setting loss scale to: 32.0
+| WARNING: overflow detected, setting loss scale to: 16.0
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 001:   1000 / 6580 loss=8.921, nll_loss=0.000, ppl=1.00, wps=62711, ups=3.3, wpb=18580, bsz=642, num_updates=997, lr=0.000973072, gnorm=69877.806, clip=100%, oom=0, loss_scale=8.000, wall=305
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 001:   2000 / 6580 loss=7.393, nll_loss=0.000, ppl=1.00, wps=62994, ups=3.3, wpb=18603, bsz=646, num_updates=1996, lr=0.000690827, gnorm=42395.863, clip=100%, oom=0, loss_scale=4.000, wall=599
+| epoch 001:   3000 / 6580 loss=6.677, nll_loss=0.000, ppl=1.00, wps=63141, ups=3.4, wpb=18618, bsz=644, num_updates=2996, lr=0.00056387, gnorm=30378.184, clip=100%, oom=0, loss_scale=4.000, wall=893
+| epoch 001:   4000 / 6580 loss=6.261, nll_loss=0.000, ppl=1.00, wps=63139, ups=3.4, wpb=18605, bsz=642, num_updates=3996, lr=0.000488244, gnorm=24626.988, clip=100%, oom=0, loss_scale=8.000, wall=1187
+| epoch 001:   5000 / 6580 loss=5.976, nll_loss=0.000, ppl=1.00, wps=63170, ups=3.4, wpb=18605, bsz=643, num_updates=4996, lr=0.000436655, gnorm=21710.585, clip=100%, oom=0, loss_scale=8.000, wall=1481
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 001:   6000 / 6580 loss=5.768, nll_loss=0.000, ppl=1.00, wps=63186, ups=3.4, wpb=18607, bsz=644, num_updates=5995, lr=0.000398616, gnorm=20195.828, clip=100%, oom=0, loss_scale=8.000, wall=1775
+| epoch 001 | loss 5.670 | nll_loss 0.000 | ppl 1.00 | wps 63190 | ups 3.4 | wpb 18608 | bsz 645 | num_updates 6574 | lr 0.000380658 | gnorm 19235.973 | clip 100% | oom 0 | loss_scale 8.000 | wall 1946
+epoch time  1936.4050052165985
+:::MLL 1576204763.633 epoch_stop: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 201}}
+:::MLL 1576204763.633 eval_start: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 547}}
+generated 51 batches in 0.000657s
+| Translated 816 sentences (23088 tokens) in 7.5s (109.50 sentences/s, 3098.08 tokens/s)
+| Generate test with beam=4: bleu_score=22.4993
+| Eval completed in: 12.01s
+:::MLL 1576204775.644 eval_stop: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 658}}
+:::MLL 1576204775.647 eval_accuracy: {"value": "22.499266266822815", "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 211}}
+validation and scoring  12.029223680496216
+:::MLL 1576204775.699 block_stop: {"value": null, "metadata": {"first_epoch_num": 1, "file": "train.py", "lineno": 226}}
+:::MLL 1576204775.699 block_start: {"value": null, "metadata": {"first_epoch_num": 2, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1576204775.700 epoch_start: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 163}}
+generated 26319 batches in 1.679866s
+got epoch iterator 1.7384026050567627
+| epoch 002:   1000 / 6580 loss=4.595, nll_loss=0.000, ppl=1.00, wps=63080, ups=3.2, wpb=18557, bsz=652, num_updates=7575, lr=0.000354616, gnorm=17864.170, clip=100%, oom=0, loss_scale=8.000, wall=2254
+| epoch 002:   2000 / 6580 loss=4.580, nll_loss=0.000, ppl=1.00, wps=63132, ups=3.3, wpb=18572, bsz=647, num_updates=8575, lr=0.000333298, gnorm=17429.089, clip=100%, oom=0, loss_scale=16.000, wall=2548
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 002:   3000 / 6580 loss=4.560, nll_loss=0.000, ppl=1.00, wps=63182, ups=3.3, wpb=18590, bsz=647, num_updates=9574, lr=0.00031543, gnorm=16710.021, clip=100%, oom=0, loss_scale=8.000, wall=2842
+| epoch 002:   4000 / 6580 loss=4.540, nll_loss=0.000, ppl=1.00, wps=63251, ups=3.4, wpb=18610, bsz=646, num_updates=10574, lr=0.000300144, gnorm=15923.146, clip=100%, oom=0, loss_scale=8.000, wall=3137
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 002:   5000 / 6580 loss=4.523, nll_loss=0.000, ppl=1.00, wps=63250, ups=3.4, wpb=18612, bsz=645, num_updates=11573, lr=0.000286898, gnorm=15761.429, clip=100%, oom=0, loss_scale=8.000, wall=3431
+| epoch 002:   6000 / 6580 loss=4.510, nll_loss=0.000, ppl=1.00, wps=63231, ups=3.4, wpb=18604, bsz=645, num_updates=12573, lr=0.000275252, gnorm=15153.375, clip=100%, oom=0, loss_scale=8.000, wall=3725
+| epoch 002 | loss 4.501 | nll_loss 0.000 | ppl 1.00 | wps 63239 | ups 3.4 | wpb 18607 | bsz 646 | num_updates 13152 | lr 0.000269125 | gnorm 14839.924 | clip 100% | oom 0 | loss_scale 8.000 | wall 3895
+epoch time  1935.5381388664246
+:::MLL 1576206712.991 epoch_stop: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 201}}
+:::MLL 1576206712.991 eval_start: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 547}}
+generated 51 batches in 0.000643s
+| Translated 816 sentences (22965 tokens) in 7.3s (111.08 sentences/s, 3126.23 tokens/s)
+| Generate test with beam=4: bleu_score=24.6924
+| Eval completed in: 11.91s
+:::MLL 1576206724.904 eval_stop: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 658}}
+:::MLL 1576206724.907 eval_accuracy: {"value": "24.69235509634018", "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 211}}
+validation and scoring  11.931057691574097
+:::MLL 1576206724.960 block_stop: {"value": null, "metadata": {"first_epoch_num": 2, "file": "train.py", "lineno": 226}}
+:::MLL 1576206724.961 block_start: {"value": null, "metadata": {"first_epoch_num": 3, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1576206724.961 epoch_start: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 163}}
+generated 26319 batches in 1.645570s
+got epoch iterator 1.7084224224090576
+| epoch 003:   1000 / 6580 loss=4.322, nll_loss=0.000, ppl=1.00, wps=63301, ups=3.2, wpb=18629, bsz=639, num_updates=14153, lr=0.000259433, gnorm=14712.374, clip=100%, oom=0, loss_scale=16.000, wall=4204
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003:   2000 / 6580 loss=4.325, nll_loss=0.000, ppl=1.00, wps=63269, ups=3.3, wpb=18622, bsz=645, num_updates=15152, lr=0.000250735, gnorm=14307.092, clip=100%, oom=0, loss_scale=8.000, wall=4498
+| epoch 003:   3000 / 6580 loss=4.330, nll_loss=0.000, ppl=1.00, wps=63321, ups=3.3, wpb=18625, bsz=648, num_updates=16152, lr=0.000242849, gnorm=13923.792, clip=100%, oom=0, loss_scale=8.000, wall=4791
+| epoch 003:   4000 / 6580 loss=4.325, nll_loss=0.000, ppl=1.00, wps=63309, ups=3.4, wpb=18618, bsz=647, num_updates=17152, lr=0.000235664, gnorm=14004.214, clip=100%, oom=0, loss_scale=16.000, wall=5085
+| epoch 003:   5000 / 6580 loss=4.323, nll_loss=0.000, ppl=1.00, wps=63319, ups=3.4, wpb=18619, bsz=647, num_updates=18152, lr=0.00022908, gnorm=14101.792, clip=100%, oom=0, loss_scale=16.000, wall=5379
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 003:   6000 / 6580 loss=4.323, nll_loss=0.000, ppl=1.00, wps=63282, ups=3.4, wpb=18611, bsz=647, num_updates=19151, lr=0.000223025, gnorm=14307.181, clip=100%, oom=0, loss_scale=16.000, wall=5673
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003 | loss 4.322 | nll_loss 0.000 | ppl 1.00 | wps 63266 | ups 3.4 | wpb 18608 | bsz 646 | num_updates 19729 | lr 0.000219734 | gnorm 14337.366 | clip 100% | oom 0 | loss_scale 8.000 | wall 5843
+epoch time  1934.616705417633
+:::MLL 1576208661.287 epoch_stop: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 201}}
+:::MLL 1576208661.289 eval_start: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 547}}
+generated 51 batches in 0.000684s
+| Translated 816 sentences (23327 tokens) in 7.6s (107.39 sentences/s, 3069.94 tokens/s)
+| Generate test with beam=4: bleu_score=25.5470
+| Eval completed in: 12.17s
+:::MLL 1576208673.461 eval_stop: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 658}}
+:::MLL 1576208673.464 eval_accuracy: {"value": "25.546953082084656", "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 211}}
+validation and scoring  12.177944421768188
+:::MLL 1576208673.517 block_stop: {"value": null, "metadata": {"first_epoch_num": 3, "file": "train.py", "lineno": 226}}
+:::MLL 1576208673.517 run_stop: {"value": null, "metadata": {"status": "success", "file": "train.py", "lineno": 231}}
+| done training in 5851.6 seconds
+++ ret_code=0
+++ sleep 3
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1576208680
++++ date '+%Y-%m-%d %r'
+++ END_FMT='2019-12-13 03:44:40 AM'
+++ echo 'ENDING TIMING RUN AT 2019-12-13 03:44:40 AM'
+++ RESULT=5878
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    11532144,5878,,2019-12-13 02:06:42 AM'
++ set +x
+ENDING TIMING RUN AT 2019-12-13 03:44:40 AM
+RESULT,transformer,    11532144,5878,,2019-12-13 02:06:42 AM

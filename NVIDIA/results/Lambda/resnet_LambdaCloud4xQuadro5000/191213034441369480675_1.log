@@ -1,0 +1,885 @@
+Beginning trial 1 of 1
+Run vars: id 191213034441369480675
+Gathering sys log on oop
+--------------------------------------------------------------------------
+[[40201,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: oop
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+:::MLL 1576208714.005 submission_benchmark: {"metadata": {"lineno": 226, "file": "mlperf_log_utils.py"}, "value": "resnet"}
+:::MLL 1576208714.006 submission_org: {"metadata": {"lineno": 231, "file": "mlperf_log_utils.py"}, "value": "NVIDIA"}
+WARNING: Log validation: Key "submission_division" is not in known resnet keys.
+:::MLL 1576208714.007 submission_division: {"metadata": {"lineno": 235, "file": "mlperf_log_utils.py"}, "value": "closed"}
+:::MLL 1576208714.008 submission_status: {"metadata": {"lineno": 239, "file": "mlperf_log_utils.py"}, "value": "onprem"}
+:::MLL 1576208714.009 submission_platform: {"metadata": {"lineno": 243, "file": "mlperf_log_utils.py"}, "value": "1xStandard PC (Q35 + ICH9, 2009)"}
+:::MLL 1576208714.010 submission_entry: {"metadata": {"lineno": 247, "file": "mlperf_log_utils.py"}, "value": "{'framework': 'MXNet NVIDIA Release 19.05', 'notes': 'N/A', 'interconnect': ' ', 'hardware': 'Standard PC (Q35 + ICH9, 2009)', 'os': 'Ubuntu 18.04.3 LTS / ', 'power': 'N/A', 'compilers': 'gcc (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609', 'libraries': \"{'nccl_version': '2.4.6', 'openmpi_version': '3.1.3', 'cublas_version': '10.2.0.163', 'cuda_driver_version': '418.67', 'trt_version': '5.1.5.0', 'cudnn_version': '7.6.0.64', 'mofed_version': '4.4-1.0.0', 'cuda_version': '10.1.163', 'dali_version': '0.9.1', 'container_base': 'Ubuntu-16.04'}\", 'nodes': \"{'num_accelerators': '4', 'cpu_accel_interconnect': 'QPI', 'sys_storage_type': '<unknown bus> SSD', 'num_network_cards': '0', 'num_nodes': '1', 'accelerator': 'Quadro RTX 5000', 'network_card': '', 'num_cores': '1', 'notes': '', 'cpu': '1x AMD EPYC Processor (with IBPB)', 'sys_mem_size': '31 GB', 'num_vcpus': '1', 'sys_storage_size': '2x 89.1M + 1x 500G + 1x 48G'}\"}"}
+:::MLL 1576208714.011 submission_poc_name: {"metadata": {"lineno": 251, "file": "mlperf_log_utils.py"}, "value": "Paulius Micikevicius"}
+:::MLL 1576208714.012 submission_poc_email: {"metadata": {"lineno": 255, "file": "mlperf_log_utils.py"}, "value": "pauliusm@nvidia.com"}
+Clearing cache on oop
+:::MLL 1576208715.282 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+
+Launching user script on master node:
+[1,2]<stdout>:STARTING TIMING RUN AT 2019-12-13 03:45:16 AM
+[1,2]<stdout>:running benchmark
+[1,0]<stdout>:STARTING TIMING RUN AT 2019-12-13 03:45:16 AM
+[1,0]<stdout>:running benchmark
+[1,1]<stdout>:STARTING TIMING RUN AT 2019-12-13 03:45:16 AM
+[1,3]<stdout>:STARTING TIMING RUN AT 2019-12-13 03:45:16 AM
+[1,1]<stdout>:running benchmark
+[1,3]<stdout>:running benchmark
+--------------------------------------------------------------------------
+[[40206,1],3]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: oop
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+[1,0]<stdout>::::MLL 1576208719.835 init_start: {"value": null, "metadata": {"file": "train_imagenet.py", "lineno": 83}}
+[1,1]<stdout>::::MLL 1576208719.835 init_start: {"metadata": {"file": "train_imagenet.py", "lineno": 83}, "value": null}
+[1,3]<stdout>::::MLL 1576208719.836 init_start: {"metadata": {"file": "train_imagenet.py", "lineno": 83}, "value": null}
+[1,2]<stdout>::::MLL 1576208719.836 init_start: {"metadata": {"file": "train_imagenet.py", "lineno": 83}, "value": null}
+[oop:00127] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[oop:00127] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[1,0]<stdout>::::MLL 1576208726.119 model_bn_span: {"value": 104, "metadata": {"file": "common/dali.py", "lineno": 229}}
+[1,0]<stdout>::::MLL 1576208730.789 init_stop: {"value": null, "metadata": {"file": "train_imagenet.py", "lineno": 187}}
+[1,0]<stdout>::::MLL 1576208730.790 run_start: {"value": null, "metadata": {"file": "train_imagenet.py", "lineno": 190}}
+[1,1]<stderr>:2019-12-13 03:45:30,790 Node[1] start with arguments Namespace(accuracy_threshold=0.759, batch_size=104, batchnorm_eps=1e-05, batchnorm_layout='NHWC', batchnorm_mom=0.9, bn_gamma_init0=False, conv_algo=1, conv_layout='NHWC', custom_bn_off=0, dali_cache_size=0, dali_nvjpeg_memory_padding=256, dali_prefetch_queue=5, dali_roi_decode=True, dali_threads=3, data_train='/data/train.rec', data_train_idx='/data/train.idx', data_val='/data/val.rec', data_val_idx='/data/val.idx', disp_batches=20, dtype='float16', epoch_size=0, eval_offset=3, eval_period=4, force_tensor_core=1, fuse_bn_add_relu=1, fuse_bn_relu=1, gpus='1', image_shape='4,224,224', initializer='default', input_layout='NHWC', kv_store='horovod', label_smoothing=0.1, lars_eps=0, lars_eta=0.001, lazy_init_sanity=False, log='', logging_dir='logs', lr=5.0, lr_factor=0.1, lr_step_epochs='pow2', max_random_area=1.0, max_random_aspect_ratio=1.3333333333333333, min_random_area=0.05, min_random_aspect_ratio=0.75, model_prefix=None, mom=0.9, network='resnet-v1b-fl', num_classes=1000, num_epochs=72, num_examples=1281167, num_layers=50, optimizer='sgdwfastlars', pooling_layout='NHWC', profile_server_suffix='', profile_worker_suffix='', resize=256, save_period=1, seed=23092, separ_val=False, top_k=0, use_dali=True, verbose=0, warmup_epochs=5, warmup_strategy='linear', wd=0.0002)
+[1,3]<stderr>:2019-12-13 03:45:30,790 Node[3] start with arguments Namespace(accuracy_threshold=0.759, batch_size=104, batchnorm_eps=1e-05, batchnorm_layout='NHWC', batchnorm_mom=0.9, bn_gamma_init0=False, conv_algo=1, conv_layout='NHWC', custom_bn_off=0, dali_cache_size=0, dali_nvjpeg_memory_padding=256, dali_prefetch_queue=5, dali_roi_decode=True, dali_threads=3, data_train='/data/train.rec', data_train_idx='/data/train.idx', data_val='/data/val.rec', data_val_idx='/data/val.idx', disp_batches=20, dtype='float16', epoch_size=0, eval_offset=3, eval_period=4, force_tensor_core=1, fuse_bn_add_relu=1, fuse_bn_relu=1, gpus='3', image_shape='4,224,224', initializer='default', input_layout='NHWC', kv_store='horovod', label_smoothing=0.1, lars_eps=0, lars_eta=0.001, lazy_init_sanity=False, log='', logging_dir='logs', lr=5.0, lr_factor=0.1, lr_step_epochs='pow2', max_random_area=1.0, max_random_aspect_ratio=1.3333333333333333, min_random_area=0.05, min_random_aspect_ratio=0.75, model_prefix=None, mom=0.9, network='resnet-v1b-fl', num_classes=1000, num_epochs=72, num_examples=1281167, num_layers=50, optimizer='sgdwfastlars', pooling_layout='NHWC', profile_server_suffix='', profile_worker_suffix='', resize=256, save_period=1, seed=57482, separ_val=False, top_k=0, use_dali=True, verbose=0, warmup_epochs=5, warmup_strategy='linear', wd=0.0002)
+[1,0]<stderr>:2019-12-13 03:45:30,790 Node[0] start with arguments Namespace(accuracy_threshold=0.759, batch_size=104, batchnorm_eps=1e-05, batchnorm_layout='NHWC', batchnorm_mom=0.9, bn_gamma_init0=False, conv_algo=1, conv_layout='NHWC', custom_bn_off=0, dali_cache_size=0, dali_nvjpeg_memory_padding=256, dali_prefetch_queue=5, dali_roi_decode=True, dali_threads=3, data_train='/data/train.rec', data_train_idx='/data/train.idx', data_val='/data/val.rec', data_val_idx='/data/val.idx', disp_batches=20, dtype='float16', epoch_size=0, eval_offset=3, eval_period=4, force_tensor_core=1, fuse_bn_add_relu=1, fuse_bn_relu=1, gpus='0', image_shape='4,224,224', initializer='default', input_layout='NHWC', kv_store='horovod', label_smoothing=0.1, lars_eps=0, lars_eta=0.001, lazy_init_sanity=False, log='', logging_dir='logs', lr=5.0, lr_factor=0.1, lr_step_epochs='pow2', max_random_area=1.0, max_random_aspect_ratio=1.3333333333333333, min_random_area=0.05, min_random_aspect_ratio=0.75, model_prefix=None, mom=0.9, network='resnet-v1b-fl', num_classes=1000, num_epochs=72, num_examples=1281167, num_layers=50, optimizer='sgdwfastlars', pooling_layout='NHWC', profile_server_suffix='', profile_worker_suffix='', resize=256, save_period=1, seed=13483, separ_val=False, top_k=0, use_dali=True, verbose=0, warmup_epochs=5, warmup_strategy='linear', wd=0.0002)
+[1,2]<stderr>:2019-12-13 03:45:30,790 Node[2] start with arguments Namespace(accuracy_threshold=0.759, batch_size=104, batchnorm_eps=1e-05, batchnorm_layout='NHWC', batchnorm_mom=0.9, bn_gamma_init0=False, conv_algo=1, conv_layout='NHWC', custom_bn_off=0, dali_cache_size=0, dali_nvjpeg_memory_padding=256, dali_prefetch_queue=5, dali_roi_decode=True, dali_threads=3, data_train='/data/train.rec', data_train_idx='/data/train.idx', data_val='/data/val.rec', data_val_idx='/data/val.idx', disp_batches=20, dtype='float16', epoch_size=0, eval_offset=3, eval_period=4, force_tensor_core=1, fuse_bn_add_relu=1, fuse_bn_relu=1, gpus='2', image_shape='4,224,224', initializer='default', input_layout='NHWC', kv_store='horovod', label_smoothing=0.1, lars_eps=0, lars_eta=0.001, lazy_init_sanity=False, log='', logging_dir='logs', lr=5.0, lr_factor=0.1, lr_step_epochs='pow2', max_random_area=1.0, max_random_aspect_ratio=1.3333333333333333, min_random_area=0.05, min_random_aspect_ratio=0.75, model_prefix=None, mom=0.9, network='resnet-v1b-fl', num_classes=1000, num_epochs=72, num_examples=1281167, num_layers=50, optimizer='sgdwfastlars', pooling_layout='NHWC', profile_server_suffix='', profile_worker_suffix='', resize=256, save_period=1, seed=13664, separ_val=False, top_k=0, use_dali=True, verbose=0, warmup_epochs=5, warmup_strategy='linear', wd=0.0002)
+[1,3]<stderr>:2019-12-13 03:45:32,910 Node[3] Already bound, ignoring bind()
+[1,2]<stderr>:2019-12-13 03:45:33,118 Node[2] Already bound, ignoring bind()
+[1,0]<stdout>::::MLL 1576208733.145 opt_base_learning_rate: {"value": 5.0, "metadata": {"file": "common/fit.py", "lineno": 651}}
+[1,0]<stdout>::::MLL 1576208733.145 opt_learning_rate_warmup_epochs: {"value": 5, "metadata": {"file": "common/fit.py", "lineno": 652}}
+[1,0]<stdout>::::MLL 1576208733.147 lars_opt_learning_rate_decay_steps: {"value": 206360, "metadata": {"file": "common/fit.py", "lineno": 662}}
+[1,0]<stdout>::::MLL 1576208733.148 lars_opt_learning_rate_decay_poly_power: {"value": 2, "metadata": {"file": "common/fit.py", "lineno": 698}}
+[1,0]<stdout>::::MLL 1576208733.148 lars_opt_end_learning_rate: {"value": 0.0001, "metadata": {"file": "common/fit.py", "lineno": 699}}
+[1,0]<stdout>::::MLL 1576208733.148 opt_name: {"value": "lars", "metadata": {"file": "common/fit.py", "lineno": 1075}}
+[1,0]<stdout>::::MLL 1576208733.149 lars_epsilon: {"value": 0, "metadata": {"file": "common/fit.py", "lineno": 1077}}
+[1,0]<stdout>:WARNING: Log validation: Key "lars_opt_weight_decay" is not in known resnet keys.
+[1,0]<stdout>::::MLL 1576208733.149 lars_opt_weight_decay: {"value": 0.0002, "metadata": {"file": "common/fit.py", "lineno": 1079}}
+[1,0]<stdout>:using wd on conv0_weight
+[1,0]<stdout>:skipping wd on bn0_gamma
+[1,0]<stdout>:skipping wd on bn0_beta
+[1,0]<stdout>:using wd on stage1_unit1_conv1_weight
+[1,0]<stdout>:skipping wd on stage1_unit1_bn1_gamma
+[1,0]<stdout>:skipping wd on stage1_unit1_bn1_beta
+[1,0]<stdout>:using wd on stage1_unit1_conv2_weight
+[1,0]<stdout>:skipping wd on stage1_unit1_bn2_gamma
+[1,0]<stdout>:skipping wd on stage1_unit1_bn2_beta
+[1,0]<stdout>:using wd on stage1_unit1_conv3_weight
+[1,0]<stdout>:skipping wd on stage1_unit1_bn3_gamma
+[1,0]<stdout>:skipping wd on stage1_unit1_bn3_beta
+[1,0]<stdout>:using wd on stage1_unit1_conv1sc_weight
+[1,0]<stdout>:skipping wd on stage1_unit1_bn_sc_gamma
+[1,0]<stdout>:skipping wd on stage1_unit1_bn_sc_beta
+[1,0]<stdout>:using wd on stage1_unit2_conv1_weight
+[1,0]<stdout>:skipping wd on stage1_unit2_bn1_gamma
+[1,0]<stdout>:skipping wd on stage1_unit2_bn1_beta
+[1,0]<stdout>:using wd on stage1_unit2_conv2_weight
+[1,0]<stdout>:skipping wd on stage1_unit2_bn2_gamma
+[1,0]<stdout>:skipping wd on stage1_unit2_bn2_beta
+[1,0]<stdout>:using wd on stage1_unit2_conv3_weight
+[1,0]<stdout>:skipping wd on stage1_unit2_bn3_gamma
+[1,0]<stdout>:skipping wd on stage1_unit2_bn3_beta
+[1,0]<stdout>:using wd on stage1_unit3_conv1_weight
+[1,0]<stdout>:skipping wd on stage1_unit3_bn1_gamma
+[1,0]<stdout>:skipping wd on stage1_unit3_bn1_beta
+[1,0]<stdout>:using wd on stage1_unit3_conv2_weight
+[1,0]<stdout>:skipping wd on stage1_unit3_bn2_gamma
+[1,0]<stdout>:skipping wd on stage1_unit3_bn2_beta
+[1,0]<stdout>:using wd on stage1_unit3_conv3_weight
+[1,0]<stdout>:skipping wd on stage1_unit3_bn3_gamma
+[1,0]<stdout>:skipping wd on stage1_unit3_bn3_beta
+[1,0]<stdout>:using wd on stage2_unit1_conv1_weight
+[1,0]<stdout>:skipping wd on stage2_unit1_bn1_gamma
+[1,0]<stdout>:skipping wd on stage2_unit1_bn1_beta
+[1,0]<stdout>:using wd on stage2_unit1_conv2_weight
+[1,0]<stdout>:skipping wd on stage2_unit1_bn2_gamma
+[1,0]<stdout>:skipping wd on stage2_unit1_bn2_beta
+[1,0]<stdout>:using wd on stage2_unit1_conv3_weight
+[1,0]<stdout>:skipping wd on stage2_unit1_bn3_gamma
+[1,0]<stdout>:skipping wd on stage2_unit1_bn3_beta
+[1,0]<stdout>:using wd on stage2_unit1_conv1sc_weight
+[1,0]<stdout>:skipping wd on stage2_unit1_bn_sc_gamma
+[1,0]<stdout>:skipping wd on stage2_unit1_bn_sc_beta
+[1,0]<stdout>:using wd on stage2_unit2_conv1_weight
+[1,0]<stdout>:skipping wd on stage2_unit2_bn1_gamma
+[1,0]<stdout>:skipping wd on stage2_unit2_bn1_beta
+[1,0]<stdout>:using wd on stage2_unit2_conv2_weight
+[1,0]<stdout>:skipping wd on stage2_unit2_bn2_gamma
+[1,0]<stdout>:skipping wd on stage2_unit2_bn2_beta
+[1,0]<stdout>:using wd on stage2_unit2_conv3_weight
+[1,0]<stdout>:skipping wd on stage2_unit2_bn3_gamma
+[1,0]<stdout>:skipping wd on stage2_unit2_bn3_beta
+[1,0]<stdout>:using wd on stage2_unit3_conv1_weight
+[1,0]<stdout>:skipping wd on stage2_unit3_bn1_gamma
+[1,0]<stdout>:skipping wd on stage2_unit3_bn1_beta
+[1,0]<stdout>:using wd on stage2_unit3_conv2_weight
+[1,0]<stdout>:skipping wd on stage2_unit3_bn2_gamma
+[1,0]<stdout>:skipping wd on stage2_unit3_bn2_beta
+[1,0]<stdout>:using wd on stage2_unit3_conv3_weight
+[1,0]<stdout>:skipping wd on stage2_unit3_bn3_gamma
+[1,0]<stdout>:skipping wd on stage2_unit3_bn3_beta
+[1,0]<stdout>:using wd on stage2_unit4_conv1_weight
+[1,0]<stdout>:skipping wd on stage2_unit4_bn1_gamma
+[1,0]<stdout>:skipping wd on stage2_unit4_bn1_beta
+[1,0]<stdout>:using wd on stage2_unit4_conv2_weight
+[1,0]<stdout>:skipping wd on stage2_unit4_bn2_gamma
+[1,0]<stdout>:skipping wd on stage2_unit4_bn2_beta
+[1,0]<stdout>:using wd on stage2_unit4_conv3_weight
+[1,0]<stdout>:skipping wd on stage2_unit4_bn3_gamma
+[1,0]<stdout>:skipping wd on stage2_unit4_bn3_beta
+[1,0]<stdout>:using wd on stage3_unit1_conv1_weight
+[1,0]<stdout>:skipping wd on stage3_unit1_bn1_gamma
+[1,0]<stdout>:skipping wd on stage3_unit1_bn1_beta
+[1,0]<stdout>:using wd on stage3_unit1_conv2_weight
+[1,0]<stdout>:skipping wd on stage3_unit1_bn2_gamma
+[1,0]<stdout>:skipping wd on stage3_unit1_bn2_beta
+[1,0]<stdout>:using wd on stage3_unit1_conv3_weight
+[1,0]<stdout>:skipping wd on stage3_unit1_bn3_gamma
+[1,0]<stdout>:skipping wd on stage3_unit1_bn3_beta
+[1,0]<stdout>:using wd on stage3_unit1_conv1sc_weight
+[1,0]<stdout>:skipping wd on stage3_unit1_bn_sc_gamma
+[1,0]<stdout>:skipping wd on stage3_unit1_bn_sc_beta
+[1,0]<stdout>:using wd on stage3_unit2_conv1_weight
+[1,0]<stdout>:skipping wd on stage3_unit2_bn1_gamma
+[1,0]<stdout>:skipping wd on stage3_unit2_bn1_beta
+[1,0]<stdout>:using wd on stage3_unit2_conv2_weight
+[1,0]<stdout>:skipping wd on stage3_unit2_bn2_gamma
+[1,0]<stdout>:skipping wd on stage3_unit2_bn2_beta
+[1,0]<stdout>:using wd on stage3_unit2_conv3_weight
+[1,0]<stdout>:skipping wd on stage3_unit2_bn3_gamma
+[1,0]<stdout>:skipping wd on stage3_unit2_bn3_beta
+[1,0]<stdout>:using wd on stage3_unit3_conv1_weight
+[1,0]<stdout>:skipping wd on stage3_unit3_bn1_gamma
+[1,0]<stdout>:skipping wd on stage3_unit3_bn1_beta
+[1,0]<stdout>:using wd on stage3_unit3_conv2_weight
+[1,0]<stdout>:skipping wd on stage3_unit3_bn2_gamma
+[1,0]<stdout>:skipping wd on stage3_unit3_bn2_beta
+[1,0]<stdout>:using wd on stage3_unit3_conv3_weight
+[1,0]<stdout>:skipping wd on stage3_unit3_bn3_gamma
+[1,0]<stdout>:skipping wd on stage3_unit3_bn3_beta
+[1,0]<stdout>:using wd on stage3_unit4_conv1_weight
+[1,0]<stdout>:skipping wd on stage3_unit4_bn1_gamma
+[1,0]<stdout>:skipping wd on stage3_unit4_bn1_beta
+[1,0]<stdout>:using wd on stage3_unit4_conv2_weight
+[1,0]<stdout>:skipping wd on stage3_unit4_bn2_gamma
+[1,0]<stdout>:skipping wd on stage3_unit4_bn2_beta
+[1,0]<stdout>:using wd on stage3_unit4_conv3_weight
+[1,0]<stdout>:skipping wd on stage3_unit4_bn3_gamma
+[1,0]<stdout>:skipping wd on stage3_unit4_bn3_beta
+[1,0]<stdout>:using wd on stage3_unit5_conv1_weight
+[1,0]<stdout>:skipping wd on stage3_unit5_bn1_gamma
+[1,0]<stdout>:skipping wd on stage3_unit5_bn1_beta
+[1,0]<stdout>:using wd on stage3_unit5_conv2_weight
+[1,0]<stdout>:skipping wd on stage3_unit5_bn2_gamma
+[1,0]<stdout>:skipping wd on stage3_unit5_bn2_beta
+[1,0]<stdout>:using wd on stage3_unit5_conv3_weight
+[1,0]<stdout>:skipping wd on stage3_unit5_bn3_gamma
+[1,0]<stdout>:skipping wd on stage3_unit5_bn3_beta
+[1,0]<stdout>:using wd on stage3_unit6_conv1_weight
+[1,0]<stdout>:skipping wd on stage3_unit6_bn1_gamma
+[1,0]<stdout>:skipping wd on stage3_unit6_bn1_beta
+[1,0]<stdout>:using wd on stage3_unit6_conv2_weight
+[1,0]<stdout>:skipping wd on stage3_unit6_bn2_gamma
+[1,0]<stdout>:skipping wd on stage3_unit6_bn2_beta
+[1,0]<stdout>:using wd on stage3_unit6_conv3_weight
+[1,0]<stdout>:skipping wd on stage3_unit6_bn3_gamma
+[1,0]<stdout>:skipping wd on stage3_unit6_bn3_beta
+[1,0]<stdout>:using wd on stage4_unit1_conv1_weight
+[1,0]<stdout>:skipping wd on stage4_unit1_bn1_gamma
+[1,0]<stdout>:skipping wd on stage4_unit1_bn1_beta
+[1,0]<stdout>:using wd on stage4_unit1_conv2_weight
+[1,0]<stdout>:skipping wd on stage4_unit1_bn2_gamma
+[1,0]<stdout>:skipping wd on stage4_unit1_bn2_beta
+[1,0]<stdout>:using wd on stage4_unit1_conv3_weight
+[1,0]<stdout>:skipping wd on stage4_unit1_bn3_gamma
+[1,0]<stdout>:skipping wd on stage4_unit1_bn3_beta
+[1,0]<stdout>:using wd on stage4_unit1_conv1sc_weight
+[1,0]<stdout>:skipping wd on stage4_unit1_bn_sc_gamma
+[1,0]<stdout>:skipping wd on stage4_unit1_bn_sc_beta
+[1,0]<stdout>:using wd on stage4_unit2_conv1_weight
+[1,0]<stdout>:skipping wd on stage4_unit2_bn1_gamma
+[1,0]<stdout>:skipping wd on stage4_unit2_bn1_beta
+[1,0]<stdout>:using wd on stage4_unit2_conv2_weight
+[1,0]<stdout>:skipping wd on stage4_unit2_bn2_gamma
+[1,0]<stdout>:skipping wd on stage4_unit2_bn2_beta
+[1,0]<stdout>:using wd on stage4_unit2_conv3_weight
+[1,0]<stdout>:skipping wd on stage4_unit2_bn3_gamma
+[1,0]<stdout>:skipping wd on stage4_unit2_bn3_beta
+[1,0]<stdout>:using wd on stage4_unit3_conv1_weight
+[1,0]<stdout>:skipping wd on stage4_unit3_bn1_gamma
+[1,0]<stdout>:skipping wd on stage4_unit3_bn1_beta
+[1,0]<stdout>:using wd on stage4_unit3_conv2_weight
+[1,0]<stdout>:skipping wd on stage4_unit3_bn2_gamma
+[1,0]<stdout>:skipping wd on stage4_unit3_bn2_beta
+[1,0]<stdout>:using wd on stage4_unit3_conv3_weight
+[1,0]<stdout>:skipping wd on stage4_unit3_bn3_gamma
+[1,0]<stdout>:skipping wd on stage4_unit3_bn3_beta
+[1,0]<stdout>:using wd on fc1_weight
+[1,0]<stdout>:using wd on fc1_bias
+[1,0]<stdout>::::MLL 1576208733.150 global_batch_size: {"value": 416, "metadata": {"file": "common/fit.py", "lineno": 1112}}
+[1,0]<stderr>:2019-12-13 03:45:33,150 Node[0] Already bound, ignoring bind()
+[1,0]<stdout>::::MLL 1576208733.151 block_start: {"value": null, "metadata": {"epoch_count": 4, "lineno": 888, "first_epoch_num": 1, "file": "common/fit.py"}}
+[1,0]<stdout>::::MLL 1576208733.152 epoch_start: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 1, "lineno": 893}}
+[1,1]<stderr>:2019-12-13 03:45:33,189 Node[1] Already bound, ignoring bind()
+[1,0]<stderr>:/workspace/image_classification/common/fit.py:858: UserWarning: Parameters already initialized and force_init=False. init_params call ignored.
+[1,0]<stderr>:  allow_missing=allow_missing, force_init=force_init)
+[1,0]<stderr>:/workspace/image_classification/common/fit.py:860: UserWarning: Optimizer created manually outside Module but rescale_grad is not normalized to 1.0/batch_size/num_workers (0.002403846153846154 vs. 0.009615384615384616). Is this intended?
+[1,0]<stderr>:  optimizer_params=optimizer_params)
+[1,0]<stderr>:2019-12-13 03:45:39,415 Node[0] Epoch[0] Batch [0-20]	Speed: 2361.62 samples/sec	accuracy=0.002289
+[1,0]<stderr>:2019-12-13 03:45:42,862 Node[0] Epoch[0] Batch [20-40]	Speed: 2414.36 samples/sec	accuracy=0.000962
+[1,0]<stderr>:2019-12-13 03:45:46,214 Node[0] Epoch[0] Batch [40-60]	Speed: 2482.11 samples/sec	accuracy=0.001442
+[1,0]<stderr>:2019-12-13 03:45:49,561 Node[0] Epoch[0] Batch [60-80]	Speed: 2486.20 samples/sec	accuracy=0.000962
+[1,0]<stderr>:2019-12-13 03:45:52,954 Node[0] Epoch[0] Batch [80-100]	Speed: 2452.16 samples/sec	accuracy=0.001923
+[1,0]<stderr>:2019-12-13 03:45:56,361 Node[0] Epoch[0] Batch [100-120]	Speed: 2442.13 samples/sec	accuracy=0.002404
+[1,0]<stderr>:2019-12-13 03:45:59,787 Node[0] Epoch[0] Batch [120-140]	Speed: 2429.59 samples/sec	accuracy=0.002404
+[1,0]<stderr>:2019-12-13 03:46:03,278 Node[0] Epoch[0] Batch [140-160]	Speed: 2386.72 samples/sec	accuracy=0.001923
+[1,0]<stderr>:2019-12-13 03:46:06,872 Node[0] Epoch[0] Batch [160-180]	Speed: 2315.58 samples/sec	accuracy=0.001923
+[1,0]<stderr>:2019-12-13 03:46:10,543 Node[0] Epoch[0] Batch [180-200]	Speed: 2266.61 samples/sec	accuracy=0.001923
+[1,0]<stderr>:2019-12-13 03:46:13,913 Node[0] Epoch[0] Batch [200-220]	Speed: 2469.19 samples/sec	accuracy=0.001442
+[1,0]<stderr>:2019-12-13 03:46:17,342 Node[0] Epoch[0] Batch [220-240]	Speed: 2426.69 samples/sec	accuracy=0.001923
+[1,0]<stderr>:2019-12-13 03:46:20,745 Node[0] Epoch[0] Batch [240-260]	Speed: 2445.33 samples/sec	accuracy=0.000962
+[1,0]<stderr>:2019-12-13 03:46:24,227 Node[0] Epoch[0] Batch [260-280]	Speed: 2390.62 samples/sec	accuracy=0.001923
+[1,0]<stderr>:2019-12-13 03:46:27,737 Node[0] Epoch[0] Batch [280-300]	Speed: 2370.07 samples/sec	accuracy=0.001442
+[1,0]<stderr>:2019-12-13 03:46:31,150 Node[0] Epoch[0] Batch [300-320]	Speed: 2438.71 samples/sec	accuracy=0.002885
+[1,0]<stderr>:2019-12-13 03:46:34,525 Node[0] Epoch[0] Batch [320-340]	Speed: 2465.18 samples/sec	accuracy=0.001442
+[1,0]<stderr>:2019-12-13 03:46:38,062 Node[0] Epoch[0] Batch [340-360]	Speed: 2352.37 samples/sec	accuracy=0.003365
+[1,0]<stderr>:2019-12-13 03:46:41,548 Node[0] Epoch[0] Batch [360-380]	Speed: 2387.91 samples/sec	accuracy=0.000481
+[1,0]<stderr>:2019-12-13 03:46:44,971 Node[0] Epoch[0] Batch [380-400]	Speed: 2430.49 samples/sec	accuracy=0.002885
+[1,0]<stderr>:2019-12-13 03:46:48,438 Node[0] Epoch[0] Batch [400-420]	Speed: 2400.25 samples/sec	accuracy=0.003846
+[1,0]<stderr>:2019-12-13 03:46:51,900 Node[0] Epoch[0] Batch [420-440]	Speed: 2403.68 samples/sec	accuracy=0.003365
+[1,0]<stderr>:2019-12-13 03:46:55,339 Node[0] Epoch[0] Batch [440-460]	Speed: 2424.23 samples/sec	accuracy=0.006250
+[1,0]<stderr>:2019-12-13 03:46:58,839 Node[0] Epoch[0] Batch [460-480]	Speed: 2378.60 samples/sec	accuracy=0.005288
+[1,0]<stderr>:2019-12-13 03:47:02,280 Node[0] Epoch[0] Batch [480-500]	Speed: 2417.77 samples/sec	accuracy=0.002404
+[1,0]<stderr>:2019-12-13 03:47:05,689 Node[0] Epoch[0] Batch [500-520]	Speed: 2442.63 samples/sec	accuracy=0.006731
+[1,0]<stderr>:2019-12-13 03:47:09,120 Node[0] Epoch[0] Batch [520-540]	Speed: 2425.34 samples/sec	accuracy=0.002885
+[1,0]<stderr>:2019-12-13 03:47:12,515 Node[0] Epoch[0] Batch [540-560]	Speed: 2450.59 samples/sec	accuracy=0.005769
+[1,0]<stderr>:2019-12-13 03:47:15,943 Node[0] Epoch[0] Batch [560-580]	Speed: 2427.89 samples/sec	accuracy=0.010577
+[1,0]<stderr>:2019-12-13 03:47:19,471 Node[0] Epoch[0] Batch [580-600]	Speed: 2358.11 samples/sec	accuracy=0.006731
+[1,0]<stderr>:2019-12-13 03:47:22,857 Node[0] Epoch[0] Batch [600-620]	Speed: 2457.60 samples/sec	accuracy=0.004327
+[1,0]<stderr>:2019-12-13 03:47:26,330 Node[0] Epoch[0] Batch [620-640]	Speed: 2396.25 samples/sec	accuracy=0.004808
+[1,0]<stderr>:2019-12-13 03:47:29,865 Node[0] Epoch[0] Batch [640-660]	Speed: 2353.79 samples/sec	accuracy=0.005769
+[1,0]<stderr>:2019-12-13 03:47:33,327 Node[0] Epoch[0] Batch [660-680]	Speed: 2403.90 samples/sec	accuracy=0.012019
+[1,0]<stderr>:2019-12-13 03:47:36,738 Node[0] Epoch[0] Batch [680-700]	Speed: 2439.32 samples/sec	accuracy=0.012500
+[1,0]<stderr>:2019-12-13 03:47:40,141 Node[0] Epoch[0] Batch [700-720]	Speed: 2445.64 samples/sec	accuracy=0.012500
+[1,0]<stderr>:2019-12-13 03:47:43,540 Node[0] Epoch[0] Batch [720-740]	Speed: 2448.89 samples/sec	accuracy=0.010096
+[1,0]<stderr>:2019-12-13 03:47:46,937 Node[0] Epoch[0] Batch [740-760]	Speed: 2449.38 samples/sec	accuracy=0.010577
+[1,0]<stderr>:2019-12-13 03:47:50,252 Node[0] Epoch[0] Batch [760-780]	Speed: 2510.05 samples/sec	accuracy=0.014423
+[1,0]<stderr>:2019-12-13 03:47:53,575 Node[0] Epoch[0] Batch [780-800]	Speed: 2503.89 samples/sec	accuracy=0.012500
+[1,0]<stderr>:2019-12-13 03:47:56,995 Node[0] Epoch[0] Batch [800-820]	Speed: 2433.30 samples/sec	accuracy=0.019712
+[1,0]<stderr>:2019-12-13 03:48:00,379 Node[0] Epoch[0] Batch [820-840]	Speed: 2459.36 samples/sec	accuracy=0.018269
+[1,0]<stderr>:2019-12-13 03:48:03,754 Node[0] Epoch[0] Batch [840-860]	Speed: 2465.33 samples/sec	accuracy=0.009135
+[1,0]<stderr>:2019-12-13 03:48:07,200 Node[0] Epoch[0] Batch [860-880]	Speed: 2414.73 samples/sec	accuracy=0.018750
+[1,0]<stderr>:2019-12-13 03:48:10,711 Node[0] Epoch[0] Batch [880-900]	Speed: 2370.01 samples/sec	accuracy=0.017308
+[1,0]<stderr>:2019-12-13 03:48:14,153 Node[0] Epoch[0] Batch [900-920]	Speed: 2416.93 samples/sec	accuracy=0.022115
+[1,0]<stderr>:2019-12-13 03:48:17,625 Node[0] Epoch[0] Batch [920-940]	Speed: 2396.85 samples/sec	accuracy=0.019712
+[1,0]<stderr>:2019-12-13 03:48:21,013 Node[0] Epoch[0] Batch [940-960]	Speed: 2459.79 samples/sec	accuracy=0.019712
+[1,0]<stderr>:2019-12-13 03:48:24,494 Node[0] Epoch[0] Batch [960-980]	Speed: 2390.36 samples/sec	accuracy=0.019712
+[1,0]<stderr>:2019-12-13 03:48:27,971 Node[0] Epoch[0] Batch [980-1000]	Speed: 2393.41 samples/sec	accuracy=0.022115
+[1,0]<stderr>:2019-12-13 03:48:31,344 Node[0] Epoch[0] Batch [1000-1020]	Speed: 2467.83 samples/sec	accuracy=0.017308
+[1,0]<stderr>:2019-12-13 03:48:34,743 Node[0] Epoch[0] Batch [1020-1040]	Speed: 2448.44 samples/sec	accuracy=0.026923
+[1,0]<stderr>:2019-12-13 03:48:38,109 Node[0] Epoch[0] Batch [1040-1060]	Speed: 2471.94 samples/sec	accuracy=0.026442
+[1,0]<stderr>:2019-12-13 03:48:41,488 Node[0] Epoch[0] Batch [1060-1080]	Speed: 2462.72 samples/sec	accuracy=0.023558
+[1,0]<stderr>:2019-12-13 03:48:44,883 Node[0] Epoch[0] Batch [1080-1100]	Speed: 2451.12 samples/sec	accuracy=0.026923
+[1,0]<stderr>:2019-12-13 03:48:48,311 Node[0] Epoch[0] Batch [1100-1120]	Speed: 2428.51 samples/sec	accuracy=0.033654
+[1,0]<stderr>:2019-12-13 03:48:51,727 Node[0] Epoch[0] Batch [1120-1140]	Speed: 2436.99 samples/sec	accuracy=0.032692
+[1,0]<stderr>:2019-12-13 03:48:55,127 Node[0] Epoch[0] Batch [1140-1160]	Speed: 2447.74 samples/sec	accuracy=0.029327
+[1,0]<stderr>:2019-12-13 03:48:58,515 Node[0] Epoch[0] Batch [1160-1180]	Speed: 2456.87 samples/sec	accuracy=0.034615
+[1,0]<stderr>:2019-12-13 03:49:02,014 Node[0] Epoch[0] Batch [1180-1200]	Speed: 2377.93 samples/sec	accuracy=0.029327
+[1,0]<stderr>:2019-12-13 03:49:05,395 Node[0] Epoch[0] Batch [1200-1220]	Speed: 2461.89 samples/sec	accuracy=0.032212
+[1,0]<stderr>:2019-12-13 03:49:08,778 Node[0] Epoch[0] Batch [1220-1240]	Speed: 2459.67 samples/sec	accuracy=0.033654
+[1,0]<stderr>:2019-12-13 03:49:12,352 Node[0] Epoch[0] Batch [1240-1260]	Speed: 2328.42 samples/sec	accuracy=0.037500
+[1,0]<stderr>:2019-12-13 03:49:15,825 Node[0] Epoch[0] Batch [1260-1280]	Speed: 2395.76 samples/sec	accuracy=0.037500
+[1,0]<stderr>:2019-12-13 03:49:19,212 Node[0] Epoch[0] Batch [1280-1300]	Speed: 2457.01 samples/sec	accuracy=0.036058
+[1,0]<stderr>:2019-12-13 03:49:22,665 Node[0] Epoch[0] Batch [1300-1320]	Speed: 2409.54 samples/sec	accuracy=0.032692
+[1,0]<stderr>:2019-12-13 03:49:26,081 Node[0] Epoch[0] Batch [1320-1340]	Speed: 2439.21 samples/sec	accuracy=0.038942
+[1,0]<stderr>:2019-12-13 03:49:29,446 Node[0] Epoch[0] Batch [1340-1360]	Speed: 2473.77 samples/sec	accuracy=0.035096
+[1,0]<stderr>:2019-12-13 03:49:32,845 Node[0] Epoch[0] Batch [1360-1380]	Speed: 2447.68 samples/sec	accuracy=0.039423
+[1,0]<stderr>:2019-12-13 03:49:36,238 Node[0] Epoch[0] Batch [1380-1400]	Speed: 2452.95 samples/sec	accuracy=0.033654
+[1,0]<stderr>:2019-12-13 03:49:39,697 Node[0] Epoch[0] Batch [1400-1420]	Speed: 2405.30 samples/sec	accuracy=0.044712
+[1,0]<stderr>:2019-12-13 03:49:43,160 Node[0] Epoch[0] Batch [1420-1440]	Speed: 2402.80 samples/sec	accuracy=0.039423
+[1,0]<stderr>:2019-12-13 03:49:46,591 Node[0] Epoch[0] Batch [1440-1460]	Speed: 2425.40 samples/sec	accuracy=0.048558
+[1,0]<stderr>:2019-12-13 03:49:49,966 Node[0] Epoch[0] Batch [1460-1480]	Speed: 2465.47 samples/sec	accuracy=0.036538
+[1,0]<stderr>:2019-12-13 03:49:53,354 Node[0] Epoch[0] Batch [1480-1500]	Speed: 2456.19 samples/sec	accuracy=0.041346
+[1,0]<stderr>:2019-12-13 03:49:56,785 Node[0] Epoch[0] Batch [1500-1520]	Speed: 2425.20 samples/sec	accuracy=0.050000
+[1,0]<stderr>:2019-12-13 03:50:00,216 Node[0] Epoch[0] Batch [1520-1540]	Speed: 2424.79 samples/sec	accuracy=0.042788
+[1,0]<stderr>:2019-12-13 03:50:03,758 Node[0] Epoch[0] Batch [1540-1560]	Speed: 2349.14 samples/sec	accuracy=0.042788
+[1,0]<stderr>:2019-12-13 03:50:07,141 Node[0] Epoch[0] Batch [1560-1580]	Speed: 2459.54 samples/sec	accuracy=0.048077
+[1,0]<stderr>:2019-12-13 03:50:10,506 Node[0] Epoch[0] Batch [1580-1600]	Speed: 2472.83 samples/sec	accuracy=0.054327
+[1,0]<stderr>:2019-12-13 03:50:13,905 Node[0] Epoch[0] Batch [1600-1620]	Speed: 2448.82 samples/sec	accuracy=0.055769
+[1,0]<stderr>:2019-12-13 03:50:17,246 Node[0] Epoch[0] Batch [1620-1640]	Speed: 2489.90 samples/sec	accuracy=0.052885
+[1,0]<stderr>:2019-12-13 03:50:20,686 Node[0] Epoch[0] Batch [1640-1660]	Speed: 2419.12 samples/sec	accuracy=0.061058
+[1,0]<stderr>:2019-12-13 03:50:24,082 Node[0] Epoch[0] Batch [1660-1680]	Speed: 2450.84 samples/sec	accuracy=0.054808
+[1,0]<stderr>:2019-12-13 03:50:27,546 Node[0] Epoch[0] Batch [1680-1700]	Speed: 2402.00 samples/sec	accuracy=0.055769
+[1,0]<stderr>:2019-12-13 03:50:30,951 Node[0] Epoch[0] Batch [1700-1720]	Speed: 2443.81 samples/sec	accuracy=0.062500
+[1,0]<stderr>:2019-12-13 03:50:34,396 Node[0] Epoch[0] Batch [1720-1740]	Speed: 2415.28 samples/sec	accuracy=0.056731
+[1,0]<stderr>:2019-12-13 03:50:37,723 Node[0] Epoch[0] Batch [1740-1760]	Speed: 2501.34 samples/sec	accuracy=0.062500
+[1,0]<stderr>:2019-12-13 03:50:41,128 Node[0] Epoch[0] Batch [1760-1780]	Speed: 2443.55 samples/sec	accuracy=0.059135
+[1,0]<stderr>:2019-12-13 03:50:44,627 Node[0] Epoch[0] Batch [1780-1800]	Speed: 2384.02 samples/sec	accuracy=0.067308
+[1,0]<stderr>:2019-12-13 03:50:48,001 Node[0] Epoch[0] Batch [1800-1820]	Speed: 2467.04 samples/sec	accuracy=0.065865
+[1,0]<stderr>:2019-12-13 03:50:51,415 Node[0] Epoch[0] Batch [1820-1840]	Speed: 2438.80 samples/sec	accuracy=0.067788
+[1,0]<stderr>:2019-12-13 03:50:54,797 Node[0] Epoch[0] Batch [1840-1860]	Speed: 2462.30 samples/sec	accuracy=0.057692
+[1,0]<stderr>:2019-12-13 03:50:58,202 Node[0] Epoch[0] Batch [1860-1880]	Speed: 2444.21 samples/sec	accuracy=0.065385
+[1,0]<stderr>:2019-12-13 03:51:01,598 Node[0] Epoch[0] Batch [1880-1900]	Speed: 2450.38 samples/sec	accuracy=0.071635
+[1,0]<stderr>:2019-12-13 03:51:05,035 Node[0] Epoch[0] Batch [1900-1920]	Speed: 2421.64 samples/sec	accuracy=0.068750
+[1,0]<stderr>:2019-12-13 03:51:08,465 Node[0] Epoch[0] Batch [1920-1940]	Speed: 2425.42 samples/sec	accuracy=0.072596
+[1,0]<stderr>:2019-12-13 03:51:11,874 Node[0] Epoch[0] Batch [1940-1960]	Speed: 2440.98 samples/sec	accuracy=0.065385
+[1,0]<stderr>:2019-12-13 03:51:15,244 Node[0] Epoch[0] Batch [1960-1980]	Speed: 2469.65 samples/sec	accuracy=0.074038
+[1,0]<stderr>:2019-12-13 03:51:18,642 Node[0] Epoch[0] Batch [1980-2000]	Speed: 2449.33 samples/sec	accuracy=0.076923
+[1,0]<stderr>:2019-12-13 03:51:22,070 Node[0] Epoch[0] Batch [2000-2020]	Speed: 2426.86 samples/sec	accuracy=0.075962
+[1,0]<stderr>:2019-12-13 03:51:25,559 Node[0] Epoch[0] Batch [2020-2040]	Speed: 2385.44 samples/sec	accuracy=0.064423
+[1,0]<stderr>:2019-12-13 03:51:28,971 Node[0] Epoch[0] Batch [2040-2060]	Speed: 2438.30 samples/sec	accuracy=0.078846
+[1,0]<stderr>:2019-12-13 03:51:32,366 Node[0] Epoch[0] Batch [2060-2080]	Speed: 2450.95 samples/sec	accuracy=0.089904
+[1,0]<stderr>:2019-12-13 03:51:35,763 Node[0] Epoch[0] Batch [2080-2100]	Speed: 2449.86 samples/sec	accuracy=0.083654
+[1,0]<stderr>:2019-12-13 03:51:39,124 Node[0] Epoch[0] Batch [2100-2120]	Speed: 2475.76 samples/sec	accuracy=0.084135
+[1,0]<stderr>:2019-12-13 03:51:42,509 Node[0] Epoch[0] Batch [2120-2140]	Speed: 2458.06 samples/sec	accuracy=0.096635
+[1,0]<stderr>:2019-12-13 03:51:45,870 Node[0] Epoch[0] Batch [2140-2160]	Speed: 2475.44 samples/sec	accuracy=0.092788
+[1,0]<stderr>:2019-12-13 03:51:49,325 Node[0] Epoch[0] Batch [2160-2180]	Speed: 2408.79 samples/sec	accuracy=0.076442
+[1,0]<stderr>:2019-12-13 03:51:52,709 Node[0] Epoch[0] Batch [2180-2200]	Speed: 2459.43 samples/sec	accuracy=0.080769
+[1,0]<stderr>:2019-12-13 03:51:56,105 Node[0] Epoch[0] Batch [2200-2220]	Speed: 2450.10 samples/sec	accuracy=0.095192
+[1,0]<stderr>:2019-12-13 03:51:59,613 Node[0] Epoch[0] Batch [2220-2240]	Speed: 2372.64 samples/sec	accuracy=0.105769
+[1,0]<stderr>:2019-12-13 03:52:03,005 Node[0] Epoch[0] Batch [2240-2260]	Speed: 2452.69 samples/sec	accuracy=0.085577
+[1,0]<stderr>:2019-12-13 03:52:06,423 Node[0] Epoch[0] Batch [2260-2280]	Speed: 2434.77 samples/sec	accuracy=0.087500
+[1,0]<stderr>:2019-12-13 03:52:09,811 Node[0] Epoch[0] Batch [2280-2300]	Speed: 2456.01 samples/sec	accuracy=0.081250
+[1,0]<stderr>:2019-12-13 03:52:13,243 Node[0] Epoch[0] Batch [2300-2320]	Speed: 2424.86 samples/sec	accuracy=0.101923
+[1,0]<stderr>:2019-12-13 03:52:16,633 Node[0] Epoch[0] Batch [2320-2340]	Speed: 2454.25 samples/sec	accuracy=0.086058
+[1,0]<stderr>:2019-12-13 03:52:19,968 Node[0] Epoch[0] Batch [2340-2360]	Speed: 2495.48 samples/sec	accuracy=0.090385
+[1,0]<stderr>:2019-12-13 03:52:23,327 Node[0] Epoch[0] Batch [2360-2380]	Speed: 2477.29 samples/sec	accuracy=0.110096
+[1,0]<stderr>:2019-12-13 03:52:26,733 Node[0] Epoch[0] Batch [2380-2400]	Speed: 2443.26 samples/sec	accuracy=0.094231
+[1,0]<stderr>:2019-12-13 03:52:30,045 Node[0] Epoch[0] Batch [2400-2420]	Speed: 2512.58 samples/sec	accuracy=0.102404
+[1,0]<stderr>:2019-12-13 03:52:33,402 Node[0] Epoch[0] Batch [2420-2440]	Speed: 2478.24 samples/sec	accuracy=0.096635
+[1,0]<stderr>:2019-12-13 03:52:36,881 Node[0] Epoch[0] Batch [2440-2460]	Speed: 2392.09 samples/sec	accuracy=0.100962
+[1,0]<stderr>:2019-12-13 03:52:40,260 Node[0] Epoch[0] Batch [2460-2480]	Speed: 2463.32 samples/sec	accuracy=0.116346
+[1,0]<stderr>:2019-12-13 03:52:43,668 Node[0] Epoch[0] Batch [2480-2500]	Speed: 2441.55 samples/sec	accuracy=0.109615
+[1,0]<stderr>:2019-12-13 03:52:47,170 Node[0] Epoch[0] Batch [2500-2520]	Speed: 2376.44 samples/sec	accuracy=0.110577
+[1,0]<stderr>:2019-12-13 03:52:50,533 Node[0] Epoch[0] Batch [2520-2540]	Speed: 2474.50 samples/sec	accuracy=0.116346
+[1,0]<stderr>:2019-12-13 03:52:53,938 Node[0] Epoch[0] Batch [2540-2560]	Speed: 2444.37 samples/sec	accuracy=0.106731
+[1,0]<stderr>:2019-12-13 03:52:57,321 Node[0] Epoch[0] Batch [2560-2580]	Speed: 2459.72 samples/sec	accuracy=0.122596
+[1,0]<stderr>:2019-12-13 03:53:00,729 Node[0] Epoch[0] Batch [2580-2600]	Speed: 2441.82 samples/sec	accuracy=0.104808
+[1,0]<stderr>:2019-12-13 03:53:04,266 Node[0] Epoch[0] Batch [2600-2620]	Speed: 2361.98 samples/sec	accuracy=0.113942
+[1,0]<stderr>:2019-12-13 03:53:07,738 Node[0] Epoch[0] Batch [2620-2640]	Speed: 2396.65 samples/sec	accuracy=0.106731
+[1,0]<stderr>:2019-12-13 03:53:11,179 Node[0] Epoch[0] Batch [2640-2660]	Speed: 2418.21 samples/sec	accuracy=0.127404
+[1,0]<stderr>:2019-12-13 03:53:14,641 Node[0] Epoch[0] Batch [2660-2680]	Speed: 2405.11 samples/sec	accuracy=0.123077
+[1,0]<stderr>:2019-12-13 03:53:18,094 Node[0] Epoch[0] Batch [2680-2700]	Speed: 2409.85 samples/sec	accuracy=0.122596
+[1,0]<stderr>:2019-12-13 03:53:21,619 Node[0] Epoch[0] Batch [2700-2720]	Speed: 2360.34 samples/sec	accuracy=0.112981
+[1,0]<stderr>:2019-12-13 03:53:25,084 Node[0] Epoch[0] Batch [2720-2740]	Speed: 2401.64 samples/sec	accuracy=0.126442
+[1,0]<stderr>:2019-12-13 03:53:28,452 Node[0] Epoch[0] Batch [2740-2760]	Speed: 2470.47 samples/sec	accuracy=0.139423
+[1,0]<stderr>:2019-12-13 03:53:31,930 Node[0] Epoch[0] Batch [2760-2780]	Speed: 2392.44 samples/sec	accuracy=0.119712
+[1,0]<stderr>:2019-12-13 03:53:35,318 Node[0] Epoch[0] Batch [2780-2800]	Speed: 2456.12 samples/sec	accuracy=0.122596
+[1,0]<stderr>:2019-12-13 03:53:38,701 Node[0] Epoch[0] Batch [2800-2820]	Speed: 2459.92 samples/sec	accuracy=0.134135
+[1,0]<stderr>:2019-12-13 03:53:42,099 Node[0] Epoch[0] Batch [2820-2840]	Speed: 2449.57 samples/sec	accuracy=0.128365
+[1,0]<stderr>:2019-12-13 03:53:45,492 Node[0] Epoch[0] Batch [2840-2860]	Speed: 2451.91 samples/sec	accuracy=0.109135
+[1,0]<stderr>:2019-12-13 03:53:48,945 Node[0] Epoch[0] Batch [2860-2880]	Speed: 2414.05 samples/sec	accuracy=0.135096
+[1,0]<stderr>:2019-12-13 03:53:52,291 Node[0] Epoch[0] Batch [2880-2900]	Speed: 2486.53 samples/sec	accuracy=0.126923
+[1,0]<stderr>:2019-12-13 03:53:55,711 Node[0] Epoch[0] Batch [2900-2920]	Speed: 2433.03 samples/sec	accuracy=0.133654
+[1,0]<stderr>:2019-12-13 03:53:59,150 Node[0] Epoch[0] Batch [2920-2940]	Speed: 2420.53 samples/sec	accuracy=0.144231
+[1,0]<stderr>:2019-12-13 03:54:02,619 Node[0] Epoch[0] Batch [2940-2960]	Speed: 2398.50 samples/sec	accuracy=0.126442
+[1,0]<stderr>:2019-12-13 03:54:06,108 Node[0] Epoch[0] Batch [2960-2980]	Speed: 2384.82 samples/sec	accuracy=0.130769
+[1,0]<stderr>:2019-12-13 03:54:09,547 Node[0] Epoch[0] Batch [2980-3000]	Speed: 2419.72 samples/sec	accuracy=0.148077
+[1,0]<stderr>:2019-12-13 03:54:13,011 Node[0] Epoch[0] Batch [3000-3020]	Speed: 2402.61 samples/sec	accuracy=0.130288
+[1,0]<stderr>:2019-12-13 03:54:16,494 Node[0] Epoch[0] Batch [3020-3040]	Speed: 2389.25 samples/sec	accuracy=0.153365
+[1,0]<stderr>:2019-12-13 03:54:19,915 Node[0] Epoch[0] Batch [3040-3060]	Speed: 2432.46 samples/sec	accuracy=0.132692
+[1,0]<stderr>:2019-12-13 03:54:23,185 Node[0] Epoch[0] Time cost=530.034
+[1,0]<stdout>::::MLL 1576209263.173 epoch_stop: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 1, "lineno": 932}}
+[1,0]<stdout>::::MLL 1576209263.186 epoch_start: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 2, "lineno": 893}}
+[1,0]<stderr>:2019-12-13 03:54:26,861 Node[0] Epoch[1] Batch [0-20]	Speed: 2368.41 samples/sec	accuracy=0.127289
+[1,0]<stderr>:2019-12-13 03:54:30,266 Node[0] Epoch[1] Batch [20-40]	Speed: 2444.68 samples/sec	accuracy=0.132692
+[1,0]<stderr>:2019-12-13 03:54:33,731 Node[0] Epoch[1] Batch [40-60]	Speed: 2401.52 samples/sec	accuracy=0.150481
+[1,0]<stderr>:2019-12-13 03:54:37,158 Node[0] Epoch[1] Batch [60-80]	Speed: 2434.37 samples/sec	accuracy=0.139904
+[1,0]<stderr>:2019-12-13 03:54:40,703 Node[0] Epoch[1] Batch [80-100]	Speed: 2347.17 samples/sec	accuracy=0.148077
+[1,0]<stderr>:2019-12-13 03:54:44,082 Node[0] Epoch[1] Batch [100-120]	Speed: 2462.08 samples/sec	accuracy=0.143750
+[1,0]<stderr>:2019-12-13 03:54:47,598 Node[0] Epoch[1] Batch [120-140]	Speed: 2391.21 samples/sec	accuracy=0.147596
+[1,0]<stderr>:2019-12-13 03:54:51,323 Node[0] Epoch[1] Batch [140-160]	Speed: 2245.10 samples/sec	accuracy=0.138942
+[1,0]<stderr>:2019-12-13 03:54:54,864 Node[0] Epoch[1] Batch [160-180]	Speed: 2350.01 samples/sec	accuracy=0.151923
+[1,0]<stderr>:2019-12-13 03:54:58,347 Node[0] Epoch[1] Batch [180-200]	Speed: 2389.72 samples/sec	accuracy=0.156731
+[1,0]<stderr>:2019-12-13 03:55:01,833 Node[0] Epoch[1] Batch [200-220]	Speed: 2386.68 samples/sec	accuracy=0.147596
+[1,0]<stderr>:2019-12-13 03:55:05,252 Node[0] Epoch[1] Batch [220-240]	Speed: 2433.95 samples/sec	accuracy=0.158654
+[1,0]<stderr>:2019-12-13 03:55:08,875 Node[0] Epoch[1] Batch [240-260]	Speed: 2296.89 samples/sec	accuracy=0.166346
+[1,0]<stderr>:2019-12-13 03:55:12,466 Node[0] Epoch[1] Batch [260-280]	Speed: 2317.84 samples/sec	accuracy=0.159615
+[1,0]<stderr>:2019-12-13 03:55:16,178 Node[0] Epoch[1] Batch [280-300]	Speed: 2241.90 samples/sec	accuracy=0.169231
+[1,0]<stderr>:2019-12-13 03:55:19,692 Node[0] Epoch[1] Batch [300-320]	Speed: 2368.46 samples/sec	accuracy=0.146154
+[1,0]<stderr>:2019-12-13 03:55:23,323 Node[0] Epoch[1] Batch [320-340]	Speed: 2291.36 samples/sec	accuracy=0.155288
+[1,0]<stderr>:2019-12-13 03:55:26,944 Node[0] Epoch[1] Batch [340-360]	Speed: 2297.77 samples/sec	accuracy=0.173558
+[1,0]<stderr>:2019-12-13 03:55:30,774 Node[0] Epoch[1] Batch [360-380]	Speed: 2173.10 samples/sec	accuracy=0.176923
+[1,0]<stderr>:2019-12-13 03:55:34,353 Node[0] Epoch[1] Batch [380-400]	Speed: 2325.10 samples/sec	accuracy=0.157692
+[1,0]<stderr>:2019-12-13 03:55:38,139 Node[0] Epoch[1] Batch [400-420]	Speed: 2197.78 samples/sec	accuracy=0.159135
+[1,0]<stderr>:2019-12-13 03:55:41,906 Node[0] Epoch[1] Batch [420-440]	Speed: 2208.94 samples/sec	accuracy=0.165385
+[1,0]<stderr>:2019-12-13 03:55:45,860 Node[0] Epoch[1] Batch [440-460]	Speed: 2282.79 samples/sec	accuracy=0.169231
+[1,0]<stderr>:2019-12-13 03:55:50,113 Node[0] Epoch[1] Batch [460-480]	Speed: 1974.74 samples/sec	accuracy=0.169712
+[1,0]<stderr>:2019-12-13 03:55:54,304 Node[0] Epoch[1] Batch [480-500]	Speed: 2059.90 samples/sec	accuracy=0.168750
+[1,0]<stderr>:2019-12-13 03:55:58,417 Node[0] Epoch[1] Batch [500-520]	Speed: 2117.09 samples/sec	accuracy=0.169712
+[1,0]<stderr>:2019-12-13 03:56:02,601 Node[0] Epoch[1] Batch [520-540]	Speed: 2046.55 samples/sec	accuracy=0.163942
+[1,0]<stderr>:2019-12-13 03:56:06,690 Node[0] Epoch[1] Batch [540-560]	Speed: 2044.33 samples/sec	accuracy=0.172596
+[1,0]<stderr>:2019-12-13 03:56:10,515 Node[0] Epoch[1] Batch [560-580]	Speed: 2254.90 samples/sec	accuracy=0.170192
+[1,0]<stderr>:2019-12-13 03:56:14,449 Node[0] Epoch[1] Batch [580-600]	Speed: 2116.72 samples/sec	accuracy=0.175962
+[1,0]<stderr>:2019-12-13 03:56:18,459 Node[0] Epoch[1] Batch [600-620]	Speed: 2144.46 samples/sec	accuracy=0.179327
+[1,0]<stderr>:2019-12-13 03:56:22,555 Node[0] Epoch[1] Batch [620-640]	Speed: 2110.40 samples/sec	accuracy=0.183173
+[1,0]<stderr>:2019-12-13 03:56:26,866 Node[0] Epoch[1] Batch [640-660]	Speed: 1957.14 samples/sec	accuracy=0.187500
+[1,0]<stderr>:2019-12-13 03:56:30,581 Node[0] Epoch[1] Batch [660-680]	Speed: 2292.43 samples/sec	accuracy=0.180288
+[1,0]<stderr>:2019-12-13 03:56:34,189 Node[0] Epoch[1] Batch [680-700]	Speed: 2359.10 samples/sec	accuracy=0.167308
+[1,0]<stderr>:2019-12-13 03:56:37,655 Node[0] Epoch[1] Batch [700-720]	Speed: 2446.08 samples/sec	accuracy=0.175481
+[1,0]<stderr>:2019-12-13 03:56:41,509 Node[0] Epoch[1] Batch [720-740]	Speed: 2194.08 samples/sec	accuracy=0.180769
+[1,0]<stderr>:2019-12-13 03:56:45,228 Node[0] Epoch[1] Batch [740-760]	Speed: 2387.54 samples/sec	accuracy=0.162019
+[1,0]<stderr>:2019-12-13 03:56:49,350 Node[0] Epoch[1] Batch [760-780]	Speed: 2113.95 samples/sec	accuracy=0.204327
+[1,0]<stderr>:2019-12-13 03:56:53,545 Node[0] Epoch[1] Batch [780-800]	Speed: 2083.64 samples/sec	accuracy=0.193269
+[1,0]<stderr>:2019-12-13 03:56:57,833 Node[0] Epoch[1] Batch [800-820]	Speed: 1943.21 samples/sec	accuracy=0.171154
+[1,0]<stderr>:2019-12-13 03:57:02,465 Node[0] Epoch[1] Batch [820-840]	Speed: 1835.11 samples/sec	accuracy=0.187981
+[1,0]<stderr>:2019-12-13 03:57:06,988 Node[0] Epoch[1] Batch [840-860]	Speed: 1944.21 samples/sec	accuracy=0.187500
+[1,0]<stderr>:2019-12-13 03:57:12,061 Node[0] Epoch[1] Batch [860-880]	Speed: 1664.83 samples/sec	accuracy=0.198558
+[1,0]<stderr>:2019-12-13 03:57:16,718 Node[0] Epoch[1] Batch [880-900]	Speed: 1935.05 samples/sec	accuracy=0.184135
+[1,0]<stderr>:2019-12-13 03:57:21,296 Node[0] Epoch[1] Batch [900-920]	Speed: 2020.44 samples/sec	accuracy=0.204808
+[1,0]<stderr>:2019-12-13 03:57:25,207 Node[0] Epoch[1] Batch [920-940]	Speed: 2232.86 samples/sec	accuracy=0.196635
+[1,0]<stderr>:2019-12-13 03:57:29,243 Node[0] Epoch[1] Batch [940-960]	Speed: 2082.22 samples/sec	accuracy=0.188942
+[1,0]<stderr>:2019-12-13 03:57:33,524 Node[0] Epoch[1] Batch [960-980]	Speed: 2015.14 samples/sec	accuracy=0.211058
+[1,0]<stderr>:2019-12-13 03:57:38,307 Node[0] Epoch[1] Batch [980-1000]	Speed: 1820.65 samples/sec	accuracy=0.188942
+[1,0]<stderr>:2019-12-13 03:57:43,074 Node[0] Epoch[1] Batch [1000-1020]	Speed: 1787.54 samples/sec	accuracy=0.181250
+[1,0]<stderr>:2019-12-13 03:57:47,777 Node[0] Epoch[1] Batch [1020-1040]	Speed: 1840.86 samples/sec	accuracy=0.193269
+[1,0]<stderr>:2019-12-13 03:57:52,031 Node[0] Epoch[1] Batch [1040-1060]	Speed: 2091.72 samples/sec	accuracy=0.192788
+[1,0]<stderr>:2019-12-13 03:57:56,724 Node[0] Epoch[1] Batch [1060-1080]	Speed: 1861.65 samples/sec	accuracy=0.204327
+[1,0]<stderr>:2019-12-13 03:58:01,905 Node[0] Epoch[1] Batch [1080-1100]	Speed: 1701.34 samples/sec	accuracy=0.209615
+[1,0]<stderr>:2019-12-13 03:58:06,959 Node[0] Epoch[1] Batch [1100-1120]	Speed: 1789.28 samples/sec	accuracy=0.200481
+[1,0]<stderr>:2019-12-13 03:58:12,104 Node[0] Epoch[1] Batch [1120-1140]	Speed: 1656.60 samples/sec	accuracy=0.192308
+[1,0]<stderr>:2019-12-13 03:58:17,165 Node[0] Epoch[1] Batch [1140-1160]	Speed: 1730.05 samples/sec	accuracy=0.205769
+[1,0]<stderr>:2019-12-13 03:58:22,248 Node[0] Epoch[1] Batch [1160-1180]	Speed: 1743.70 samples/sec	accuracy=0.215865
+[1,0]<stderr>:2019-12-13 03:58:26,910 Node[0] Epoch[1] Batch [1180-1200]	Speed: 1878.18 samples/sec	accuracy=0.217308
+[1,0]<stderr>:2019-12-13 03:58:32,211 Node[0] Epoch[1] Batch [1200-1220]	Speed: 1683.94 samples/sec	accuracy=0.219231
+[1,0]<stderr>:2019-12-13 03:58:36,922 Node[0] Epoch[1] Batch [1220-1240]	Speed: 1881.00 samples/sec	accuracy=0.212019
+[1,0]<stderr>:2019-12-13 03:58:42,622 Node[0] Epoch[1] Batch [1240-1260]	Speed: 1537.01 samples/sec	accuracy=0.208173
+[1,0]<stderr>:2019-12-13 03:58:48,149 Node[0] Epoch[1] Batch [1260-1280]	Speed: 1601.06 samples/sec	accuracy=0.206731
+[1,0]<stderr>:2019-12-13 03:58:53,847 Node[0] Epoch[1] Batch [1280-1300]	Speed: 1568.99 samples/sec	accuracy=0.210577
+[1,0]<stderr>:2019-12-13 03:58:59,017 Node[0] Epoch[1] Batch [1300-1320]	Speed: 1677.76 samples/sec	accuracy=0.208173
+[1,0]<stderr>:2019-12-13 03:59:04,189 Node[0] Epoch[1] Batch [1320-1340]	Speed: 1683.74 samples/sec	accuracy=0.199519
+[1,0]<stderr>:2019-12-13 03:59:09,535 Node[0] Epoch[1] Batch [1340-1360]	Speed: 1657.67 samples/sec	accuracy=0.221635
+[1,0]<stderr>:2019-12-13 03:59:14,304 Node[0] Epoch[1] Batch [1360-1380]	Speed: 1800.24 samples/sec	accuracy=0.216827
+[1,0]<stderr>:2019-12-13 03:59:19,508 Node[0] Epoch[1] Batch [1380-1400]	Speed: 1599.21 samples/sec	accuracy=0.210577
+[1,0]<stderr>:2019-12-13 03:59:24,569 Node[0] Epoch[1] Batch [1400-1420]	Speed: 1683.07 samples/sec	accuracy=0.224038
+[1,0]<stderr>:2019-12-13 03:59:29,231 Node[0] Epoch[1] Batch [1420-1440]	Speed: 1849.72 samples/sec	accuracy=0.212981
+[1,0]<stderr>:2019-12-13 03:59:33,561 Node[0] Epoch[1] Batch [1440-1460]	Speed: 1987.96 samples/sec	accuracy=0.216827
+[1,0]<stderr>:2019-12-13 03:59:37,970 Node[0] Epoch[1] Batch [1460-1480]	Speed: 1908.14 samples/sec	accuracy=0.221635
+[1,0]<stderr>:2019-12-13 03:59:42,782 Node[0] Epoch[1] Batch [1480-1500]	Speed: 1799.08 samples/sec	accuracy=0.213462
+[1,0]<stderr>:2019-12-13 03:59:47,111 Node[0] Epoch[1] Batch [1500-1520]	Speed: 1948.52 samples/sec	accuracy=0.228846
+[1,0]<stderr>:2019-12-13 03:59:51,491 Node[0] Epoch[1] Batch [1520-1540]	Speed: 1973.09 samples/sec	accuracy=0.216827
+[1,0]<stderr>:2019-12-13 03:59:55,348 Node[0] Epoch[1] Batch [1540-1560]	Speed: 2178.56 samples/sec	accuracy=0.218750
+[1,0]<stderr>:2019-12-13 03:59:59,399 Node[0] Epoch[1] Batch [1560-1580]	Speed: 2100.05 samples/sec	accuracy=0.220192
+[1,0]<stderr>:2019-12-13 04:00:03,223 Node[0] Epoch[1] Batch [1580-1600]	Speed: 2179.32 samples/sec	accuracy=0.229327
+[1,0]<stderr>:2019-12-13 04:00:07,047 Node[0] Epoch[1] Batch [1600-1620]	Speed: 2194.79 samples/sec	accuracy=0.223077
+[1,0]<stderr>:2019-12-13 04:00:11,170 Node[0] Epoch[1] Batch [1620-1640]	Speed: 2018.92 samples/sec	accuracy=0.219712
+[1,0]<stderr>:2019-12-13 04:00:15,212 Node[0] Epoch[1] Batch [1640-1660]	Speed: 2198.39 samples/sec	accuracy=0.228365
+[1,0]<stderr>:2019-12-13 04:00:19,322 Node[0] Epoch[1] Batch [1660-1680]	Speed: 2025.04 samples/sec	accuracy=0.225000
+[1,0]<stderr>:2019-12-13 04:00:23,462 Node[0] Epoch[1] Batch [1680-1700]	Speed: 2065.07 samples/sec	accuracy=0.233173
+[1,0]<stderr>:2019-12-13 04:00:27,559 Node[0] Epoch[1] Batch [1700-1720]	Speed: 2031.64 samples/sec	accuracy=0.225481
+[1,0]<stderr>:2019-12-13 04:00:31,284 Node[0] Epoch[1] Batch [1720-1740]	Speed: 2406.69 samples/sec	accuracy=0.223077
+[1,0]<stderr>:2019-12-13 04:00:35,103 Node[0] Epoch[1] Batch [1740-1760]	Speed: 2185.65 samples/sec	accuracy=0.223077
+[1,0]<stderr>:2019-12-13 04:00:38,808 Node[0] Epoch[1] Batch [1760-1780]	Speed: 2245.84 samples/sec	accuracy=0.230288
+[1,0]<stderr>:2019-12-13 04:00:42,731 Node[0] Epoch[1] Batch [1780-1800]	Speed: 2121.10 samples/sec	accuracy=0.219231
+[1,0]<stderr>:2019-12-13 04:00:46,771 Node[0] Epoch[1] Batch [1800-1820]	Speed: 2059.96 samples/sec	accuracy=0.238462
+[1,0]<stderr>:2019-12-13 04:00:50,628 Node[0] Epoch[1] Batch [1820-1840]	Speed: 2162.42 samples/sec	accuracy=0.242308
+[1,0]<stderr>:2019-12-13 04:00:54,394 Node[0] Epoch[1] Batch [1840-1860]	Speed: 2209.20 samples/sec	accuracy=0.231731
+[1,0]<stderr>:2019-12-13 04:00:58,084 Node[0] Epoch[1] Batch [1860-1880]	Speed: 2255.07 samples/sec	accuracy=0.229808
+[1,0]<stderr>:2019-12-13 04:01:02,098 Node[0] Epoch[1] Batch [1880-1900]	Speed: 2073.41 samples/sec	accuracy=0.239423
+[1,0]<stderr>:2019-12-13 04:01:05,984 Node[0] Epoch[1] Batch [1900-1920]	Speed: 2141.09 samples/sec	accuracy=0.237500
+[1,0]<stderr>:2019-12-13 04:01:09,471 Node[0] Epoch[1] Batch [1920-1940]	Speed: 2386.36 samples/sec	accuracy=0.243269
+[1,0]<stderr>:2019-12-13 04:01:12,990 Node[0] Epoch[1] Batch [1940-1960]	Speed: 2364.91 samples/sec	accuracy=0.230288
+[1,0]<stderr>:2019-12-13 04:01:16,522 Node[0] Epoch[1] Batch [1960-1980]	Speed: 2356.65 samples/sec	accuracy=0.223558
+[1,0]<stderr>:2019-12-13 04:01:20,050 Node[0] Epoch[1] Batch [1980-2000]	Speed: 2358.65 samples/sec	accuracy=0.229327
+[1,0]<stderr>:2019-12-13 04:01:23,520 Node[0] Epoch[1] Batch [2000-2020]	Speed: 2397.99 samples/sec	accuracy=0.231731
+[1,0]<stderr>:2019-12-13 04:01:27,116 Node[0] Epoch[1] Batch [2020-2040]	Speed: 2313.89 samples/sec	accuracy=0.236058
+[1,0]<stderr>:2019-12-13 04:01:30,675 Node[0] Epoch[1] Batch [2040-2060]	Speed: 2338.84 samples/sec	accuracy=0.228365
+[1,0]<stderr>:2019-12-13 04:01:34,104 Node[0] Epoch[1] Batch [2060-2080]	Speed: 2427.39 samples/sec	accuracy=0.251442
+[1,0]<stderr>:2019-12-13 04:01:37,530 Node[0] Epoch[1] Batch [2080-2100]	Speed: 2428.44 samples/sec	accuracy=0.235096
+[1,0]<stderr>:2019-12-13 04:01:41,025 Node[0] Epoch[1] Batch [2100-2120]	Speed: 2381.12 samples/sec	accuracy=0.248558
+[1,0]<stderr>:2019-12-13 04:01:44,710 Node[0] Epoch[1] Batch [2120-2140]	Speed: 2258.03 samples/sec	accuracy=0.262019
+[1,0]<stderr>:2019-12-13 04:01:48,237 Node[0] Epoch[1] Batch [2140-2160]	Speed: 2362.41 samples/sec	accuracy=0.220192
+[1,0]<stderr>:2019-12-13 04:01:51,730 Node[0] Epoch[1] Batch [2160-2180]	Speed: 2382.04 samples/sec	accuracy=0.237981
+[1,0]<stderr>:2019-12-13 04:01:55,238 Node[0] Epoch[1] Batch [2180-2200]	Speed: 2371.97 samples/sec	accuracy=0.243750
+[1,0]<stderr>:2019-12-13 04:01:58,721 Node[0] Epoch[1] Batch [2200-2220]	Speed: 2389.41 samples/sec	accuracy=0.241346
+[1,0]<stderr>:2019-12-13 04:02:02,188 Node[0] Epoch[1] Batch [2220-2240]	Speed: 2400.43 samples/sec	accuracy=0.247596
+[1,0]<stderr>:2019-12-13 04:02:05,623 Node[0] Epoch[1] Batch [2240-2260]	Speed: 2422.54 samples/sec	accuracy=0.250000
+[1,0]<stderr>:2019-12-13 04:02:09,051 Node[0] Epoch[1] Batch [2260-2280]	Speed: 2427.92 samples/sec	accuracy=0.250962
+[1,0]<stderr>:2019-12-13 04:02:12,518 Node[0] Epoch[1] Batch [2280-2300]	Speed: 2400.03 samples/sec	accuracy=0.255288
+[1,0]<stderr>:2019-12-13 04:02:15,994 Node[0] Epoch[1] Batch [2300-2320]	Speed: 2393.75 samples/sec	accuracy=0.258173
+[1,0]<stderr>:2019-12-13 04:02:19,479 Node[0] Epoch[1] Batch [2320-2340]	Speed: 2388.70 samples/sec	accuracy=0.253846
+[1,0]<stderr>:2019-12-13 04:02:22,901 Node[0] Epoch[1] Batch [2340-2360]	Speed: 2431.95 samples/sec	accuracy=0.250962
+[1,0]<stderr>:2019-12-13 04:02:26,317 Node[0] Epoch[1] Batch [2360-2380]	Speed: 2436.41 samples/sec	accuracy=0.258654
+[1,0]<stderr>:2019-12-13 04:02:29,880 Node[0] Epoch[1] Batch [2380-2400]	Speed: 2335.10 samples/sec	accuracy=0.242308
+[1,0]<stderr>:2019-12-13 04:02:33,345 Node[0] Epoch[1] Batch [2400-2420]	Speed: 2402.22 samples/sec	accuracy=0.258654
+[1,0]<stderr>:2019-12-13 04:02:36,741 Node[0] Epoch[1] Batch [2420-2440]	Speed: 2450.47 samples/sec	accuracy=0.250962
+[1,0]<stderr>:2019-12-13 04:02:40,173 Node[0] Epoch[1] Batch [2440-2460]	Speed: 2424.99 samples/sec	accuracy=0.262019
+[1,0]<stderr>:2019-12-13 04:02:43,770 Node[0] Epoch[1] Batch [2460-2480]	Speed: 2313.41 samples/sec	accuracy=0.267788
+[1,0]<stderr>:2019-12-13 04:02:47,269 Node[0] Epoch[1] Batch [2480-2500]	Speed: 2378.71 samples/sec	accuracy=0.266346
+[1,0]<stderr>:2019-12-13 04:02:50,815 Node[0] Epoch[1] Batch [2500-2520]	Speed: 2346.21 samples/sec	accuracy=0.267308
+[1,0]<stderr>:2019-12-13 04:02:54,221 Node[0] Epoch[1] Batch [2520-2540]	Speed: 2443.83 samples/sec	accuracy=0.265385
+[1,0]<stderr>:2019-12-13 04:02:57,681 Node[0] Epoch[1] Batch [2540-2560]	Speed: 2405.16 samples/sec	accuracy=0.262500
+[1,0]<stderr>:2019-12-13 04:03:01,183 Node[0] Epoch[1] Batch [2560-2580]	Speed: 2376.24 samples/sec	accuracy=0.255769
+[1,0]<stderr>:2019-12-13 04:03:04,695 Node[0] Epoch[1] Batch [2580-2600]	Speed: 2369.56 samples/sec	accuracy=0.269231
+[1,0]<stderr>:2019-12-13 04:03:08,192 Node[0] Epoch[1] Batch [2600-2620]	Speed: 2379.06 samples/sec	accuracy=0.249038
+[1,0]<stderr>:2019-12-13 04:03:11,684 Node[0] Epoch[1] Batch [2620-2640]	Speed: 2383.36 samples/sec	accuracy=0.244231
+[1,0]<stderr>:2019-12-13 04:03:15,178 Node[0] Epoch[1] Batch [2640-2660]	Speed: 2381.56 samples/sec	accuracy=0.264423
+[1,0]<stderr>:2019-12-13 04:03:18,647 Node[0] Epoch[1] Batch [2660-2680]	Speed: 2398.69 samples/sec	accuracy=0.258654
+[1,0]<stderr>:2019-12-13 04:03:22,111 Node[0] Epoch[1] Batch [2680-2700]	Speed: 2402.24 samples/sec	accuracy=0.260577
+[1,0]<stderr>:2019-12-13 04:03:25,729 Node[0] Epoch[1] Batch [2700-2720]	Speed: 2302.62 samples/sec	accuracy=0.264904
+[1,0]<stderr>:2019-12-13 04:03:29,187 Node[0] Epoch[1] Batch [2720-2740]	Speed: 2406.46 samples/sec	accuracy=0.260577
+[1,0]<stderr>:2019-12-13 04:03:32,724 Node[0] Epoch[1] Batch [2740-2760]	Speed: 2352.78 samples/sec	accuracy=0.270192
+[1,0]<stderr>:2019-12-13 04:03:36,122 Node[0] Epoch[1] Batch [2760-2780]	Speed: 2449.50 samples/sec	accuracy=0.272596
+[1,0]<stderr>:2019-12-13 04:03:39,520 Node[0] Epoch[1] Batch [2780-2800]	Speed: 2448.23 samples/sec	accuracy=0.276923
+[1,0]<stderr>:2019-12-13 04:03:42,985 Node[0] Epoch[1] Batch [2800-2820]	Speed: 2401.99 samples/sec	accuracy=0.266346
+[1,0]<stderr>:2019-12-13 04:03:46,419 Node[0] Epoch[1] Batch [2820-2840]	Speed: 2423.35 samples/sec	accuracy=0.277885
+[1,0]<stderr>:2019-12-13 04:03:49,921 Node[0] Epoch[1] Batch [2840-2860]	Speed: 2375.88 samples/sec	accuracy=0.271154
+[1,0]<stderr>:2019-12-13 04:03:53,533 Node[0] Epoch[1] Batch [2860-2880]	Speed: 2306.43 samples/sec	accuracy=0.280288
+[1,0]<stderr>:2019-12-13 04:03:57,091 Node[0] Epoch[1] Batch [2880-2900]	Speed: 2339.70 samples/sec	accuracy=0.278365
+[1,0]<stderr>:2019-12-13 04:04:00,568 Node[0] Epoch[1] Batch [2900-2920]	Speed: 2393.85 samples/sec	accuracy=0.269231
+[1,0]<stderr>:2019-12-13 04:04:04,024 Node[0] Epoch[1] Batch [2920-2940]	Speed: 2407.79 samples/sec	accuracy=0.269231
+[1,0]<stderr>:2019-12-13 04:04:07,515 Node[0] Epoch[1] Batch [2940-2960]	Speed: 2383.53 samples/sec	accuracy=0.259135
+[1,0]<stderr>:2019-12-13 04:04:10,948 Node[0] Epoch[1] Batch [2960-2980]	Speed: 2423.79 samples/sec	accuracy=0.282212
+[1,0]<stderr>:2019-12-13 04:04:14,324 Node[0] Epoch[1] Batch [2980-3000]	Speed: 2466.78 samples/sec	accuracy=0.305288
+[1,0]<stderr>:2019-12-13 04:04:17,718 Node[0] Epoch[1] Batch [3000-3020]	Speed: 2451.63 samples/sec	accuracy=0.282212
+[1,0]<stderr>:2019-12-13 04:04:21,145 Node[0] Epoch[1] Batch [3020-3040]	Speed: 2429.14 samples/sec	accuracy=0.278846
+[1,0]<stderr>:2019-12-13 04:04:24,525 Node[0] Epoch[1] Batch [3040-3060]	Speed: 2462.74 samples/sec	accuracy=0.278846
+[1,0]<stderr>:2019-12-13 04:04:28,059 Node[0] Epoch[1] Time cost=604.870
+[1,0]<stdout>::::MLL 1576209868.036 epoch_stop: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 2, "lineno": 932}}
+[1,0]<stdout>::::MLL 1576209868.070 epoch_start: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 3, "lineno": 893}}
+[1,0]<stderr>:2019-12-13 04:04:31,532 Node[0] Epoch[2] Batch [0-20]	Speed: 2447.46 samples/sec	accuracy=0.274267
+[1,0]<stderr>:2019-12-13 04:04:34,965 Node[0] Epoch[2] Batch [20-40]	Speed: 2423.81 samples/sec	accuracy=0.279808
+[1,0]<stderr>:2019-12-13 04:04:38,379 Node[0] Epoch[2] Batch [40-60]	Speed: 2437.34 samples/sec	accuracy=0.279808
+[1,0]<stderr>:2019-12-13 04:04:41,859 Node[0] Epoch[2] Batch [60-80]	Speed: 2391.33 samples/sec	accuracy=0.277885
+[1,0]<stderr>:2019-12-13 04:04:45,294 Node[0] Epoch[2] Batch [80-100]	Speed: 2422.05 samples/sec	accuracy=0.281731
+[1,0]<stderr>:2019-12-13 04:04:48,677 Node[0] Epoch[2] Batch [100-120]	Speed: 2461.15 samples/sec	accuracy=0.283173
+[1,0]<stderr>:2019-12-13 04:04:52,083 Node[0] Epoch[2] Batch [120-140]	Speed: 2443.53 samples/sec	accuracy=0.276442
+[1,0]<stderr>:2019-12-13 04:04:55,540 Node[0] Epoch[2] Batch [140-160]	Speed: 2406.67 samples/sec	accuracy=0.276442
+[1,0]<stderr>:2019-12-13 04:04:59,080 Node[0] Epoch[2] Batch [160-180]	Speed: 2515.51 samples/sec	accuracy=0.275000
+[1,0]<stderr>:2019-12-13 04:05:02,567 Node[0] Epoch[2] Batch [180-200]	Speed: 2385.90 samples/sec	accuracy=0.283173
+[1,0]<stderr>:2019-12-13 04:05:05,956 Node[0] Epoch[2] Batch [200-220]	Speed: 2455.59 samples/sec	accuracy=0.296635
+[1,0]<stderr>:2019-12-13 04:05:09,410 Node[0] Epoch[2] Batch [220-240]	Speed: 2409.12 samples/sec	accuracy=0.289904
+[1,0]<stderr>:2019-12-13 04:05:12,999 Node[0] Epoch[2] Batch [240-260]	Speed: 2318.26 samples/sec	accuracy=0.286058
+[1,0]<stderr>:2019-12-13 04:05:16,422 Node[0] Epoch[2] Batch [260-280]	Speed: 2431.60 samples/sec	accuracy=0.289423
+[1,0]<stderr>:2019-12-13 04:05:19,847 Node[0] Epoch[2] Batch [280-300]	Speed: 2429.16 samples/sec	accuracy=0.275962
+[1,0]<stderr>:2019-12-13 04:05:23,288 Node[0] Epoch[2] Batch [300-320]	Speed: 2418.38 samples/sec	accuracy=0.292308
+[1,0]<stderr>:2019-12-13 04:05:26,754 Node[0] Epoch[2] Batch [320-340]	Speed: 2400.97 samples/sec	accuracy=0.296154
+[1,0]<stderr>:2019-12-13 04:05:30,167 Node[0] Epoch[2] Batch [340-360]	Speed: 2438.02 samples/sec	accuracy=0.299038
+[1,0]<stderr>:2019-12-13 04:05:33,661 Node[0] Epoch[2] Batch [360-380]	Speed: 2381.52 samples/sec	accuracy=0.291827
+[1,0]<stderr>:2019-12-13 04:05:37,050 Node[0] Epoch[2] Batch [380-400]	Speed: 2455.59 samples/sec	accuracy=0.284135
+[1,0]<stderr>:2019-12-13 04:05:40,412 Node[0] Epoch[2] Batch [400-420]	Speed: 2474.97 samples/sec	accuracy=0.287019
+[1,0]<stderr>:2019-12-13 04:05:43,891 Node[0] Epoch[2] Batch [420-440]	Speed: 2392.22 samples/sec	accuracy=0.273077
+[1,0]<stderr>:2019-12-13 04:05:47,318 Node[0] Epoch[2] Batch [440-460]	Speed: 2427.63 samples/sec	accuracy=0.285096
+[1,0]<stderr>:2019-12-13 04:05:50,748 Node[0] Epoch[2] Batch [460-480]	Speed: 2426.84 samples/sec	accuracy=0.296635
+[1,0]<stderr>:2019-12-13 04:05:54,269 Node[0] Epoch[2] Batch [480-500]	Speed: 2363.12 samples/sec	accuracy=0.285096
+[1,0]<stderr>:2019-12-13 04:05:57,726 Node[0] Epoch[2] Batch [500-520]	Speed: 2407.36 samples/sec	accuracy=0.292788
+[1,0]<stderr>:2019-12-13 04:06:01,198 Node[0] Epoch[2] Batch [520-540]	Speed: 2396.68 samples/sec	accuracy=0.276442
+[1,0]<stderr>:2019-12-13 04:06:04,633 Node[0] Epoch[2] Batch [540-560]	Speed: 2423.63 samples/sec	accuracy=0.302404
+[1,0]<stderr>:2019-12-13 04:06:08,078 Node[0] Epoch[2] Batch [560-580]	Speed: 2415.36 samples/sec	accuracy=0.277885
+[1,0]<stderr>:2019-12-13 04:06:11,530 Node[0] Epoch[2] Batch [580-600]	Speed: 2410.73 samples/sec	accuracy=0.320673
+[1,0]<stderr>:2019-12-13 04:06:14,998 Node[0] Epoch[2] Batch [600-620]	Speed: 2399.09 samples/sec	accuracy=0.295192
+[1,0]<stderr>:2019-12-13 04:06:18,463 Node[0] Epoch[2] Batch [620-640]	Speed: 2401.49 samples/sec	accuracy=0.293269
+[1,0]<stderr>:2019-12-13 04:06:21,993 Node[0] Epoch[2] Batch [640-660]	Speed: 2357.75 samples/sec	accuracy=0.278365
+[1,0]<stderr>:2019-12-13 04:06:25,394 Node[0] Epoch[2] Batch [660-680]	Speed: 2446.73 samples/sec	accuracy=0.297115
+[1,0]<stderr>:2019-12-13 04:06:28,758 Node[0] Epoch[2] Batch [680-700]	Speed: 2474.98 samples/sec	accuracy=0.296154
+[1,0]<stderr>:2019-12-13 04:06:32,210 Node[0] Epoch[2] Batch [700-720]	Speed: 2410.77 samples/sec	accuracy=0.302404
+[1,0]<stderr>:2019-12-13 04:06:35,762 Node[0] Epoch[2] Batch [720-740]	Speed: 2342.80 samples/sec	accuracy=0.296154
+[1,0]<stderr>:2019-12-13 04:06:39,336 Node[0] Epoch[2] Batch [740-760]	Speed: 2328.19 samples/sec	accuracy=0.302885
+[1,0]<stderr>:2019-12-13 04:06:42,758 Node[0] Epoch[2] Batch [760-780]	Speed: 2432.27 samples/sec	accuracy=0.286538
+[1,0]<stderr>:2019-12-13 04:06:46,311 Node[0] Epoch[2] Batch [780-800]	Speed: 2342.96 samples/sec	accuracy=0.299519
+[1,0]<stderr>:2019-12-13 04:06:49,699 Node[0] Epoch[2] Batch [800-820]	Speed: 2456.11 samples/sec	accuracy=0.326923
+[1,0]<stderr>:2019-12-13 04:06:53,220 Node[0] Epoch[2] Batch [820-840]	Speed: 2363.44 samples/sec	accuracy=0.315865
+[1,0]<stderr>:2019-12-13 04:06:56,746 Node[0] Epoch[2] Batch [840-860]	Speed: 2359.96 samples/sec	accuracy=0.309135
+[1,0]<stderr>:2019-12-13 04:07:00,203 Node[0] Epoch[2] Batch [860-880]	Speed: 2407.24 samples/sec	accuracy=0.297596
+[1,0]<stderr>:2019-12-13 04:07:03,736 Node[0] Epoch[2] Batch [880-900]	Speed: 2355.44 samples/sec	accuracy=0.318269
+[1,0]<stderr>:2019-12-13 04:07:07,179 Node[0] Epoch[2] Batch [900-920]	Speed: 2417.77 samples/sec	accuracy=0.298558
+[1,0]<stderr>:2019-12-13 04:07:10,550 Node[0] Epoch[2] Batch [920-940]	Speed: 2468.62 samples/sec	accuracy=0.306250
+[1,0]<stderr>:2019-12-13 04:07:13,999 Node[0] Epoch[2] Batch [940-960]	Speed: 2412.86 samples/sec	accuracy=0.310096
+[1,0]<stderr>:2019-12-13 04:07:17,435 Node[0] Epoch[2] Batch [960-980]	Speed: 2421.82 samples/sec	accuracy=0.301442
+[1,0]<stderr>:2019-12-13 04:07:20,899 Node[0] Epoch[2] Batch [980-1000]	Speed: 2402.51 samples/sec	accuracy=0.298077
+[1,0]<stderr>:2019-12-13 04:07:24,381 Node[0] Epoch[2] Batch [1000-1020]	Speed: 2389.72 samples/sec	accuracy=0.315385
+[1,0]<stderr>:2019-12-13 04:07:27,925 Node[0] Epoch[2] Batch [1020-1040]	Speed: 2348.02 samples/sec	accuracy=0.311058
+[1,0]<stderr>:2019-12-13 04:07:31,340 Node[0] Epoch[2] Batch [1040-1060]	Speed: 2437.55 samples/sec	accuracy=0.303365
+[1,0]<stderr>:2019-12-13 04:07:34,821 Node[0] Epoch[2] Batch [1060-1080]	Speed: 2391.07 samples/sec	accuracy=0.323077
+[1,0]<stderr>:2019-12-13 04:07:38,158 Node[0] Epoch[2] Batch [1080-1100]	Speed: 2495.04 samples/sec	accuracy=0.309135
+[1,0]<stderr>:2019-12-13 04:07:41,544 Node[0] Epoch[2] Batch [1100-1120]	Speed: 2458.45 samples/sec	accuracy=0.297596
+[1,0]<stderr>:2019-12-13 04:07:44,939 Node[0] Epoch[2] Batch [1120-1140]	Speed: 2451.25 samples/sec	accuracy=0.306250
+[1,0]<stderr>:2019-12-13 04:07:48,301 Node[0] Epoch[2] Batch [1140-1160]	Speed: 2476.03 samples/sec	accuracy=0.311058
+[1,0]<stderr>:2019-12-13 04:07:51,727 Node[0] Epoch[2] Batch [1160-1180]	Speed: 2429.93 samples/sec	accuracy=0.298077
+[1,0]<stderr>:2019-12-13 04:07:55,164 Node[0] Epoch[2] Batch [1180-1200]	Speed: 2421.87 samples/sec	accuracy=0.320673
+[1,0]<stderr>:2019-12-13 04:07:58,663 Node[0] Epoch[2] Batch [1200-1220]	Speed: 2378.04 samples/sec	accuracy=0.319712
+[1,0]<stderr>:2019-12-13 04:08:02,003 Node[0] Epoch[2] Batch [1220-1240]	Speed: 2491.65 samples/sec	accuracy=0.310096
+[1,0]<stderr>:2019-12-13 04:08:05,402 Node[0] Epoch[2] Batch [1240-1260]	Speed: 2452.82 samples/sec	accuracy=0.312981
+[1,0]<stderr>:2019-12-13 04:08:08,741 Node[0] Epoch[2] Batch [1260-1280]	Speed: 2492.22 samples/sec	accuracy=0.303846
+[1,0]<stderr>:2019-12-13 04:08:12,123 Node[0] Epoch[2] Batch [1280-1300]	Speed: 2460.57 samples/sec	accuracy=0.300962
+[1,0]<stderr>:2019-12-13 04:08:15,546 Node[0] Epoch[2] Batch [1300-1320]	Speed: 2431.56 samples/sec	accuracy=0.303846
+[1,0]<stderr>:2019-12-13 04:08:18,962 Node[0] Epoch[2] Batch [1320-1340]	Speed: 2436.11 samples/sec	accuracy=0.344231
+[1,0]<stderr>:2019-12-13 04:08:22,396 Node[0] Epoch[2] Batch [1340-1360]	Speed: 2423.40 samples/sec	accuracy=0.302885
+[1,0]<stderr>:2019-12-13 04:08:25,841 Node[0] Epoch[2] Batch [1360-1380]	Speed: 2415.59 samples/sec	accuracy=0.308654
+[1,0]<stderr>:2019-12-13 04:08:29,245 Node[0] Epoch[2] Batch [1380-1400]	Speed: 2444.68 samples/sec	accuracy=0.335577
+[1,0]<stderr>:2019-12-13 04:08:32,718 Node[0] Epoch[2] Batch [1400-1420]	Speed: 2396.84 samples/sec	accuracy=0.312500
+[1,0]<stderr>:2019-12-13 04:08:36,158 Node[0] Epoch[2] Batch [1420-1440]	Speed: 2419.02 samples/sec	accuracy=0.324038
+[1,0]<stderr>:2019-12-13 04:08:39,580 Node[0] Epoch[2] Batch [1440-1460]	Speed: 2432.30 samples/sec	accuracy=0.308654
+[1,0]<stderr>:2019-12-13 04:08:42,984 Node[0] Epoch[2] Batch [1460-1480]	Speed: 2444.57 samples/sec	accuracy=0.334615
+[1,0]<stderr>:2019-12-13 04:08:46,369 Node[0] Epoch[2] Batch [1480-1500]	Speed: 2458.18 samples/sec	accuracy=0.323558
+[1,0]<stderr>:2019-12-13 04:08:49,798 Node[0] Epoch[2] Batch [1500-1520]	Speed: 2426.55 samples/sec	accuracy=0.311538
+[1,0]<stderr>:2019-12-13 04:08:53,294 Node[0] Epoch[2] Batch [1520-1540]	Speed: 2380.10 samples/sec	accuracy=0.324519
+[1,0]<stderr>:2019-12-13 04:08:56,718 Node[0] Epoch[2] Batch [1540-1560]	Speed: 2430.26 samples/sec	accuracy=0.327885
+[1,0]<stderr>:2019-12-13 04:09:00,173 Node[0] Epoch[2] Batch [1560-1580]	Speed: 2408.64 samples/sec	accuracy=0.308654
+[1,0]<stderr>:2019-12-13 04:09:03,643 Node[0] Epoch[2] Batch [1580-1600]	Speed: 2398.18 samples/sec	accuracy=0.310577
+[1,0]<stderr>:2019-12-13 04:09:07,075 Node[0] Epoch[2] Batch [1600-1620]	Speed: 2424.36 samples/sec	accuracy=0.310577
+[1,0]<stderr>:2019-12-13 04:09:10,505 Node[0] Epoch[2] Batch [1620-1640]	Speed: 2425.40 samples/sec	accuracy=0.333173
+[1,0]<stderr>:2019-12-13 04:09:13,953 Node[0] Epoch[2] Batch [1640-1660]	Speed: 2414.51 samples/sec	accuracy=0.318269
+[1,0]<stderr>:2019-12-13 04:09:17,360 Node[0] Epoch[2] Batch [1660-1680]	Speed: 2442.79 samples/sec	accuracy=0.325962
+[1,0]<stderr>:2019-12-13 04:09:20,754 Node[0] Epoch[2] Batch [1680-1700]	Speed: 2452.24 samples/sec	accuracy=0.314423
+[1,0]<stderr>:2019-12-13 04:09:24,286 Node[0] Epoch[2] Batch [1700-1720]	Speed: 2355.92 samples/sec	accuracy=0.314423
+[1,0]<stderr>:2019-12-13 04:09:27,743 Node[0] Epoch[2] Batch [1720-1740]	Speed: 2489.56 samples/sec	accuracy=0.321635
+[1,0]<stderr>:2019-12-13 04:09:31,160 Node[0] Epoch[2] Batch [1740-1760]	Speed: 2435.24 samples/sec	accuracy=0.319231
+[1,0]<stderr>:2019-12-13 04:09:34,562 Node[0] Epoch[2] Batch [1760-1780]	Speed: 2446.37 samples/sec	accuracy=0.330769
+[1,0]<stderr>:2019-12-13 04:09:38,032 Node[0] Epoch[2] Batch [1780-1800]	Speed: 2398.11 samples/sec	accuracy=0.313942
+[1,0]<stderr>:2019-12-13 04:09:41,434 Node[0] Epoch[2] Batch [1800-1820]	Speed: 2446.98 samples/sec	accuracy=0.311058
+[1,0]<stderr>:2019-12-13 04:09:44,917 Node[0] Epoch[2] Batch [1820-1840]	Speed: 2388.89 samples/sec	accuracy=0.323558
+[1,0]<stderr>:2019-12-13 04:09:48,406 Node[0] Epoch[2] Batch [1840-1860]	Speed: 2385.14 samples/sec	accuracy=0.318269
+[1,0]<stderr>:2019-12-13 04:09:51,850 Node[0] Epoch[2] Batch [1860-1880]	Speed: 2415.82 samples/sec	accuracy=0.312981
+[1,0]<stderr>:2019-12-13 04:09:55,247 Node[0] Epoch[2] Batch [1880-1900]	Speed: 2449.83 samples/sec	accuracy=0.315385
+[1,0]<stderr>:2019-12-13 04:09:58,710 Node[0] Epoch[2] Batch [1900-1920]	Speed: 2403.23 samples/sec	accuracy=0.324038
+[1,0]<stderr>:2019-12-13 04:10:02,081 Node[0] Epoch[2] Batch [1920-1940]	Speed: 2468.62 samples/sec	accuracy=0.325962
+[1,0]<stderr>:2019-12-13 04:10:05,565 Node[0] Epoch[2] Batch [1940-1960]	Speed: 2389.02 samples/sec	accuracy=0.325000
+[1,0]<stderr>:2019-12-13 04:10:09,155 Node[0] Epoch[2] Batch [1960-1980]	Speed: 2318.11 samples/sec	accuracy=0.319712
+[1,0]<stderr>:2019-12-13 04:10:12,614 Node[0] Epoch[2] Batch [1980-2000]	Speed: 2405.08 samples/sec	accuracy=0.325481
+[1,0]<stderr>:2019-12-13 04:10:16,043 Node[0] Epoch[2] Batch [2000-2020]	Speed: 2426.52 samples/sec	accuracy=0.312019
+[1,0]<stderr>:2019-12-13 04:10:19,565 Node[0] Epoch[2] Batch [2020-2040]	Speed: 2362.54 samples/sec	accuracy=0.320673
+[1,0]<stderr>:2019-12-13 04:10:23,006 Node[0] Epoch[2] Batch [2040-2060]	Speed: 2418.34 samples/sec	accuracy=0.320673
+[1,0]<stderr>:2019-12-13 04:10:26,425 Node[0] Epoch[2] Batch [2060-2080]	Speed: 2434.24 samples/sec	accuracy=0.316827
+[1,0]<stderr>:2019-12-13 04:10:29,848 Node[0] Epoch[2] Batch [2080-2100]	Speed: 2431.02 samples/sec	accuracy=0.329808
+[1,0]<stderr>:2019-12-13 04:10:33,302 Node[0] Epoch[2] Batch [2100-2120]	Speed: 2409.24 samples/sec	accuracy=0.313942
+[1,0]<stderr>:2019-12-13 04:10:36,669 Node[0] Epoch[2] Batch [2120-2140]	Speed: 2471.27 samples/sec	accuracy=0.311538
+[1,0]<stderr>:2019-12-13 04:10:40,067 Node[0] Epoch[2] Batch [2140-2160]	Speed: 2449.14 samples/sec	accuracy=0.323077
+[1,0]<stderr>:2019-12-13 04:10:43,510 Node[0] Epoch[2] Batch [2160-2180]	Speed: 2417.02 samples/sec	accuracy=0.335096
+[1,0]<stderr>:2019-12-13 04:10:47,013 Node[0] Epoch[2] Batch [2180-2200]	Speed: 2375.40 samples/sec	accuracy=0.321635
+[1,0]<stderr>:2019-12-13 04:10:50,371 Node[0] Epoch[2] Batch [2200-2220]	Speed: 2478.21 samples/sec	accuracy=0.313462
+[1,0]<stderr>:2019-12-13 04:10:53,769 Node[0] Epoch[2] Batch [2220-2240]	Speed: 2449.02 samples/sec	accuracy=0.330288
+[1,0]<stderr>:2019-12-13 04:10:57,265 Node[0] Epoch[2] Batch [2240-2260]	Speed: 2380.05 samples/sec	accuracy=0.325962
+[1,0]<stderr>:2019-12-13 04:11:00,695 Node[0] Epoch[2] Batch [2260-2280]	Speed: 2425.99 samples/sec	accuracy=0.332212
+[1,0]<stderr>:2019-12-13 04:11:04,130 Node[0] Epoch[2] Batch [2280-2300]	Speed: 2422.47 samples/sec	accuracy=0.337981
+[1,0]<stderr>:2019-12-13 04:11:07,569 Node[0] Epoch[2] Batch [2300-2320]	Speed: 2419.35 samples/sec	accuracy=0.338942
+[1,0]<stderr>:2019-12-13 04:11:10,981 Node[0] Epoch[2] Batch [2320-2340]	Speed: 2439.03 samples/sec	accuracy=0.317788
+[1,0]<stderr>:2019-12-13 04:11:14,368 Node[0] Epoch[2] Batch [2340-2360]	Speed: 2457.19 samples/sec	accuracy=0.330288
+[1,0]<stderr>:2019-12-13 04:11:17,793 Node[0] Epoch[2] Batch [2360-2380]	Speed: 2429.62 samples/sec	accuracy=0.336058
+[1,0]<stderr>:2019-12-13 04:11:21,212 Node[0] Epoch[2] Batch [2380-2400]	Speed: 2434.17 samples/sec	accuracy=0.337500
+[1,0]<stderr>:2019-12-13 04:11:24,594 Node[0] Epoch[2] Batch [2400-2420]	Speed: 2462.38 samples/sec	accuracy=0.314423
+[1,0]<stderr>:2019-12-13 04:11:27,958 Node[0] Epoch[2] Batch [2420-2440]	Speed: 2473.88 samples/sec	accuracy=0.311538
+[1,0]<stderr>:2019-12-13 04:11:31,361 Node[0] Epoch[2] Batch [2440-2460]	Speed: 2445.28 samples/sec	accuracy=0.334615
+[1,0]<stderr>:2019-12-13 04:11:34,756 Node[0] Epoch[2] Batch [2460-2480]	Speed: 2450.85 samples/sec	accuracy=0.351923
+[1,0]<stderr>:2019-12-13 04:11:38,220 Node[0] Epoch[2] Batch [2480-2500]	Speed: 2402.90 samples/sec	accuracy=0.325962
+[1,0]<stderr>:2019-12-13 04:11:41,558 Node[0] Epoch[2] Batch [2500-2520]	Speed: 2492.33 samples/sec	accuracy=0.332692
+[1,0]<stderr>:2019-12-13 04:11:44,919 Node[0] Epoch[2] Batch [2520-2540]	Speed: 2476.07 samples/sec	accuracy=0.330769
+[1,0]<stderr>:2019-12-13 04:11:48,338 Node[0] Epoch[2] Batch [2540-2560]	Speed: 2434.26 samples/sec	accuracy=0.337500
+[1,0]<stderr>:2019-12-13 04:11:51,725 Node[0] Epoch[2] Batch [2560-2580]	Speed: 2457.35 samples/sec	accuracy=0.336538
+[1,0]<stderr>:2019-12-13 04:11:55,180 Node[0] Epoch[2] Batch [2580-2600]	Speed: 2408.69 samples/sec	accuracy=0.316346
+[1,0]<stderr>:2019-12-13 04:11:58,599 Node[0] Epoch[2] Batch [2600-2620]	Speed: 2435.05 samples/sec	accuracy=0.325962
+[1,0]<stderr>:2019-12-13 04:12:01,986 Node[0] Epoch[2] Batch [2620-2640]	Speed: 2457.30 samples/sec	accuracy=0.335577
+[1,0]<stderr>:2019-12-13 04:12:05,459 Node[0] Epoch[2] Batch [2640-2660]	Speed: 2396.77 samples/sec	accuracy=0.329327
+[1,0]<stderr>:2019-12-13 04:12:08,847 Node[0] Epoch[2] Batch [2660-2680]	Speed: 2455.76 samples/sec	accuracy=0.318269
+[1,0]<stderr>:2019-12-13 04:12:12,232 Node[0] Epoch[2] Batch [2680-2700]	Speed: 2459.25 samples/sec	accuracy=0.329327
+[1,0]<stderr>:2019-12-13 04:12:15,720 Node[0] Epoch[2] Batch [2700-2720]	Speed: 2386.76 samples/sec	accuracy=0.323558
+[1,0]<stderr>:2019-12-13 04:12:19,208 Node[0] Epoch[2] Batch [2720-2740]	Speed: 2390.39 samples/sec	accuracy=0.331250
+[1,0]<stderr>:2019-12-13 04:12:22,587 Node[0] Epoch[2] Batch [2740-2760]	Speed: 2463.47 samples/sec	accuracy=0.341346
+[1,0]<stderr>:2019-12-13 04:12:25,954 Node[0] Epoch[2] Batch [2760-2780]	Speed: 2471.84 samples/sec	accuracy=0.318750
+[1,0]<stderr>:2019-12-13 04:12:29,448 Node[0] Epoch[2] Batch [2780-2800]	Speed: 2381.49 samples/sec	accuracy=0.338942
+[1,0]<stderr>:2019-12-13 04:12:32,878 Node[0] Epoch[2] Batch [2800-2820]	Speed: 2425.85 samples/sec	accuracy=0.331250
+[1,0]<stderr>:2019-12-13 04:12:36,283 Node[0] Epoch[2] Batch [2820-2840]	Speed: 2444.29 samples/sec	accuracy=0.356250
+[1,0]<stderr>:2019-12-13 04:12:39,749 Node[0] Epoch[2] Batch [2840-2860]	Speed: 2400.88 samples/sec	accuracy=0.324038
+[1,0]<stderr>:2019-12-13 04:12:43,231 Node[0] Epoch[2] Batch [2860-2880]	Speed: 2389.65 samples/sec	accuracy=0.342308
+[1,0]<stderr>:2019-12-13 04:12:46,801 Node[0] Epoch[2] Batch [2880-2900]	Speed: 2331.28 samples/sec	accuracy=0.353365
+[1,0]<stderr>:2019-12-13 04:12:50,362 Node[0] Epoch[2] Batch [2900-2920]	Speed: 2336.73 samples/sec	accuracy=0.329808
+[1,0]<stderr>:2019-12-13 04:12:53,807 Node[0] Epoch[2] Batch [2920-2940]	Speed: 2416.16 samples/sec	accuracy=0.327885
+[1,0]<stderr>:2019-12-13 04:12:57,263 Node[0] Epoch[2] Batch [2940-2960]	Speed: 2409.48 samples/sec	accuracy=0.343750
+[1,0]<stderr>:2019-12-13 04:13:00,720 Node[0] Epoch[2] Batch [2960-2980]	Speed: 2408.10 samples/sec	accuracy=0.334135
+[1,0]<stderr>:2019-12-13 04:13:04,117 Node[0] Epoch[2] Batch [2980-3000]	Speed: 2451.13 samples/sec	accuracy=0.318750
+[1,0]<stderr>:2019-12-13 04:13:07,657 Node[0] Epoch[2] Batch [3000-3020]	Speed: 2350.89 samples/sec	accuracy=0.344231
+[1,0]<stderr>:2019-12-13 04:13:11,130 Node[0] Epoch[2] Batch [3020-3040]	Speed: 2395.68 samples/sec	accuracy=0.334615
+[1,0]<stderr>:2019-12-13 04:13:14,527 Node[0] Epoch[2] Batch [3040-3060]	Speed: 2449.62 samples/sec	accuracy=0.330769
+[1,0]<stderr>:2019-12-13 04:13:17,812 Node[0] Epoch[2] Time cost=529.741
+[1,0]<stdout>::::MLL 1576210397.812 epoch_stop: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 3, "lineno": 932}}
+[1,0]<stdout>::::MLL 1576210397.813 epoch_start: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 4, "lineno": 893}}
+[1,0]<stderr>:2019-12-13 04:13:21,348 Node[0] Epoch[3] Batch [0-20]	Speed: 2470.01 samples/sec	accuracy=0.332418
+[1,0]<stderr>:2019-12-13 04:13:24,884 Node[0] Epoch[3] Batch [20-40]	Speed: 2372.52 samples/sec	accuracy=0.336538
+[1,0]<stderr>:2019-12-13 04:13:28,255 Node[0] Epoch[3] Batch [40-60]	Speed: 2468.78 samples/sec	accuracy=0.333173
+[1,0]<stderr>:2019-12-13 04:13:31,658 Node[0] Epoch[3] Batch [60-80]	Speed: 2445.14 samples/sec	accuracy=0.342788
+[1,0]<stderr>:2019-12-13 04:13:35,133 Node[0] Epoch[3] Batch [80-100]	Speed: 2398.38 samples/sec	accuracy=0.334615
+[1,0]<stderr>:2019-12-13 04:13:38,483 Node[0] Epoch[3] Batch [100-120]	Speed: 2484.50 samples/sec	accuracy=0.328846
+[1,0]<stderr>:2019-12-13 04:13:41,970 Node[0] Epoch[3] Batch [120-140]	Speed: 2386.70 samples/sec	accuracy=0.318750
+[1,0]<stderr>:2019-12-13 04:13:45,482 Node[0] Epoch[3] Batch [140-160]	Speed: 2369.50 samples/sec	accuracy=0.357692
+[1,0]<stderr>:2019-12-13 04:13:48,914 Node[0] Epoch[3] Batch [160-180]	Speed: 2424.38 samples/sec	accuracy=0.308654
+[1,0]<stderr>:2019-12-13 04:13:52,291 Node[0] Epoch[3] Batch [180-200]	Speed: 2464.20 samples/sec	accuracy=0.322115
+[1,0]<stderr>:2019-12-13 04:13:55,845 Node[0] Epoch[3] Batch [200-220]	Speed: 2341.83 samples/sec	accuracy=0.327885
+[1,0]<stderr>:2019-12-13 04:13:59,326 Node[0] Epoch[3] Batch [220-240]	Speed: 2390.98 samples/sec	accuracy=0.328365
+[1,0]<stderr>:2019-12-13 04:14:02,741 Node[0] Epoch[3] Batch [240-260]	Speed: 2436.66 samples/sec	accuracy=0.339423
+[1,0]<stderr>:2019-12-13 04:14:06,152 Node[0] Epoch[3] Batch [260-280]	Speed: 2439.72 samples/sec	accuracy=0.319712
+[1,0]<stderr>:2019-12-13 04:14:09,633 Node[0] Epoch[3] Batch [280-300]	Speed: 2396.53 samples/sec	accuracy=0.327404
+[1,0]<stderr>:2019-12-13 04:14:13,368 Node[0] Epoch[3] Batch [300-320]	Speed: 2228.21 samples/sec	accuracy=0.318750
+[1,0]<stderr>:2019-12-13 04:14:16,878 Node[0] Epoch[3] Batch [320-340]	Speed: 2370.50 samples/sec	accuracy=0.338462
+[1,0]<stderr>:2019-12-13 04:14:20,366 Node[0] Epoch[3] Batch [340-360]	Speed: 2386.73 samples/sec	accuracy=0.323077
+[1,0]<stderr>:2019-12-13 04:14:23,815 Node[0] Epoch[3] Batch [360-380]	Speed: 2412.45 samples/sec	accuracy=0.343750
+[1,0]<stderr>:2019-12-13 04:14:27,225 Node[0] Epoch[3] Batch [380-400]	Speed: 2440.63 samples/sec	accuracy=0.337981
+[1,0]<stderr>:2019-12-13 04:14:30,637 Node[0] Epoch[3] Batch [400-420]	Speed: 2440.58 samples/sec	accuracy=0.332692
+[1,0]<stderr>:2019-12-13 04:14:34,082 Node[0] Epoch[3] Batch [420-440]	Speed: 2416.36 samples/sec	accuracy=0.310096
+[1,0]<stderr>:2019-12-13 04:14:37,620 Node[0] Epoch[3] Batch [440-460]	Speed: 2351.75 samples/sec	accuracy=0.348077
+[1,0]<stderr>:2019-12-13 04:14:41,082 Node[0] Epoch[3] Batch [460-480]	Speed: 2405.01 samples/sec	accuracy=0.338942
+[1,0]<stderr>:2019-12-13 04:14:44,635 Node[0] Epoch[3] Batch [480-500]	Speed: 2342.38 samples/sec	accuracy=0.337981
+[1,0]<stderr>:2019-12-13 04:14:48,172 Node[0] Epoch[3] Batch [500-520]	Speed: 2352.76 samples/sec	accuracy=0.327404
+[1,0]<stderr>:2019-12-13 04:14:51,836 Node[0] Epoch[3] Batch [520-540]	Speed: 2271.26 samples/sec	accuracy=0.332692
+[1,0]<stderr>:2019-12-13 04:14:55,236 Node[0] Epoch[3] Batch [540-560]	Speed: 2447.63 samples/sec	accuracy=0.332692
+[1,0]<stderr>:2019-12-13 04:14:58,767 Node[0] Epoch[3] Batch [560-580]	Speed: 2358.98 samples/sec	accuracy=0.335577
+[1,0]<stderr>:2019-12-13 04:15:02,237 Node[0] Epoch[3] Batch [580-600]	Speed: 2398.38 samples/sec	accuracy=0.341827
+[1,0]<stderr>:2019-12-13 04:15:05,726 Node[0] Epoch[3] Batch [600-620]	Speed: 2384.92 samples/sec	accuracy=0.358654
+[1,0]<stderr>:2019-12-13 04:15:09,212 Node[0] Epoch[3] Batch [620-640]	Speed: 2388.13 samples/sec	accuracy=0.320192
+[1,0]<stderr>:2019-12-13 04:15:12,685 Node[0] Epoch[3] Batch [640-660]	Speed: 2396.81 samples/sec	accuracy=0.337981
+[1,0]<stderr>:2019-12-13 04:15:16,181 Node[0] Epoch[3] Batch [660-680]	Speed: 2380.25 samples/sec	accuracy=0.324038
+[1,0]<stderr>:2019-12-13 04:15:19,698 Node[0] Epoch[3] Batch [680-700]	Speed: 2366.21 samples/sec	accuracy=0.326923
+[1,0]<stderr>:2019-12-13 04:15:23,162 Node[0] Epoch[3] Batch [700-720]	Speed: 2402.30 samples/sec	accuracy=0.325481
+[1,0]<stderr>:2019-12-13 04:15:26,780 Node[0] Epoch[3] Batch [720-740]	Speed: 2301.67 samples/sec	accuracy=0.341827
+[1,0]<stderr>:2019-12-13 04:15:30,379 Node[0] Epoch[3] Batch [740-760]	Speed: 2311.72 samples/sec	accuracy=0.321635
+[1,0]<stderr>:2019-12-13 04:15:33,929 Node[0] Epoch[3] Batch [760-780]	Speed: 2344.41 samples/sec	accuracy=0.321154
+[1,0]<stderr>:2019-12-13 04:15:37,394 Node[0] Epoch[3] Batch [780-800]	Speed: 2401.55 samples/sec	accuracy=0.324038
+[1,0]<stderr>:2019-12-13 04:15:40,900 Node[0] Epoch[3] Batch [800-820]	Speed: 2374.06 samples/sec	accuracy=0.338462
+[1,0]<stderr>:2019-12-13 04:15:44,332 Node[0] Epoch[3] Batch [820-840]	Speed: 2424.31 samples/sec	accuracy=0.311058
+[1,0]<stderr>:2019-12-13 04:15:47,873 Node[0] Epoch[3] Batch [840-860]	Speed: 2350.13 samples/sec	accuracy=0.329808
+[1,0]<stderr>:2019-12-13 04:15:51,558 Node[0] Epoch[3] Batch [860-880]	Speed: 2258.91 samples/sec	accuracy=0.335096
+[1,0]<stderr>:2019-12-13 04:15:55,173 Node[0] Epoch[3] Batch [880-900]	Speed: 2302.92 samples/sec	accuracy=0.338942
+[1,0]<stderr>:2019-12-13 04:15:58,872 Node[0] Epoch[3] Batch [900-920]	Speed: 2249.89 samples/sec	accuracy=0.332692
+[1,0]<stderr>:2019-12-13 04:16:02,572 Node[0] Epoch[3] Batch [920-940]	Speed: 2248.48 samples/sec	accuracy=0.346154
+[1,0]<stderr>:2019-12-13 04:16:06,052 Node[0] Epoch[3] Batch [940-960]	Speed: 2391.92 samples/sec	accuracy=0.339423
+[1,0]<stderr>:2019-12-13 04:16:09,743 Node[0] Epoch[3] Batch [960-980]	Speed: 2254.47 samples/sec	accuracy=0.313942
+[1,0]<stderr>:2019-12-13 04:16:13,269 Node[0] Epoch[3] Batch [980-1000]	Speed: 2361.10 samples/sec	accuracy=0.334135
+[1,0]<stderr>:2019-12-13 04:16:16,919 Node[0] Epoch[3] Batch [1000-1020]	Speed: 2280.01 samples/sec	accuracy=0.336058
+[1,0]<stderr>:2019-12-13 04:16:20,814 Node[0] Epoch[3] Batch [1020-1040]	Speed: 2136.39 samples/sec	accuracy=0.332212
+[1,0]<stderr>:2019-12-13 04:16:24,308 Node[0] Epoch[3] Batch [1040-1060]	Speed: 2382.25 samples/sec	accuracy=0.334615
+[1,0]<stderr>:2019-12-13 04:16:27,735 Node[0] Epoch[3] Batch [1060-1080]	Speed: 2522.39 samples/sec	accuracy=0.344712
+[1,0]<stderr>:2019-12-13 04:16:31,137 Node[0] Epoch[3] Batch [1080-1100]	Speed: 2445.69 samples/sec	accuracy=0.329327
+[1,0]<stderr>:2019-12-13 04:16:35,026 Node[0] Epoch[3] Batch [1100-1120]	Speed: 2167.41 samples/sec	accuracy=0.341346
+[1,0]<stderr>:2019-12-13 04:16:38,694 Node[0] Epoch[3] Batch [1120-1140]	Speed: 2283.28 samples/sec	accuracy=0.342788
+[1,0]<stderr>:2019-12-13 04:16:42,149 Node[0] Epoch[3] Batch [1140-1160]	Speed: 2451.80 samples/sec	accuracy=0.327885
+[1,0]<stderr>:2019-12-13 04:16:46,100 Node[0] Epoch[3] Batch [1160-1180]	Speed: 2108.67 samples/sec	accuracy=0.351442
+[1,0]<stderr>:2019-12-13 04:16:49,902 Node[0] Epoch[3] Batch [1180-1200]	Speed: 2237.41 samples/sec	accuracy=0.334135
+[1,0]<stderr>:2019-12-13 04:16:54,344 Node[0] Epoch[3] Batch [1200-1220]	Speed: 1911.67 samples/sec	accuracy=0.341827
+[1,0]<stderr>:2019-12-13 04:16:58,789 Node[0] Epoch[3] Batch [1220-1240]	Speed: 1926.06 samples/sec	accuracy=0.339423
+[1,0]<stderr>:2019-12-13 04:17:03,765 Node[0] Epoch[3] Batch [1240-1260]	Speed: 1702.02 samples/sec	accuracy=0.340385
+[1,0]<stderr>:2019-12-13 04:17:08,386 Node[0] Epoch[3] Batch [1260-1280]	Speed: 1876.09 samples/sec	accuracy=0.349038
+[1,0]<stderr>:2019-12-13 04:17:13,218 Node[0] Epoch[3] Batch [1280-1300]	Speed: 1806.14 samples/sec	accuracy=0.328365
+[1,0]<stderr>:2019-12-13 04:17:17,857 Node[0] Epoch[3] Batch [1300-1320]	Speed: 1885.42 samples/sec	accuracy=0.337019
+[1,0]<stderr>:2019-12-13 04:17:22,181 Node[0] Epoch[3] Batch [1320-1340]	Speed: 1990.70 samples/sec	accuracy=0.334135
+[1,0]<stderr>:2019-12-13 04:17:25,827 Node[0] Epoch[3] Batch [1340-1360]	Speed: 2363.83 samples/sec	accuracy=0.344712
+[1,0]<stderr>:2019-12-13 04:17:29,607 Node[0] Epoch[3] Batch [1360-1380]	Speed: 2256.18 samples/sec	accuracy=0.337981
+[1,0]<stderr>:2019-12-13 04:17:33,868 Node[0] Epoch[3] Batch [1380-1400]	Speed: 2092.37 samples/sec	accuracy=0.341346
+[1,0]<stderr>:2019-12-13 04:17:37,844 Node[0] Epoch[3] Batch [1400-1420]	Speed: 2119.18 samples/sec	accuracy=0.341346
+[1,0]<stderr>:2019-12-13 04:17:41,797 Node[0] Epoch[3] Batch [1420-1440]	Speed: 2131.91 samples/sec	accuracy=0.327404
+[1,0]<stderr>:2019-12-13 04:17:45,418 Node[0] Epoch[3] Batch [1440-1460]	Speed: 2325.44 samples/sec	accuracy=0.354327
+[1,0]<stderr>:2019-12-13 04:17:49,245 Node[0] Epoch[3] Batch [1460-1480]	Speed: 2269.57 samples/sec	accuracy=0.350481
+[1,0]<stderr>:2019-12-13 04:17:53,705 Node[0] Epoch[3] Batch [1480-1500]	Speed: 1871.48 samples/sec	accuracy=0.329808
+[1,0]<stderr>:2019-12-13 04:17:57,925 Node[0] Epoch[3] Batch [1500-1520]	Speed: 2210.97 samples/sec	accuracy=0.331250
+[1,0]<stderr>:2019-12-13 04:18:01,724 Node[0] Epoch[3] Batch [1520-1540]	Speed: 2221.23 samples/sec	accuracy=0.347596
+[1,0]<stderr>:2019-12-13 04:18:05,428 Node[0] Epoch[3] Batch [1540-1560]	Speed: 2306.18 samples/sec	accuracy=0.345673
+[1,0]<stderr>:2019-12-13 04:18:09,637 Node[0] Epoch[3] Batch [1560-1580]	Speed: 2068.39 samples/sec	accuracy=0.330288
+[1,0]<stderr>:2019-12-13 04:18:14,445 Node[0] Epoch[3] Batch [1580-1600]	Speed: 1958.51 samples/sec	accuracy=0.323077
+[1,0]<stderr>:2019-12-13 04:18:18,691 Node[0] Epoch[3] Batch [1600-1620]	Speed: 2171.72 samples/sec	accuracy=0.339904
+[1,0]<stderr>:2019-12-13 04:18:22,839 Node[0] Epoch[3] Batch [1620-1640]	Speed: 2128.54 samples/sec	accuracy=0.331731
+[1,0]<stderr>:2019-12-13 04:18:27,221 Node[0] Epoch[3] Batch [1640-1660]	Speed: 1985.04 samples/sec	accuracy=0.344231
+[1,0]<stderr>:2019-12-13 04:18:31,707 Node[0] Epoch[3] Batch [1660-1680]	Speed: 1858.82 samples/sec	accuracy=0.329808
+[1,0]<stderr>:2019-12-13 04:18:36,544 Node[0] Epoch[3] Batch [1680-1700]	Speed: 1843.85 samples/sec	accuracy=0.336058
+[1,0]<stderr>:2019-12-13 04:18:40,745 Node[0] Epoch[3] Batch [1700-1720]	Speed: 2186.53 samples/sec	accuracy=0.337019
+[1,0]<stderr>:2019-12-13 04:18:45,102 Node[0] Epoch[3] Batch [1720-1740]	Speed: 2071.14 samples/sec	accuracy=0.324038
+[1,0]<stderr>:2019-12-13 04:18:49,709 Node[0] Epoch[3] Batch [1740-1760]	Speed: 1933.40 samples/sec	accuracy=0.339904
+[1,0]<stderr>:2019-12-13 04:18:54,123 Node[0] Epoch[3] Batch [1760-1780]	Speed: 2043.59 samples/sec	accuracy=0.325962
+[1,0]<stderr>:2019-12-13 04:18:58,197 Node[0] Epoch[3] Batch [1780-1800]	Speed: 2253.32 samples/sec	accuracy=0.308173
+[1,0]<stderr>:2019-12-13 04:19:02,473 Node[0] Epoch[3] Batch [1800-1820]	Speed: 2048.73 samples/sec	accuracy=0.338462
+[1,0]<stderr>:2019-12-13 04:19:06,280 Node[0] Epoch[3] Batch [1820-1840]	Speed: 2334.15 samples/sec	accuracy=0.337019
+[1,0]<stderr>:2019-12-13 04:19:10,157 Node[0] Epoch[3] Batch [1840-1860]	Speed: 2216.64 samples/sec	accuracy=0.338942
+[1,0]<stderr>:2019-12-13 04:19:14,717 Node[0] Epoch[3] Batch [1860-1880]	Speed: 1904.10 samples/sec	accuracy=0.325000
+[1,0]<stderr>:2019-12-13 04:19:19,538 Node[0] Epoch[3] Batch [1880-1900]	Speed: 1799.48 samples/sec	accuracy=0.333173
+[1,0]<stderr>:2019-12-13 04:19:24,112 Node[0] Epoch[3] Batch [1900-1920]	Speed: 1904.11 samples/sec	accuracy=0.326442
+[1,0]<stderr>:2019-12-13 04:19:28,206 Node[0] Epoch[3] Batch [1920-1940]	Speed: 2229.96 samples/sec	accuracy=0.342788
+[1,0]<stderr>:2019-12-13 04:19:31,693 Node[0] Epoch[3] Batch [1940-1960]	Speed: 2441.97 samples/sec	accuracy=0.344712
+[1,0]<stderr>:2019-12-13 04:19:35,553 Node[0] Epoch[3] Batch [1960-1980]	Speed: 2268.50 samples/sec	accuracy=0.313462
+[1,0]<stderr>:2019-12-13 04:19:39,870 Node[0] Epoch[3] Batch [1980-2000]	Speed: 2017.44 samples/sec	accuracy=0.342308
+[1,0]<stderr>:2019-12-13 04:19:44,545 Node[0] Epoch[3] Batch [2000-2020]	Speed: 1876.65 samples/sec	accuracy=0.334135
+[1,0]<stderr>:2019-12-13 04:19:49,084 Node[0] Epoch[3] Batch [2020-2040]	Speed: 1899.30 samples/sec	accuracy=0.328365
+[1,0]<stderr>:2019-12-13 04:19:53,889 Node[0] Epoch[3] Batch [2040-2060]	Speed: 1828.86 samples/sec	accuracy=0.326923
+[1,0]<stderr>:2019-12-13 04:19:59,251 Node[0] Epoch[3] Batch [2060-2080]	Speed: 1708.24 samples/sec	accuracy=0.337019
+[1,0]<stderr>:2019-12-13 04:20:03,654 Node[0] Epoch[3] Batch [2080-2100]	Speed: 1967.47 samples/sec	accuracy=0.326923
+[1,0]<stderr>:2019-12-13 04:20:08,111 Node[0] Epoch[3] Batch [2100-2120]	Speed: 2017.25 samples/sec	accuracy=0.340385
+[1,0]<stderr>:2019-12-13 04:20:12,624 Node[0] Epoch[3] Batch [2120-2140]	Speed: 1952.62 samples/sec	accuracy=0.305288
+[1,0]<stderr>:2019-12-13 04:20:17,557 Node[0] Epoch[3] Batch [2140-2160]	Speed: 1778.49 samples/sec	accuracy=0.331731
+[1,0]<stderr>:2019-12-13 04:20:22,479 Node[0] Epoch[3] Batch [2160-2180]	Speed: 1849.81 samples/sec	accuracy=0.337981
+[1,0]<stderr>:2019-12-13 04:20:27,143 Node[0] Epoch[3] Batch [2180-2200]	Speed: 1961.04 samples/sec	accuracy=0.318750
+[1,0]<stderr>:2019-12-13 04:20:31,868 Node[0] Epoch[3] Batch [2200-2220]	Speed: 1882.54 samples/sec	accuracy=0.321635
+[1,0]<stderr>:2019-12-13 04:20:36,579 Node[0] Epoch[3] Batch [2220-2240]	Speed: 1877.82 samples/sec	accuracy=0.340865
+[1,0]<stderr>:2019-12-13 04:20:41,860 Node[0] Epoch[3] Batch [2240-2260]	Speed: 1738.66 samples/sec	accuracy=0.330769
+[1,0]<stderr>:2019-12-13 04:20:46,031 Node[0] Epoch[3] Batch [2260-2280]	Speed: 2168.47 samples/sec	accuracy=0.335096
+[1,0]<stderr>:2019-12-13 04:20:50,101 Node[0] Epoch[3] Batch [2280-2300]	Speed: 2089.78 samples/sec	accuracy=0.330769
+[1,0]<stderr>:2019-12-13 04:20:54,642 Node[0] Epoch[3] Batch [2300-2320]	Speed: 2004.43 samples/sec	accuracy=0.329808
+[1,0]<stderr>:2019-12-13 04:20:59,420 Node[0] Epoch[3] Batch [2320-2340]	Speed: 1917.77 samples/sec	accuracy=0.325481
+[1,0]<stderr>:2019-12-13 04:21:03,894 Node[0] Epoch[3] Batch [2340-2360]	Speed: 2021.03 samples/sec	accuracy=0.327404
+[1,0]<stderr>:2019-12-13 04:21:09,295 Node[0] Epoch[3] Batch [2360-2380]	Speed: 1650.73 samples/sec	accuracy=0.331250
+[1,0]<stderr>:2019-12-13 04:21:14,057 Node[0] Epoch[3] Batch [2380-2400]	Speed: 1919.65 samples/sec	accuracy=0.336538
+[1,0]<stderr>:2019-12-13 04:21:19,160 Node[0] Epoch[3] Batch [2400-2420]	Speed: 1787.02 samples/sec	accuracy=0.316346
+[1,0]<stderr>:2019-12-13 04:21:24,431 Node[0] Epoch[3] Batch [2420-2440]	Speed: 1709.08 samples/sec	accuracy=0.320673
+[1,0]<stderr>:2019-12-13 04:21:28,909 Node[0] Epoch[3] Batch [2440-2460]	Speed: 2054.03 samples/sec	accuracy=0.342788
+[1,0]<stderr>:2019-12-13 04:21:32,958 Node[0] Epoch[3] Batch [2460-2480]	Speed: 2160.68 samples/sec	accuracy=0.312981
+[1,0]<stderr>:2019-12-13 04:21:37,899 Node[0] Epoch[3] Batch [2480-2500]	Speed: 1772.04 samples/sec	accuracy=0.336538
+[1,0]<stderr>:2019-12-13 04:21:42,904 Node[0] Epoch[3] Batch [2500-2520]	Speed: 1769.51 samples/sec	accuracy=0.336058
+[1,0]<stderr>:2019-12-13 04:21:47,662 Node[0] Epoch[3] Batch [2520-2540]	Speed: 1933.33 samples/sec	accuracy=0.327404
+[1,0]<stderr>:2019-12-13 04:21:52,516 Node[0] Epoch[3] Batch [2540-2560]	Speed: 1790.32 samples/sec	accuracy=0.318750
+[1,0]<stderr>:2019-12-13 04:21:57,883 Node[0] Epoch[3] Batch [2560-2580]	Speed: 1708.94 samples/sec	accuracy=0.352885
+[1,0]<stderr>:2019-12-13 04:22:03,034 Node[0] Epoch[3] Batch [2580-2600]	Speed: 1709.66 samples/sec	accuracy=0.326442
+[1,0]<stderr>:2019-12-13 04:22:07,999 Node[0] Epoch[3] Batch [2600-2620]	Speed: 1846.54 samples/sec	accuracy=0.334615
+[1,0]<stderr>:2019-12-13 04:22:13,294 Node[0] Epoch[3] Batch [2620-2640]	Speed: 1664.67 samples/sec	accuracy=0.349038
+[1,0]<stderr>:2019-12-13 04:22:17,984 Node[0] Epoch[3] Batch [2640-2660]	Speed: 1892.16 samples/sec	accuracy=0.323558
+[1,0]<stderr>:2019-12-13 04:22:22,902 Node[0] Epoch[3] Batch [2660-2680]	Speed: 1848.29 samples/sec	accuracy=0.335577
+[1,0]<stderr>:2019-12-13 04:22:27,474 Node[0] Epoch[3] Batch [2680-2700]	Speed: 2011.18 samples/sec	accuracy=0.328365
+[1,0]<stderr>:2019-12-13 04:22:32,899 Node[0] Epoch[3] Batch [2700-2720]	Speed: 1683.02 samples/sec	accuracy=0.334135
+[1,0]<stderr>:2019-12-13 04:22:38,357 Node[0] Epoch[3] Batch [2720-2740]	Speed: 1607.08 samples/sec	accuracy=0.344712
+[1,0]<stderr>:2019-12-13 04:22:43,005 Node[0] Epoch[3] Batch [2740-2760]	Speed: 1938.84 samples/sec	accuracy=0.337019
+[1,0]<stderr>:2019-12-13 04:22:47,789 Node[0] Epoch[3] Batch [2760-2780]	Speed: 1843.92 samples/sec	accuracy=0.330288
+[1,0]<stderr>:2019-12-13 04:22:52,463 Node[0] Epoch[3] Batch [2780-2800]	Speed: 1896.91 samples/sec	accuracy=0.327885
+[1,0]<stderr>:2019-12-13 04:22:57,498 Node[0] Epoch[3] Batch [2800-2820]	Speed: 1795.58 samples/sec	accuracy=0.323558
+[1,0]<stderr>:2019-12-13 04:23:02,176 Node[0] Epoch[3] Batch [2820-2840]	Speed: 1920.34 samples/sec	accuracy=0.332212
+[1,0]<stderr>:2019-12-13 04:23:06,507 Node[0] Epoch[3] Batch [2840-2860]	Speed: 2074.87 samples/sec	accuracy=0.328846
+[1,0]<stderr>:2019-12-13 04:23:11,957 Node[0] Epoch[3] Batch [2860-2880]	Speed: 1647.23 samples/sec	accuracy=0.335577
+[1,0]<stderr>:2019-12-13 04:23:17,385 Node[0] Epoch[3] Batch [2880-2900]	Speed: 1662.26 samples/sec	accuracy=0.313462
+[1,0]<stderr>:2019-12-13 04:23:21,926 Node[0] Epoch[3] Batch [2900-2920]	Speed: 1977.64 samples/sec	accuracy=0.339423
+[1,0]<stderr>:2019-12-13 04:23:27,733 Node[0] Epoch[3] Batch [2920-2940]	Speed: 1509.31 samples/sec	accuracy=0.365865
+[1,0]<stderr>:2019-12-13 04:23:33,157 Node[0] Epoch[3] Batch [2940-2960]	Speed: 1617.03 samples/sec	accuracy=0.304808
+[1,0]<stderr>:2019-12-13 04:23:38,636 Node[0] Epoch[3] Batch [2960-2980]	Speed: 1607.79 samples/sec	accuracy=0.338462
+[1,0]<stderr>:2019-12-13 04:23:44,148 Node[0] Epoch[3] Batch [2980-3000]	Speed: 1658.24 samples/sec	accuracy=0.309615
+[1,0]<stderr>:2019-12-13 04:23:49,736 Node[0] Epoch[3] Batch [3000-3020]	Speed: 1555.27 samples/sec	accuracy=0.346635
+[1,0]<stderr>:2019-12-13 04:23:54,559 Node[0] Epoch[3] Batch [3020-3040]	Speed: 1914.50 samples/sec	accuracy=0.332212
+[1,0]<stderr>:2019-12-13 04:24:00,197 Node[0] Epoch[3] Batch [3040-3060]	Speed: 1552.64 samples/sec	accuracy=0.326442
+[1,0]<stdout>::::MLL 1576211044.099 epoch_stop: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 4, "lineno": 932}}
+[1,0]<stderr>:2019-12-13 04:24:04,114 Node[0] Epoch[3] Time cost=646.302
+[1,0]<stdout>::::MLL 1576211044.438 eval_start: {"value": null, "metadata": {"file": "common/fit.py", "epoch_num": 4, "lineno": 956}}
+[1,0]<stderr>:2019-12-13 04:24:04,439 Node[0] DALI iterator does not support resetting while epoch is not finished. Ignoring...
+[1,2]<stderr>:/workspace/image_classification/common/fit.py:858: UserWarning: Parameters already initialized and force_init=False. init_params call ignored.
+[1,2]<stderr>:  allow_missing=allow_missing, force_init=force_init)
+[1,2]<stderr>:/workspace/image_classification/common/fit.py:860: UserWarning: Optimizer created manually outside Module but rescale_grad is not normalized to 1.0/batch_size/num_workers (0.002403846153846154 vs. 0.009615384615384616). Is this intended?
+[1,2]<stderr>:  optimizer_params=optimizer_params)
+[1,2]<stderr>:2019-12-13 04:24:04,290 Node[2] DALI iterator does not support resetting while epoch is not finished. Ignoring...
+[1,3]<stderr>:/workspace/image_classification/common/fit.py:858: UserWarning: Parameters already initialized and force_init=False. init_params call ignored.
+[1,3]<stderr>:  allow_missing=allow_missing, force_init=force_init)
+[1,3]<stderr>:/workspace/image_classification/common/fit.py:860: UserWarning: Optimizer created manually outside Module but rescale_grad is not normalized to 1.0/batch_size/num_workers (0.002403846153846154 vs. 0.009615384615384616). Is this intended?
+[1,3]<stderr>:  optimizer_params=optimizer_params)
+[1,3]<stderr>:2019-12-13 04:24:04,353 Node[3] DALI iterator does not support resetting while epoch is not finished. Ignoring...
+[1,1]<stderr>:/workspace/image_classification/common/fit.py:858: UserWarning: Parameters already initialized and force_init=False. init_params call ignored.
+[1,1]<stderr>:  allow_missing=allow_missing, force_init=force_init)
+[1,1]<stderr>:/workspace/image_classification/common/fit.py:860: UserWarning: Optimizer created manually outside Module but rescale_grad is not normalized to 1.0/batch_size/num_workers (0.002403846153846154 vs. 0.009615384615384616). Is this intended?
+[1,1]<stderr>:  optimizer_params=optimizer_params)
+[1,1]<stderr>:2019-12-13 04:24:04,367 Node[1] DALI iterator does not support resetting while epoch is not finished. Ignoring...
+[1,0]<stderr>:./run_and_time.sh: line 105:   189 Killed                  ${BIND} python train_imagenet.py "${PARAMS[@]}"

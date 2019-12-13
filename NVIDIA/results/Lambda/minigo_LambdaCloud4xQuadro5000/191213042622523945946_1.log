@@ -1,0 +1,218 @@
+Beginning trial 1 of 1
+Gathering sys log on oop
+:::MLL 1576211222.953 submission_benchmark: {"value": "minigo", "metadata": {"lineno": 176, "file": "mlperf_log_utils.py"}}
+:::MLL 1576211222.954 submission_org: {"value": "NVIDIA", "metadata": {"lineno": 181, "file": "mlperf_log_utils.py"}}
+WARNING: Log validation: Key "submission_division" is not in known minigo keys.
+:::MLL 1576211222.955 submission_division: {"value": "closed", "metadata": {"lineno": 185, "file": "mlperf_log_utils.py"}}
+:::MLL 1576211222.955 submission_status: {"value": "onprem", "metadata": {"lineno": 189, "file": "mlperf_log_utils.py"}}
+:::MLL 1576211222.956 submission_platform: {"value": "1xStandard PC (Q35 + ICH9, 2009)", "metadata": {"lineno": 193, "file": "mlperf_log_utils.py"}}
+:::MLL 1576211222.957 submission_entry: {"value": "{'compilers': 'gcc (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609', 'power': 'N/A', 'framework': 'TensorFlow NVIDIA Release 19.05', 'nodes': \"{'sys_storage_size': '1x 48G + 2x 89.1M + 1x 500G', 'num_nodes': '1', 'notes': '', 'network_card': '', 'sys_storage_type': '<unknown bus> SSD', 'accelerator': 'Quadro RTX 5000', 'sys_mem_size': '31 GB', 'num_network_cards': '0', 'cpu': '1x AMD EPYC Processor (with IBPB)', 'cpu_accel_interconnect': 'QPI', 'num_accelerators': '4', 'num_vcpus': '1', 'num_cores': '1'}\", 'os': 'Ubuntu 18.04.3 LTS / ', 'libraries': \"{'openmpi_version': '3.1.3', 'cuda_driver_version': '418.67', 'dali_version': '0.9.1', 'cudnn_version': '7.6.0.64', 'cuda_version': '10.1.163', 'mofed_version': '4.4-1.0.0', 'trt_version': '5.1.5.0', 'container_base': 'Ubuntu-16.04', 'nccl_version': '2.4.6', 'cublas_version': '10.2.0.163'}\", 'interconnect': ' ', 'notes': 'N/A', 'hardware': 'Standard PC (Q35 + ICH9, 2009)'}", "metadata": {"lineno": 197, "file": "mlperf_log_utils.py"}}
+:::MLL 1576211222.957 submission_poc_name: {"value": "Paulius Micikevicius", "metadata": {"lineno": 201, "file": "mlperf_log_utils.py"}}
+:::MLL 1576211222.958 submission_poc_email: {"value": "pauliusm@nvidia.com", "metadata": {"lineno": 205, "file": "mlperf_log_utils.py"}}
+Clearing caches
+:::MLL 1576211224.765 cache_clear: {"metadata": {"file": "<string>", "lineno": 1}, "value": true}
+Launching on node oop
++ pids+=($!)
++ set +x
+++ eval echo
++++ echo
++ docker exec -e DGXSYSTEM=LambdaCloud4xQuadro5000 -e 'SEED=    14673150' -e 'MULTI_NODE= --master_port=4945' -e SLURM_JOB_ID=191213042622523945946 -e SLURM_NTASKS_PER_NODE=4 -e SLURM_NNODES=1 -e 'MLPERF_HOST_OS=Ubuntu 18.04.3 LTS / ' cont_191213042622523945946 ./run_and_time.sh
+Run vars: id 191213042622523945946 gpus 4 mparams  --master_port=4945
+Making dir ml_perf/checkpoint
+I1213 04:27:05.606624 140088873940736 utils.py:74] Running: gsutil  -m  cp  -r  gs://minigo-pub/ml_perf/checkpoint/9  ml_perf/checkpoint
+I1213 04:27:15.745219 140088873940736 utils.py:84] gsutil finished: 10.138 seconds
+Making dir ml_perf/target
+I1213 04:27:15.746174 140088873940736 utils.py:74] Running: gsutil  -m  cp  -r  gs://minigo-pub/ml_perf/target/9  ml_perf/target
+I1213 04:27:17.714990 140088873940736 utils.py:84] gsutil finished: 1.969 seconds
+I1213 04:27:17.716030 140088873940736 utils.py:74] Running: python  freeze_graph.py  --model_path=ml_perf/target/9/target  --trt_batch=2048  --use_tpu=False
+I1213 04:27:42.912436 140088873940736 utils.py:84] freeze_graph finished: 25.196 seconds
+I1213 04:27:42.913948 140088873940736 utils.py:74] Running: python  freeze_graph.py  --model_path=ml_perf/checkpoint/9/work_dir/model.ckpt-9383  --trt_batch=2048  --use_tpu=False
+I1213 04:28:03.708137 140088873940736 utils.py:84] freeze_graph finished: 20.794 seconds
++ echo 'running benchmark'
+STARTING TIMING RUN AT 2019-12-13 04:28:03 AM
+running benchmark
++ python ml_perf/reference_implementation.py --base_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28 --num_gpus_selfplay=4 --num_gpus_train=4 --num_socket=1 --cores_per_socket=10 --flagfile=ml_perf/flags/9/rl_loop.flags
+--------------------------------------------------------------------------
+[[37012,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: oop
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+Making dir /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models
+Wiping dir /opt/reinforcement/minigo/results/oop-2019-12-13-04-28
+Making dir /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay
+Making dir /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout
+Making dir /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/sgf/eval
+Making dir /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks
+Making dir /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/work_dir
+:::MLL 1576211285.636 init_start: {"metadata": {"lineno": 879, "file": "ml_perf/reference_implementation.py"}, "value": null}
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.21s/it]100%|██████████| 1/1 [00:02<00:00,  2.21s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.15s/it]100%|██████████| 1/1 [00:02<00:00,  2.15s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.41s/it]100%|██████████| 1/1 [00:02<00:00,  2.41s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.16s/it]100%|██████████| 1/1 [00:02<00:00,  2.16s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.48s/it]100%|██████████| 1/1 [00:02<00:00,  2.48s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.48s/it]100%|██████████| 1/1 [00:02<00:00,  2.49s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.51s/it]100%|██████████| 1/1 [00:02<00:00,  2.51s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.40s/it]100%|██████████| 1/1 [00:02<00:00,  2.40s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.18s/it]100%|██████████| 1/1 [00:02<00:00,  2.18s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.46s/it]100%|██████████| 1/1 [00:02<00:00,  2.46s/it]Got 348043 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz: 4.326 seconds
+Got 345919 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz: 4.126 seconds
+Got 377794 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz: 4.325 seconds
+Got 343572 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz: 4.126 seconds
+Got 388250 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz: 4.731 seconds
+Got 391492 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz: 4.637 seconds
+Got 388726 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz: 4.735 seconds
+Got 380569 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz: 4.630 seconds
+Got 347616 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz: 4.127 seconds
+Got 383972 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz: 4.735 seconds
+:::MLL 1576211359.889 opt_base_learning_rate: {"metadata": {"lineno": 901, "file": "ml_perf/reference_implementation.py"}, "value": [0.32, 0.032, 0.0032]}
+:::MLL 1576211359.890 opt_learning_rate_decay_boundary_steps: {"metadata": {"lineno": 902, "file": "ml_perf/reference_implementation.py"}, "value": [12500, 18750]}
+:::MLL 1576211359.890 global_batch_size: {"metadata": {"lineno": 903, "file": "ml_perf/reference_implementation.py"}, "value": 8192}
+:::MLL 1576211359.890 virtual_losses: {"metadata": {"lineno": 906, "file": "ml_perf/reference_implementation.py"}, "value": 8}
+:::MLL 1576211359.891 init_stop: {"metadata": {"lineno": 988, "file": "ml_perf/reference_implementation.py"}, "value": null}
+:::MLL 1576211359.891 run_start: {"metadata": {"lineno": 989, "file": "ml_perf/reference_implementation.py"}, "value": null}
+:::MLL 1576211359.892 train_loop: {"metadata": {"lineno": 992, "file": "ml_perf/reference_implementation.py"}, "value": null}
+:::MLL 1576211359.892 epoch_start: {"metadata": {"epoch_num": 1, "lineno": 993, "file": "ml_perf/reference_implementation.py"}, "value": null}
+
+I1213 04:29:19.895475 140438948747008 utils.py:74] Running: mpiexec  --allow-run-as-root  --map-by  ppr:4:socket,pe=2  -np  4  python3  train.py  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_0  --conv_width=32  --fc_width=64  --trunk_layers=9  --value_cost_weight=0.25  --summary_steps=64  --shuffle_buffer_size=10000  --filter_amount=0.5  --train_batch_size=8192  --lr_rates=[0.32,0.032,0.0032]  --lr_boundaries=[12500,18750]  --l2_strength=0.0001  --work_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/work_dir  --export_path=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/000001-000001  --training_seed=2  --use_mgpu_horovod=true  --freeze=true
+I1213 04:29:19.933578 140438948747008 utils.py:74] Running: numactl  --physcpubind=8-7  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=16
+I1213 04:29:19.975399 140438948747008 utils.py:74] Running: numactl  --physcpubind=8-7  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=17
+I1213 04:29:20.044106 140438948747008 utils.py:74] Running: numactl  --physcpubind=8-7  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=18
+I1213 04:29:20.083920 140438948747008 utils.py:74] Running: numactl  --physcpubind=8-7  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=19
+I1213 04:29:20.124140 140438948747008 utils.py:74] Running: numactl  --physcpubind=18-17  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=20
+I1213 04:29:20.163818 140438948747008 utils.py:74] Running: numactl  --physcpubind=18-17  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=21
+I1213 04:29:20.204142 140438948747008 utils.py:74] Running: numactl  --physcpubind=18-17  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=22
+I1213 04:29:20.243525 140438948747008 utils.py:74] Running: numactl  --physcpubind=18-17  --membind=0  bazel-bin/cc/selfplay  --num_games=256  --num_readouts=240  --value_init_penalty=0.2  --holdout_pct=0.03  --disable_resign_pct=0.1  --resign_threshold=-0.99  --parallel_games=128  --virtual_losses=8  --model=trt:1024,/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/checkpoint.pb  --output_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000  --holdout_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/holdout/000001-000000  --seed=23
+I1213 04:34:40.786593 140438948747008 utils.py:84] numactl finished: 320.543 seconds
+I1213 04:34:49.748763 140438948747008 utils.py:84] numactl finished: 329.544 seconds
+I1213 04:34:58.883635 140438948747008 utils.py:84] numactl finished: 338.719 seconds
+I1213 04:35:09.649042 140438948747008 utils.py:84] numactl finished: 349.715 seconds
+I1213 04:35:10.549109 140438948747008 utils.py:84] numactl finished: 350.425 seconds
+I1213 04:35:11.393318 140438948747008 utils.py:84] numactl finished: 351.309 seconds
+I1213 04:35:11.999348 140438948747008 utils.py:84] numactl finished: 351.955 seconds
+I1213 04:35:15.760214 140438948747008 utils.py:84] numactl finished: 355.784 seconds
+I1213 04:35:15.763489 140438948747008 reference_implementation.py:364] Thread 0 stopping
+Played 256 games, total time 346.972 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     149     117      32       0     107      67      40       0
+Ran 9858 batches with an average size of 568.397
+I1213 04:35:15.764744 140438948747008 reference_implementation.py:364] Thread 53 stopping
+Played 256 games, total time 354.796 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     135      94      41       0     121      74      47       0
+Ran 11531 batches with an average size of 519.154
+I1213 04:35:15.764951 140438948747008 reference_implementation.py:364] Thread 66 stopping
+Played 256 games, total time 350.162 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     153     101      52       0     103      54      49       0
+Ran 10225 batches with an average size of 578.94
+I1213 04:35:15.765109 140438948747008 reference_implementation.py:364] Thread 9 stopping
+Played 256 games, total time 349.513 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     149      98      51       0     107      60      47       0
+Ran 10131 batches with an average size of 586.746
+I1213 04:35:15.765259 140438948747008 reference_implementation.py:364] Thread 8 stopping
+Played 256 games, total time 349.546 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     145     100      45       0     111      56      55       0
+Ran 11094 batches with an average size of 537.668
+I1213 04:35:15.765499 140438948747008 reference_implementation.py:364] Thread 4 stopping
+Played 256 games, total time 336.895 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     143     101      42       0     113      66      47       0
+Ran 8243 batches with an average size of 729.45
+I1213 04:35:15.765674 140438948747008 reference_implementation.py:364] Thread 126 stopping
+Played 256 games, total time 325.959 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     145     114      31       0     111      68      43       0
+Ran 7486 batches with an average size of 761.311
+I1213 04:35:15.765841 140438948747008 reference_implementation.py:364] Thread 29 stopping
+Played 256 games, total time 315.558 sec.
+             Black   Black   Black   Black   White   White   White   White
+             total   passes  resign  m.lmt.  total   passes  resign  m.lmt.
+checkpoint     160     109      51       0      96      66      30       0
+Ran 6920 batches with an average size of 813.63
+I1213 04:35:15.766005 140438948747008 reference_implementation.py:372] Black won 0.576, white won 0.424
+I1213 04:35:15.766788 140438948747008 reference_implementation.py:379] Writing golden chunk from "/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/selfplay/000001-000000/*/*.zz"
+  0%|          | 0/1973 [00:00<?, ?it/s]  2%|▏         | 39/1973 [00:00<00:05, 382.86it/s]  4%|▎         | 73/1973 [00:00<00:05, 360.48it/s]  5%|▍         | 97/1973 [00:00<00:06, 308.56it/s]  7%|▋         | 129/1973 [00:00<00:06, 300.39it/s]  9%|▊         | 168/1973 [00:00<00:05, 315.92it/s] 10%|█         | 203/1973 [00:00<00:05, 322.08it/s] 12%|█▏        | 234/1973 [00:00<00:05, 315.23it/s] 14%|█▍        | 272/1973 [00:00<00:05, 321.17it/s] 16%|█▌        | 309/1973 [00:00<00:05, 324.85it/s] 18%|█▊        | 348/1973 [00:01<00:04, 336.91it/s] 19%|█▉        | 382/1973 [00:01<00:04, 329.76it/s] 21%|██▏       | 421/1973 [00:01<00:04, 338.70it/s] 23%|██▎       | 463/1973 [00:01<00:04, 358.08it/s] 25%|██▌       | 499/1973 [00:01<00:04, 344.44it/s] 27%|██▋       | 534/1973 [00:01<00:04, 340.29it/s] 29%|██▉       | 571/1973 [00:01<00:04, 341.08it/s] 31%|███       | 606/1973 [00:01<00:03, 343.02it/s] 33%|███▎      | 642/1973 [00:01<00:03, 344.48it/s] 34%|███▍      | 677/1973 [00:02<00:03, 336.87it/s] 36%|███▌      | 711/1973 [00:02<00:03, 331.12it/s] 38%|███▊      | 747/1973 [00:02<00:03, 327.02it/s] 40%|███▉      | 781/1973 [00:02<00:03, 309.22it/s] 41%|████▏     | 818/1973 [00:02<00:03, 314.55it/s] 44%|████▎     | 859/1973 [00:02<00:03, 334.27it/s] 45%|████▌     | 895/1973 [00:02<00:03, 337.45it/s] 47%|████▋     | 931/1973 [00:02<00:03, 337.92it/s] 49%|████▉     | 974/1973 [00:02<00:02, 359.57it/s] 51%|█████     | 1011/1973 [00:03<00:02, 347.92it/s] 53%|█████▎    | 1051/1973 [00:03<00:02, 358.01it/s] 55%|█████▌    | 1088/1973 [00:03<00:02, 344.52it/s] 57%|█████▋    | 1127/1973 [00:03<00:02, 353.92it/s] 59%|█████▉    | 1163/1973 [00:03<00:02, 349.71it/s] 61%|██████    | 1199/1973 [00:03<00:02, 341.87it/s] 63%|██████▎   | 1234/1973 [00:03<00:02, 335.24it/s] 64%|██████▍   | 1269/1973 [00:03<00:02, 339.53it/s] 66%|██████▌   | 1304/1973 [00:03<00:02, 329.33it/s] 68%|██████▊   | 1338/1973 [00:03<00:01, 322.98it/s] 70%|██████▉   | 1377/1973 [00:04<00:01, 328.64it/s] 72%|███████▏  | 1414/1973 [00:04<00:01, 332.10it/s] 74%|███████▎  | 1451/1973 [00:04<00:01, 328.11it/s] 76%|███████▌  | 1491/1973 [00:04<00:01, 335.30it/s] 77%|███████▋  | 1525/1973 [00:04<00:01, 330.22it/s] 79%|███████▉  | 1559/1973 [00:04<00:01, 319.15it/s] 81%|████████  | 1594/1973 [00:04<00:01, 322.63it/s] 83%|████████▎ | 1631/1973 [00:04<00:01, 332.59it/s] 84%|████████▍ | 1665/1973 [00:04<00:00, 324.23it/s] 86%|████████▌ | 1700/1973 [00:05<00:00, 326.44it/s] 88%|████████▊ | 1740/1973 [00:05<00:00, 342.04it/s] 90%|████████▉ | 1775/1973 [00:05<00:00, 323.94it/s] 92%|█████████▏| 1810/1973 [00:05<00:00, 324.35it/s] 94%|█████████▎| 1847/1973 [00:05<00:00, 328.54it/s] 95%|█████████▌| 1881/1973 [00:05<00:00, 326.40it/s] 97%|█████████▋| 1914/1973 [00:05<00:00, 322.10it/s] 99%|█████████▊| 1947/1973 [00:05<00:00, 305.95it/s]100%|██████████| 1973/1973 [00:05<00:00, 332.37it/s]
+Train get_golden_chunks at iter = 1 has win_size = 10
+Got 185370 examples
+Writing examples to /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000001-000000.tfrecord.zz: 2.317 seconds
+Traceback (most recent call last):
+  File "ml_perf/reference_implementation.py", line 1060, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.5/dist-packages/absl/app.py", line 300, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.5/dist-packages/absl/app.py", line 251, in _run_main
+    sys.exit(main(argv))
+  File "ml_perf/reference_implementation.py", line 1056, in main
+    asyncio.get_event_loop().close()
+  File "/usr/lib/python3.5/contextlib.py", line 77, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "./utils.py", line 82, in logged_timer
+    yield
+  File "ml_perf/reference_implementation.py", line 1054, in main
+    rl_loop(mpi_comm, mpi_rank, mpi_size)
+  File "ml_perf/reference_implementation.py", line 1010, in rl_loop
+    minigo_print(key=constants.EPOCH_STOP, metadata={'epoch_num': state.iter_num})
+  File "/usr/lib/python3.5/contextlib.py", line 77, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "./utils.py", line 82, in logged_timer
+    yield
+  File "ml_perf/reference_implementation.py", line 1001, in rl_loop
+    selfplay(state)])
+  File "./ml_perf/utils.py", line 124, in wait
+    raise result
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 239, in _step
+    result = coro.send(None)
+  File "ml_perf/reference_implementation.py", line 778, in train_eval_convert
+    await train(state, tf_records)
+  File "ml_perf/reference_implementation.py", line 507, in train
+    '--freeze=true')
+  File "ml_perf/reference_implementation.py", line 258, in run
+    stdout = await checked_run(env, *cmd)
+  File "./ml_perf/utils.py", line 96, in checked_run
+    return stdout
+  File "/usr/lib/python3.5/contextlib.py", line 77, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "./utils.py", line 82, in logged_timer
+    yield
+  File "./ml_perf/utils.py", line 94, in checked_run
+    p.returncode, expand_cmd_str(cmd), stdout))
+RuntimeError: Return code 1 from process: mpiexec  --allow-run-as-root  --map-by  ppr:4:socket,pe=2  -np  4  python3  train.py  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000009.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000008.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000007.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000006.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000005.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000004.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000003.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000002.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000001.tfrecord.zz_0  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_3  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_2  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_1  /opt/reinforcement/minigo/results/oop-2019-12-13-04-28/data/golden_chunks/000000-000000.tfrecord.zz_0  --conv_width=32  --fc_width=64  --trunk_layers=9  --value_cost_weight=0.25  --summary_steps=64  --shuffle_buffer_size=10000  --filter_amount=0.5  --train_batch_size=8192  --lr_rates=[0.32,0.032,0.0032]  --lr_boundaries=[12500,18750]  --l2_strength=0.0001  --work_dir=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/work_dir  --export_path=/opt/reinforcement/minigo/results/oop-2019-12-13-04-28/models/000001-000001  --training_seed=2  --use_mgpu_horovod=true  --freeze=true
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        oop
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------

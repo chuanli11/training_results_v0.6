@@ -166,7 +166,7 @@ __Minutes to Solution (The lower the better)__
 | Lambda HyperPlane Basic | 23.33  | 206.82  | 117.21  | 23.50  | 19.85  |  29.76 |
 | Lambda Blade 2080Ti | 38.25  | 586.66  | 206.2  | 45.03  | 66.45  |  51.23 |
 | Lambda Quad 2080Ti | 88.31 | 598.2 | 501.35 | 124.16 | 100.86 | 143.15 |
-| Lambda Quad 2080Ti | 162.95 | x | 1001.5 | 338.68 | 259.29 | x |
+| Lambda Dual 2080Ti | 162.95 | x | 1001.5 | 338.68 | 259.29 | x |
 
 
 * Training Throughtput is a fairer metric as the training may take different numbers of epochs to reach the solution due to random initialization and data shuffling.

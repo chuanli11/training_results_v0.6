@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH -p mlperf		# partition
 #SBATCH -N 1       		# number of nodes
 #SBATCH -t 12:00:00		# wall time
 #SBATCH -J single_stage_detector	# job name
@@ -18,7 +17,7 @@ BENCHMARK_NAME="SSD"
 CONT=${CONT:-"mlperf-nvidia:$BENCHMARK"}
 DATADIR=${DATADIR:-"/raid/data/coco-2017"} # there should be ./coco2017 and ./torchvision dirs in here
 LOGDIR=${LOGDIR:-"/raid/results/$BENCHMARK"}
-NEXP=${NEXP:-5} # Default number of times to run the benchmark
+NEXP=${NEXP:-1} # Default number of times to run the benchmark
 SYSLOGGING=1
 SYS_LOG_GET="'import mlperf_compliance; from mlperf_log_utils import mlperf_submission_log; mlperf_submission_log(mlperf_compliance.constants.$BENCHMARK_NAME)'"
 
@@ -61,7 +60,9 @@ DOCKEREXEC="env NV_GPU=${NV_GPU} nvidia-docker run --init --rm --net=host --uts=
 export MLPERF_HOST_OS="$(cat /etc/issue | head -1 | cut -f1-3 -d" ") / $(cat /etc/dgx-release | grep -E "DGX_PRETTY_NAME|DGX_OTA_VERSION" |cut -f2 -d= |cut -f2 -d '"' |paste -sd' ')"
 
 ## Prep run and launch
-MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+#MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+MASTER_IP='4029gp-tvrt-0'
+
 PORT=$((4242 + RANDOM%1000))
 SSH=''
 SRUN=''
@@ -71,19 +72,6 @@ if [[ $INSLURM -eq 1 ]]; then
   SRUN='srun --mem=0 -N 1 -n 1 -w $hostn'
 else
   hosts=( `hostname` )
-fi
-
-# Pull latest image
-if [[ "${PULL}" != "0" ]]; then
-  DOCKERPULL="docker pull $CONT"
-  pids=();
-  for hostn in ${hosts[@]}; do
-    timeout -k 600s 600s \
-      $(eval echo $SRUN) $DOCKERPULL &
-    pids+=($!);
-  done
-  wait "${pids[@]}"
-  success=$? ; if [ $success -ne 0 ]; then echo "ERR: Image pull failed."; exit $success ; fi
 fi
 
 # Test the base container launch
@@ -169,8 +157,8 @@ for nrun in `seq 1 $NEXP`; do
       )
       # Execute command
       set -x
-      $(eval echo $SRUN) docker exec "${DOCKERENV[@]}" cont_${SLURM_JOB_ID} ./run_and_time.sh &
-    pids+=($!);
+      #$(eval echo $SRUN) docker exec -it "${DOCKERENV[@]}" cont_${SLURM_JOB_ID} /bin/bash
+      $(eval echo $SRUN) docker exec "${DOCKERENV[@]}" cont_${SLURM_JOB_ID} ./run_and_time.sh & pids+=($!);
       set +x
   done
   wait "${pids[@]}"

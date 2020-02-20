@@ -126,6 +126,20 @@ Use this command to run all benchmarks
 ./run_mlperf.sh LambdaCloud4xQuadro5000 1 /data/training_results_v0.6/NVIDIA/benchmarks/data /data/training_results_v0.6/NVIDIA/benchmarks/logs
 ```
 
+Multi-Node benchmark needs to build docker images on individual nodes under the unprivileged account.
+
+```
+docker build --pull -t mlperf-nvidia:single_stage_detector .
+```
+
+Restart compute nodes on a SLURM cluster
+
+```
+sudo scontrol update nodename=4029gp-tvrt-[0-1] state=down reason=hang
+sudo scontrol update nodename=4029gp-tvrt-[0-1] state=resume
+```
+
+
 
 To compile statistics, run this command with the correct `SYSTEM`, `PATH_RESULTS` and `FORMAT` settings:
 
@@ -143,6 +157,7 @@ __Training Throughput (The higher the better)__
 
 |   | ssd (samples/sec) | maskrcnn (iterations/s) | resnet (samples/sec) | gnmt (Tok/s) | translation (batches/sec) | minigo (epochs/min) |
 |---|---|---|---|---|---|---|
+| 2 x Lambda HyperPlane Basic | 8310.40 |  |  |  |  |  |
 | DGX2 Reference | 8274.91 | 272.97 | 22361.42 | 1349928.90 | 84.86 | x |
 | Lambda Hyper plane16+cpupower | 8264.94 | 268.12 | 21879.38 | 1336200.98 | 84.09 | x |
 | Lambda Hyper plane16 | 8040.79 | 257.07 | 21767.38 | 1313706.02 | 83.47 | x |
@@ -158,6 +173,7 @@ __Minutes to Solution (The lower the better)__
 
 |   | ssd  | maskrcnn  | resnet  | gnmt  | translation  | minigo  |
 |---|---|---|---|---|---|---|
+| 2 x Lambda HyperPlane Basic |  |  |  |  |  |  |
 | DGX2 Reference | 13.32 | 108.02 | 59.8 | 12.23 | 11.62 | x |
 | Lambda Hyper plane16+cpupower | 12.62 | 106.15 | 60.37 | 13.40 | 11.27 | x |
 | Lambda Hyper plane16 | 14.05 | 109.01 | 61.48 | 12.97 | 13.01 | x |

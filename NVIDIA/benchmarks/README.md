@@ -130,6 +130,9 @@ Multi-Node benchmark needs to build docker images on individual nodes under the 
 
 ```
 docker build --pull -t mlperf-nvidia:single_stage_detector .
+
+source config_xxx.sh && CONT="mlperf-nvidia:single_stage_detector" DATADIR=/home/chuan/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/single_stage_detector_DGX1_2 DGX
+SYSTEM=xxx srun -N $DGXNNODES -t $WALLTIME --ntasks-per-node $DGXNGPU run.sub
 ```
 
 Restart compute nodes on a SLURM cluster

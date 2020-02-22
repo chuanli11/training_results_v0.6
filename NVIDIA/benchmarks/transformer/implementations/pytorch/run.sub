@@ -61,7 +61,9 @@ DOCKEREXEC="env NV_GPU=${NV_GPU} nvidia-docker run --init --rm --net=host --uts=
 export MLPERF_HOST_OS="$(cat /etc/issue | head -1 | cut -f1-3 -d" ") / $(cat /etc/dgx-release | grep -E "DGX_PRETTY_NAME|DGX_OTA_VERSION" |cut -f2 -d= |cut -f2 -d '"' |paste -sd' ')"
 
 ## Prep run and launch
-MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+#MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+MASTER_IP='4029gp-tvrt-0'
+
 PORT=$((4242 + RANDOM%1000))
 SSH=''
 SRUN=''

@@ -60,7 +60,9 @@ export MLPERF_HOST_OS="$(cat /etc/issue | head -1 | cut -f1-3 -d" ") / $(cat /et
 echo "${MLPERF_HOST_OS}"
 
 ## Prep run and launch
-MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+#MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+MASTER_IP='4029gp-tvrt-0'
+
 PORT=$((4242 + RANDOM%1000))
 SSH=''
 SRUN=''

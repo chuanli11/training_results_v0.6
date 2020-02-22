@@ -18,7 +18,7 @@ CONT=${CONT:-"mlperf-nvidia:$BENCHMARK"}
 DATADIR=${DATADIR:-"/raid/data/wmt16_de_en"}
 PREPROC_DATADIR=${PREPROC_DATADIR:-"/raid/scratch/gnmt"}
 LOGDIR=${LOGDIR:-"/raid/results/$BENCHMARK"}
-NEXP=${NEXP:-10} # Default number of times to run the benchmark
+NEXP=${NEXP:-1} # Default number of times to run the benchmark
 SYSLOGGING=1
 PREPROCESS=1
 SYS_LOG_GET="'import mlperf_compliance; from mlperf_log_utils import mlperf_submission_log; mlperf_submission_log(mlperf_compliance.constants.$BENCHMARK_NAME)'"
@@ -34,6 +34,8 @@ fi
 source config_${DGXSYSTEM}.sh
 
 IBDEVICES=${IBDEVICES:-$DGXIBDEVICES}
+
+echo ${DGXSYSTEM}
 
 ## Check whether we are running in a slurm env
 INSLURM=1
@@ -61,7 +63,9 @@ DOCKEREXEC="nvidia-docker run --init --rm --net=host --uts=host --ipc=host --uli
 export MLPERF_HOST_OS="$(cat /etc/issue | head -1 | cut -f1-3 -d" ") / $(cat /etc/dgx-release | grep -E "DGX_PRETTY_NAME|DGX_OTA_VERSION" |cut -f2 -d= |cut -f2 -d '"' |paste -sd' ')"
 
 ## Prep run and launch
-MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+#MASTER_IP=`getent hosts \`hostname\` | cut -d ' ' -f1`
+MASTER_IP='4029gp-tvrt-0'
+
 PORT=$((4242 + RANDOM%1000))
 SSH=''
 SRUN=''

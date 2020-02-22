@@ -4,7 +4,7 @@ set -e
 
 SEED=$1
 
-DIR_ROOT=$(pwd)
+DIR_ROOT="/home/${USER}"
 
 
 # TODO: Add SEED to process_data.py since this uses a random generator (future PR)

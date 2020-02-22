@@ -2,7 +2,7 @@
 
 set -e
 
-DIR_ROOT=$(pwd)
+DIR_ROOT="/home/${USER}"
 
 SEED=$1
 

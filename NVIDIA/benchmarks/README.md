@@ -135,18 +135,34 @@ Multi-Node benchmark
 # SSD
 docker build --pull -t mlperf-nvidia:single_stage_detector .
 
-source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:single_stage_detector" DATADIR=/home/chuan/training_results_v0.6/NVIDIA/benchmarks/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/single_stage_detector_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME --ntasks-per-node $DGXNGPU run.sub
+source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:single_stage_detector" DATADIR=/home/chuan/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/single_stage_detector_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME --ntasks-per-node $DGXNGPU run.sub
 
 # MaskRCNN
 
 docker build --pull -t mlperf-nvidia:object_detection .
 
-source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:object_detection" DATADIR=/home/chuan/training_results_v0.6/NVIDIA/benchmarks/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/maskrcnn_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:object_detection" DATADIR=/home/chuan/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/maskrcnn_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
 
 # ResNet
 docker build --pull -t  mlperf-nvidia:image_classification .
 
-source config_2xLambdaHyperplaneBasic.sh && CONT=mlperf-nvidia:image_classification DATADIR=/home/chuan/training_results_v0.6/NVIDIA/benchmarks/data/mlperf/imagenet-mxnet LOGDIR=/home/chuan/benchmarks/mlperf/resnet_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+source config_2xLambdaHyperplaneBasic.sh && CONT=mlperf-nvidia:image_classification DATADIR=/home/chuan/data/mlperf/imagenet-mxnet LOGDIR=/home/chuan/benchmarks/mlperf/resnet_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+
+# GNMT
+docker build --pull -t mlperf-nvidia:rnn_translator .
+
+source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:rnn_translator" DATADIR=/home/chuan/data/mlperf/rnn_translator LOGDIR=/home/chuan/benchmarks/mlperf/gnmt_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+
+# transformer
+docker build --pull -t mlperf-nvidia:translation .
+
+source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:translation" DATADIR=/home/chuan/data/mlperf/translation/examples/translation/wmt14_en_de/utf8 LOGDIR=/home/chuan/benchmarks/mlperf/translation_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+
+# minigo
+docker build --pull -t mlperf-nvidia:minigo .
+
+source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:minigo" LOGDIR=/home/chuan/benchmarks/mlperf/minigo_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+
 
 ```
 
@@ -154,6 +170,8 @@ source config_2xLambdaHyperplaneBasic.sh && CONT=mlperf-nvidia:image_classificat
 
 ```
 ./prepare_data.sh
+
+sudo chmod -R a+rwx /home/chuan/data/mlperf
 ```
 
 * Restart compute nodes on a SLURM cluster
@@ -165,13 +183,21 @@ sudo scontrol update nodename=4029gp-tvrt-[0-1] state=resume
 
 
 
-To compile statistics, run this command with the correct `SYSTEM`, `PATH_RESULTS` and `FORMAT` settings:
+* Compile statistics
+
+Run this command with the correct `SYSTEM`, `PATH_RESULTS` and `FORMAT` settings:
 
 ```
 python gather_results.py
 ```
 
 Check individual benchmark folders for more details.
+
+
+
+* MiniGO
+
+Doesn't work anymore as `gs://minigo-pub/ml_perf/checkpoint/9` is broken
 
 ### Results
 

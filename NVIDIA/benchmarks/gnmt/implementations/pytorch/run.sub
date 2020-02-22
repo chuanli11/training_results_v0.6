@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH -p mlperf		# partition
 #SBATCH -N 1       		# number of nodes
 #SBATCH -t 12:00:00		# wall time
 #SBATCH -J rnn_translator	# job name
@@ -74,18 +73,18 @@ else
   hosts=( `hostname` )
 fi
 
-# Pull latest image
-if [[ "${PULL}" != "0" ]]; then
-  DOCKERPULL="docker pull $CONT"
-  pids=();
-  for hostn in ${hosts[@]}; do
-    timeout -k 600s 600s \
-      $(eval echo $SRUN) $DOCKERPULL &
-    pids+=($!);
-  done
-  wait "${pids[@]}"
-  success=$? ; if [ $success -ne 0 ]; then echo "ERR: Image pull failed."; exit $success ; fi
-fi
+## Pull latest image
+#if [[ "${PULL}" != "0" ]]; then
+#  DOCKERPULL="docker pull $CONT"
+#  pids=();
+#  for hostn in ${hosts[@]}; do
+#    timeout -k 600s 600s \
+#      $(eval echo $SRUN) $DOCKERPULL &
+#    pids+=($!);
+#  done
+#  wait "${pids[@]}"
+#  success=$? ; if [ $success -ne 0 ]; then echo "ERR: Image pull failed."; exit $success ; fi
+#fi
 
 # Test the base container launch
 pids=();

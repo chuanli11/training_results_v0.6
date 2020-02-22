@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH -p mlperf		# partition
 #SBATCH -N 1       		# number of nodes
 #SBATCH -t 12:00:00		# wall time
 #SBATCH -J reinforcement	# job name
@@ -17,7 +16,7 @@ BENCHMARK_NAME="MINIGO"
 CONT=${CONT:-"mlperf-nvidia:$BENCHMARK"}
 DATADIR=${DATADIR:-"/raid/data"}
 LOGDIR=${LOGDIR:-"/raid/results/$BENCHMARK"}
-NEXP=${NEXP:-10} # Default number of times to run the benchmark
+NEXP=${NEXP:-1} # Default number of times to run the benchmark
 SEED=${SEED:-$(od -A n -t d -N 3 /dev/urandom)} # Allows passing SEED in, which is helpful if NEXP=1 ; for NEXP>1 we need to pick different seeds for subsequent runs
 SYSLOGGING=1
 SYS_LOG_GET="'import mlperf_compliance; from minigo.ml_perf.mlperf_log_utils import mlperf_submission_log; mlperf_submission_log(mlperf_compliance.constants.$BENCHMARK_NAME)'"
@@ -36,6 +35,9 @@ if [[ ! -f "config_${DGXSYSTEM}.sh" ]]; then
   echo "Unknown system, assuming DGX1"
   DGXSYSTEM="DGX1"
 fi
+
+echo $DGXSYSTEM
+
 source config_${DGXSYSTEM}.sh
 
 IBDEVICES=${IBDEVICES:-$DGXIBDEVICES}
@@ -171,7 +173,7 @@ if [[ $SLURM_NNODES -gt 1 ]]; then
 	echo "Creating containers:"
 	[[ "${PULL}" != "0" ]] && $SRUNl docker pull $CONT
 	$SRUNl nvidia-docker run -d "${MULTINODE_DOCKERRUN_ARGS[@]}" --name=cont_${SLURM_JOB_ID} $CONTVOLS "${MULTINODE_VARS[@]}" $CONT bash -c 'sleep infinity' ; rv=$?
-    $SRUNl docker exec cont_${SLURM_JOB_ID} rm -f /etc/shinit
+    	$SRUNl docker exec cont_${SLURM_JOB_ID} rm -f /etc/shinit
 
 	[[ $rv -ne 0 ]] && echo "ERR: Container launch failed." && exit $rv
 	

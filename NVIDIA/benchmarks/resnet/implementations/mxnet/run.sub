@@ -26,7 +26,7 @@ CONTAINER_UID=0
 CONTAINER_GID=0
 
 # MLPerf-specific stuff
-NEXP=${NEXP:-5} # Default number of times to run the benchmark
+NEXP=${NEXP:-1} # Default number of times to run the benchmark
 CLEAR_CACHES=1
 SYSLOGGING=1
 LOG_CLEAR_CACHES="'from mlperf_compliance import constants, mlperf_log as log; import os; log.mlperf_print(key=constants.CACHE_CLEAR, value=True, benchmark=constants.${BENCHMARK_NAME}, stack_offset=0, root_dir=\"`pwd`\", extra_print=False)'"
@@ -103,7 +103,7 @@ else
 fi
 
 ## Pull image on all nodes by default
-[[ "${PULL}" -ne "0" ]] && $SRUNl docker pull $CONT
+# [[ "${PULL}" -ne "0" ]] && $SRUNl docker pull $CONT
 
 ##########################################
 ## Configure multinode

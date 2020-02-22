@@ -126,16 +126,31 @@ Use this command to run all benchmarks
 ./run_mlperf.sh LambdaCloud4xQuadro5000 1 /data/training_results_v0.6/NVIDIA/benchmarks/data /data/training_results_v0.6/NVIDIA/benchmarks/logs
 ```
 
-Multi-Node benchmark needs to build docker images on individual nodes under the unprivileged account.
+Multi-Node benchmark
+
+* build docker images on individual nodes under the unprivileged account.
+
 
 ```
+# SSD
 docker build --pull -t mlperf-nvidia:single_stage_detector .
 
-source config_xxx.sh && CONT="mlperf-nvidia:single_stage_detector" DATADIR=/home/chuan/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/single_stage_detector_DGX1_2 DGX
-SYSTEM=xxx srun -N $DGXNNODES -t $WALLTIME --ntasks-per-node $DGXNGPU run.sub
+source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:single_stage_detector" DATADIR=/home/chuan/training_results_v0.6/NVIDIA/benchmarks/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/single_stage_detector_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME --ntasks-per-node $DGXNGPU run.sub
+
+# ResNet
+docker build --pull -t  mlperf-nvidia:image_classification .
+
+source config_2xLambdaHyperplaneBasic.sh && CONT=mlperf-nvidia:image_classification DATADIR=/home/chuan/training_results_v0.6/NVIDIA/benchmarks/data/mlperf/imagenet-mxnet LOGDIR=/home/chuan/benchmarks/mlperf/resnet_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+
 ```
 
-Restart compute nodes on a SLURM cluster
+* Run data preparation on a COMPUTING node (because CUDA is needed)
+
+```
+./prepare_data.sh
+```
+
+* Restart compute nodes on a SLURM cluster
 
 ```
 sudo scontrol update nodename=4029gp-tvrt-[0-1] state=down reason=hang

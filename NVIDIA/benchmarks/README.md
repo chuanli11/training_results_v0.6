@@ -137,6 +137,12 @@ docker build --pull -t mlperf-nvidia:single_stage_detector .
 
 source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:single_stage_detector" DATADIR=/home/chuan/training_results_v0.6/NVIDIA/benchmarks/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/single_stage_detector_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME --ntasks-per-node $DGXNGPU run.sub
 
+# MaskRCNN
+
+docker build --pull -t mlperf-nvidia:object_detection .
+
+source config_2xLambdaHyperplaneBasic.sh && CONT="mlperf-nvidia:object_detection" DATADIR=/home/chuan/training_results_v0.6/NVIDIA/benchmarks/data/mlperf/object_detection LOGDIR=/home/chuan/benchmarks/mlperf/maskrcnn_2xLambdaHyperplaneBasic DGXSYSTEM=2xLambdaHyperplaneBasic srun -N $DGXNNODES -t $WALLTIME run.sub
+
 # ResNet
 docker build --pull -t  mlperf-nvidia:image_classification .
 

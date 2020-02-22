@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH -p mlperf		# partition
 #SBATCH -N 1       		# number of nodes
 #SBATCH -t 12:00:00		# wall time
 #SBATCH -J object_detection	# job name
@@ -19,7 +18,7 @@ BENCHMARK_NAME="MASKRCNN"
 CONT=${CONT:-"mlperf-nvidia:$BENCHMARK"}
 DATADIR=${DATADIR:-"/raid/data/coco-2017"}
 LOGDIR=${LOGDIR:-"/raid/results/$BENCHMARK"}
-NEXP=${NEXP:-5} # Default number of times to run the benchmark
+NEXP=${NEXP:-1} # Default number of times to run the benchmark
 SYSLOGGING=1
 SYS_LOG_GET="'import mlperf_compliance; from maskrcnn_benchmark.utils.mlperf_logger import mlperf_submission_log; mlperf_submission_log(mlperf_compliance.constants.$BENCHMARK_NAME)'"
 
@@ -73,18 +72,18 @@ else
   hosts=( `hostname` )
 fi
 
-# Pull latest image
-if [[ "${PULL}" != "0" ]]; then
-  DOCKERPULL="docker pull $CONT"
-  pids=();
-  for hostn in ${hosts[@]}; do
-    timeout -k 600s 600s \
-      $(eval echo $SRUN) $DOCKERPULL &
-    pids+=($!);
-  done
-  wait "${pids[@]}"
-  success=$? ; if [ $success -ne 0 ]; then echo "ERR: Image pull failed."; exit $success ; fi
-fi
+## Pull latest image
+#if [[ "${PULL}" != "0" ]]; then
+#  DOCKERPULL="docker pull $CONT"
+#  pids=();
+#  for hostn in ${hosts[@]}; do
+#    timeout -k 600s 600s \
+#      $(eval echo $SRUN) $DOCKERPULL &
+#    pids+=($!);
+#  done
+#  wait "${pids[@]}"
+#  success=$? ; if [ $success -ne 0 ]; then echo "ERR: Image pull failed."; exit $success ; fi
+#fi
 
 # Test the base container launch
 pids=();

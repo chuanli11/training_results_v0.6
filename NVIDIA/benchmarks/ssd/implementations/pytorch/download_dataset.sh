@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Get COCO 2017 data sets
-DIR_ROOT=$(pwd)
+DIR_ROOT=${1:-"/home/${USER}"}
 mkdir -p $DIR_ROOT/data/mlperf/object_detection/coco2017
 cd $DIR_ROOT/data/mlperf/object_detection/coco2017
 curl -O http://images.cocodataset.org/zips/train2017.zip

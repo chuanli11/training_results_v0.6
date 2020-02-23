@@ -132,6 +132,8 @@ Multi-Node benchmark
 
 
 ```
+./run_mlperf_multi.sh 2xLambdaHyperplaneBasic 2 ~/data/mlperf ~/benchmarks/mlperf
+
 # SSD
 docker build --pull -t mlperf-nvidia:single_stage_detector .
 

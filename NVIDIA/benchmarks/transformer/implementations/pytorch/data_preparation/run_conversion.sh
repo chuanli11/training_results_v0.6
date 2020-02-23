@@ -2,7 +2,7 @@
 
 set -e
 
-DIR_ROOT="/home/${USER}"
+DIR_ROOT=${1:-1"/home/${USER}"}
 
 SEED=$1
 

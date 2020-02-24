@@ -9,14 +9,14 @@ SYSTEM='2xLambdaHyperplaneBasic'
 PATH_RESULTS = '/home/' + os.environ.get('USER') + '/benchmarks/mlperf'
 FORMAT = ".log"
 
-tasks = ['single_stage_detector', 'resnet', 'gnmt', 'translation', 'minigo']
-throughput_names = ['samples/sec', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
+#tasks = ['single_stage_detector', 'resnet', 'gnmt', 'translation', 'minigo']
+#throughput_names = ['samples/sec', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
 
 #tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation', 'minigo']
 #throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec', 'epochs/min']
 
-#tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation']
-#throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec']
+tasks = ['single_stage_detector', 'maskrcnn', 'resnet', 'gnmt', 'translation']
+throughput_names = ['samples/sec', 'iterations/s', 'samples/sec', 'Tok/s', 'batches/sec']
 
 
 def tail(filename, n):
